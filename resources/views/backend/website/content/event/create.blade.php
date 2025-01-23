@@ -1,26 +1,26 @@
 @extends('layouts.backend.app')
 
 @section('title')
-   Tambah Event
+Tambah Event
 @endsection
 
 @section('content')
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            <div class="alert-body">
-                <strong>{{ $message }}</strong>
-                <button type="button" class="close" data-dismiss="alert">×</button>
-            </div>
-        </div>
-    @elseif($message = Session::get('error'))
-        <div class="alert alert-danger" role="alert">
-            <div class="alert-body">
-                <strong>{{ $message }}</strong>
-                <button type="button" class="close" data-dismiss="alert">×</button>
-            </div>
-        </div>
-    @endif
+@if ($message = Session::get('success'))
+<div class="alert alert-success" role="alert">
+    <div class="alert-body">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+    </div>
+</div>
+@elseif($message = Session::get('error'))
+<div class="alert alert-danger" role="alert">
+    <div class="alert-body">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+    </div>
+</div>
+@endif
 <div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -44,57 +44,64 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="basicInput">Title Event</label> <span class="text-danger">*</span>
-                                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value=" {{old('title')}} " placeholder="Title Event" />
+                                        <label for="basicInput">Nama Event</label> <span class="text-danger">*</span>
+                                        <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                            name="title" value=" {{old('title')}} " placeholder="Nama Event">
                                         @error('title')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="basicInput">Thumbnail</label> <span class="text-danger">*</span>
-                                        <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail"/>
+                                        <label for="basicInput">Foto Event</label> <span class="text-danger">*</span>
+                                        <input type="file" class="form-control @error('thumbnail') is-invalid @enderror"
+                                            name="thumbnail" />
                                         @error('thumbnail')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Lokasi</label> <span class="text-danger">*</span>
-                                        <input type="text" class="form-control @error('lokasi') is-invalid @enderror" name="lokasi" value=" {{old('lokasi')}} " placeholder="Lokasi Acara"/>
+                                        <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
+                                            name="lokasi" value=" {{old('lokasi')}} " placeholder="Lokasi Event" />
                                         @error('lokasi')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="basicInput">Waktu Dimulai</label> <span class="text-danger">*</span>
-                                        <input type="datetime-local" class="form-control @error('acara') is-invalid @enderror" name="acara" value=" {{old('acara')}} " placeholder="Waktu dimulai Acara"/>
+                                        <input type="datetime-local"
+                                            class="form-control @error('acara') is-invalid @enderror" name="acara"
+                                            value=" {{old('acara')}} " placeholder="Waktu dimulai Acara" />
                                         @error('acara')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group"> <span class="text-danger">*</span>
-                                        <label for="basicInput">Desripsi Singkat</label> <span class="text-danger">*</span>
-                                        <textarea name="desc" class="form-control  @error('desc') is-invalid @enderror" rows="3"> {{old('desc')}} </textarea>
+                                        <label for="basicInput">Deskripsi Singkat Event</label> <span
+                                            class="text-danger">*</span>
+                                        <textarea name="desc" class="form-control  @error('desc') is-invalid @enderror"
+                                            rows="3"> {{old('desc')}} </textarea>
                                         @error('desc')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
@@ -102,15 +109,17 @@
                                 <div class="col-12">
                                     <div class="form-group"> <span class="text-danger">*</span>
                                         <label for="basicInput">Content</label> <span class="text-danger">*</span>
-                                        <textarea name="content" class="form-control  @error('content') is-invalid @enderror" cols="30" rows="10"> {{old('content')}} </textarea>
+                                        <textarea name="content"
+                                            class="form-control  @error('content') is-invalid @enderror" cols="30"
+                                            rows="10"> {{old('content')}} </textarea>
                                         @error('content')
-                                            <div class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
-                                            </div>
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
-                              
+
                             </div>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                             <a href="{{route('backend-event.index')}}" class="btn btn-warning">Batal</a>

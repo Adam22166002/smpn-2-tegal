@@ -20,7 +20,7 @@ class PengajarController extends Controller
      */
     public function index()
     {
-        $pengajar = User::with('userDetail')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('role', 'Guru')->get();
         return view('backend.pengguna.pengajar.index', compact('pengajar'));
     }
 
@@ -46,10 +46,11 @@ class PengajarController extends Controller
             DB::beginTransaction();
 
             $image = $request->file('foto_profile');
-            $nama_img = time()."_".$image->getClientOriginalName();
+            $nama_img = time() . "_" . $image->getClientOriginalName();
             // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'public/images/profile';
-            $image->storeAs($tujuan_upload,$nama_img);
+            $tujuan_upload = 'Assets/Frontend/img/';
+            $image->move($tujuan_upload, $nama_img);
+            // $image->storeAs($tujuan_upload, $nama_img);
 
             // Pilih kalimat
             $kalimatKe  = "1";
@@ -58,7 +59,7 @@ class PengajarController extends Controller
             $user = new User;
             $user->name             = $request->name;
             $user->email            = $request->email;
-            $user->username         = strtolower($username).date("s");
+            $user->username         = strtolower($username) . date("s");
             $user->role             = 'Guru';
             $user->status           = 'Aktif';
             $user->foto_profile     = $nama_img;
@@ -71,21 +72,14 @@ class PengajarController extends Controller
                 $userDetail->role         = $user->role;
                 $userDetail->mengajar     = $request->mengajar;
                 $userDetail->nip          = $request->nip;
-                $userDetail->email        = $request->email;
-                $userDetail->linkidln     = $request->linkidln;
-                $userDetail->instagram    = $request->instagram;
-                $userDetail->website      = $request->website;
-                $userDetail->facebook     = $request->facebook;
-                $userDetail->twitter      = $request->twitter;
-                $userDetail->youtube      = $request->youtube;
+                $userDetail->is_active = 1;
                 $userDetail->save();
             }
 
             $user->assignRole($user->role);
             DB::commit();
-            Session::flash('success','Pengajar Berhasil ditambah !');
+            Session::flash('success', 'Pengajar Berhasil ditambah !');
             return redirect()->route('backend-pengguna-pengajar.index');
-
         } catch (ErrorException $e) {
             DB::rollback();
             throw new ErrorException($e->getMessage());
@@ -111,7 +105,7 @@ class PengajarController extends Controller
      */
     public function edit($id)
     {
-        $pengajar = User::with('userDetail')->where('role','Guru')->find($id);
+        $pengajar = User::with('userDetail')->where('role', 'Guru')->find($id);
         return view('backend.pengguna.pengajar.edit', compact('pengajar'));
     }
 
@@ -129,13 +123,13 @@ class PengajarController extends Controller
 
             if ($request->foto_profile) {
                 $image = $request->file('foto_profile');
-                $nama_img = time()."_".$image->getClientOriginalName();
+                $nama_img = time() . "_" . $image->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
                 $tujuan_upload = 'public/images/profile';
-                $image->storeAs($tujuan_upload,$nama_img);
+                $image->storeAs($tujuan_upload, $nama_img);
             }
 
-           
+
             $user = User::find($id);
             $user->name             = $request->name;
             $user->email            = $request->email;
@@ -161,9 +155,8 @@ class PengajarController extends Controller
             }
 
             DB::commit();
-            Session::flash('success','Pengajar Berhasil diubah !');
+            Session::flash('success', 'Pengajar Berhasil diubah !');
             return redirect()->route('backend-pengguna-pengajar.index');
-
         } catch (ErrorException $e) {
             DB::rollback();
             throw new ErrorException($e->getMessage());

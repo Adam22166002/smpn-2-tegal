@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-    Dashboard
+Dashboard
 @endsection
 
 @section('content')
@@ -11,8 +11,10 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card card-congratulations">
                     <div class="card-body text-center">
-                        <img src="{{asset('Assets/Backend/images/pages/decore-left.png')}}" class="congratulations-img-left" alt="card-img-left" />
-                        <img src="{{asset('Assets/Backend/images/pages/decore-right.png')}}" class="congratulations-img-right" alt="card-img-right" />
+                        <img src="{{asset('Assets/Backend/images/pages/decore-left.png')}}"
+                            class="congratulations-img-left" alt="card-img-left" />
+                        <img src="{{asset('Assets/Backend/images/pages/decore-right.png')}}"
+                            class="congratulations-img-right" alt="card-img-right" />
                         <div class="avatar avatar-xl bg-primary shadow">
                             <div class="avatar-content">
                                 <i data-feather="award" class="font-large-1"></i>
@@ -29,80 +31,81 @@
             </div>
 
             @if (Auth::user()->role == 'Admin')
-                <div class="col-lg-3 col-sm-6 col-12">
+            <div class="col-lg-3 col-sm-6 col-12">
                 <div class="row">
                     <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="font-weight-bolder mb-0">{{$guru}}</h2>
-                                <p class="card-text">Guru</p>
-                            </div>
-                            <div class="avatar bg-light-primary p-50 m-0">
-                                <div class="avatar-content">
-                                    <i data-feather="users" class="font-medium-5"></i>
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$guru}}</h2>
+                                    <p class="card-text">Total Berita</p>
                                 </div>
-                            </div>
+                                <div class="avatar bg-light-primary p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="users" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
                     </div>
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <a href="#" class="card-header">
                                 <div>
                                     <h2 class="font-weight-bolder mb-0">{{$acara}}</h2>
-                                    <p class="card-text">Acara</p>
+                                    <p class="card-text">Total Events</p>
                                 </div>
                                 <div class="avatar bg-light-danger p-50 m-0">
                                     <div class="avatar-content">
                                         <i data-feather="calendar" class="font-medium-5"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-12">
+            </div>
+            <div class="col-lg-3 col-sm-6 col-12">
                 <div class="row">
                     <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="font-weight-bolder mb-0">{{$murid}}</h2>
-                                <p class="card-text">Murid</p>
-                            </div>
-                            <div class="avatar bg-light-warning p-50 m-0">
-                                <div class="avatar-content">
-                                    <i data-feather="user-check" class="font-medium-5"></i>
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$murid}}</h2>
+                                    <p class="card-text">Total Murid</p>
                                 </div>
-                            </div>
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="user-check" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
                     </div>
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <a href="#" class="card-header">
                                 <div>
                                     <h2 class="font-weight-bolder mb-0">{{$alumni}}</h2>
-                                    <p class="card-text">Alumni</p>
+                                    <p class="card-text">Total Pengajar</p>
                                 </div>
                                 <div class="avatar bg-light-success p-50 m-0">
                                     <div class="avatar-content">
                                         <i data-feather="user" class="font-medium-5"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
             @endif
 
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="card card-developer-meetup">
                     <div class="meetup-img-wrapper rounded-top text-center">
-                        <img src="{{asset('Assets/Backend/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
+                        <img src="{{asset('Assets/Backend/images/illustration/email.svg')}}" alt="Meeting Pic"
+                            height="170" />
                     </div>
                     <div class="card-body">
                         <div class="meetup-header d-flex align-items-center">
@@ -143,7 +146,7 @@
             </div>
 
             @if (Auth::user()->role == 'Admin')
-                <div class="col-xl-8 col-md-6 col-12">
+            <div class="col-xl-8 col-md-6 col-12">
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-statistics">
@@ -213,7 +216,7 @@
                     </div>
 
                 </div>
-                </div>
+            </div>
             @endif
         </div>
     </div>
