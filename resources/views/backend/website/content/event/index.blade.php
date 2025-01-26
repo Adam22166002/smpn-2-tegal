@@ -51,7 +51,7 @@ Event
                                                 <th>Nama Event</th>
                                                 <th>Foto</th>
                                                 <th>Lokasi</th>
-                                                <th>Acara</th>
+                                                <th>Jam Acara</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -70,8 +70,20 @@ Event
                                                 <td> {{$events->acara}} </td>
                                                 <td> {{$events->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                 <td>
-                                                    <a href=" {{route('backend-event.edit', $events->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a>
+                                                    <div class="d-flex">
+                                                        <a href=" {{route('backend-event.edit', $events->id)}} "
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form action="{{ route('backend-event.destroy', $events->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus acara ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

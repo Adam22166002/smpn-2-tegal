@@ -85,7 +85,8 @@ Video
                                                     <label for="basicInput">URL Video</label>
                                                     <input type="text"
                                                         class="form-control @error('url') is-invalid @enderror"
-                                                        name="url" placeholder="URL Video" />
+                                                        name="url"
+                                                        placeholder="Contoh: https://www.youtube.com/live/Hy3WT9Jksyo?si=To__lzGfPYRn6dfi" />
                                                     <span class="text-danger" style="font-size: 10px">Salin dan paste
                                                         url video dari Youtube.</span>
                                                     @error('url')
@@ -141,7 +142,7 @@ Video
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                         <a href="{{route('backend-video.index')}}" class="btn btn-warning">Batal</a>`
                                     </form>
                                 </div>

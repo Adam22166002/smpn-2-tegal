@@ -52,23 +52,49 @@ Pengajar
                                                 <th>Nama Pengajar</th>
                                                 <th>Mata Pelajaran</th>
                                                 <th>NIP</th>
+                                                <th>Email Pengajar</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pengajar as $key => $pengajars)
+
+                                            @php
+                                            $no = 1;
+                                            @endphp
+
+                                            @foreach ($pengajar as $guru)
+                                            @if ($guru->userDetail)
                                             <tr>
                                                 <td></td>
-                                                <td> {{$key+1}} </td>
-                                                <td> {{$pengajars->name}} </td>
-                                                <td> {{$pengajars->userDetail->mengajar}} </td>
-                                                <td> {{$pengajars->userDetail->nip}} </td>
-                                                <td> {{$pengajars->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
-                                                <td><a href=" {{route('backend-pengguna-pengajar.edit', $pengajars->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a></td>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $guru->name }}</td>
+                                                <td>{{ $guru->userDetail->mengajar }}</td>
+                                                <td>{{ $guru->userDetail->nip }}</td>
+                                                <td>{{ $guru->email }}</td>
+                                                <td>{{ $guru->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <a href="{{ route('backend-pengguna-pengajar.edit', $guru->id) }}"
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form
+                                                            action="{{ route('backend-pengguna-pengajar.destroy', $guru->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus pengajar ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
                                             </tr>
+                                            @endif
                                             @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>

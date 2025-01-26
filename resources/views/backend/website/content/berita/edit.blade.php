@@ -123,7 +123,7 @@ Edit Berita
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary mr-1" type="submit">Update</button>
                             <a href="{{route('backend-berita.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

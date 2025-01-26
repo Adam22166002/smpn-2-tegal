@@ -52,7 +52,7 @@ Video
                                                     <label for="basicInput">URL Video</label>
                                                     <input type="text"
                                                         class="form-control @error('url') is-invalid @enderror"
-                                                        name="url" value=" {{$video->url}} " placeholder="URL Video" />
+                                                        name="url" value="{{$video->url}}" placeholder="URL Video" />
                                                     <span class="text-danger" style="font-size: 10px">Kosongkan jika
                                                         tidak ingin mengubah serta Salin dan paste url video dari
                                                         Youtube.
@@ -88,7 +88,7 @@ Video
                                                         class="text-danger">*</span>
                                                     <input type="text" name="title"
                                                         class="form-control @error('title') is-invalid @enderror"
-                                                        value=" {{$video->title}} ">
+                                                        value="{{$video->title}}">
                                                     @error('title')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -103,7 +103,7 @@ Video
                                                         class="text-danger">*</span>
                                                     <textarea name="desc"
                                                         class="form-control  @error('desc') is-invalid @enderror"
-                                                        rows="5"> {{$video->desc}} </textarea>
+                                                        rows="5">{{$video->desc}} </textarea>
                                                     @error('desc')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -113,7 +113,7 @@ Video
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Update</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Update</button>
                                         <a href="{{route('backend-video.index')}}" class="btn btn-warning">Batal</a>`
                                     </form>
                                 </div>

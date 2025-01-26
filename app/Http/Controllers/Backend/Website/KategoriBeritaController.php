@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Backend\Website;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
-use App\Http\Requests\KategoriBeritaRequest;
-use ErrorException;
-use Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class KategoriBeritaController extends Controller
 {
+
+    protected $messages = [
+        'nama.required'      => 'Nama kategori berita tidak boleh kosong.',
+        'nama.unique'        => 'Nama kategori berita sudah ada.',
+        'nama.max'           => 'Nama kategori berita tidak boleh lebih dari 255 karakter.',
+        'is_active.required' => 'Status tidak boleh kosong.'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,20 +45,30 @@ class KategoriBeritaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KategoriBeritaRequest $request)
+    public function store(Request $request)
     {
-        try {
+
+        $validator = Validator::make($request->all(), [
+            'nama'      => 'required|max:255|unique:kategori_beritas',
+            'is_active' => 'required',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
             $kategori = new KategoriBerita();
-            $kategori->nama         = $request->nama;
-            $kategori->is_active    = $request->is_active;
+            $kategori->nama      = $request->input('nama');
+            $kategori->is_active = $request->input('is_active');
             $kategori->save();
 
-            Session::flash('success','Kategori Berhasil ditambah !');
+            Session::flash('success', 'Kategori berita berhasil di tambah!');
             return redirect()->route('backend-kategori-berita.index');
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -83,20 +100,29 @@ class KategoriBeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KategoriBeritaRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
-            $kategori = KategoriBerita::find($id);
-            $kategori->nama         = $request->nama;
-            $kategori->is_active    = $request->is_active;
+        $validator = Validator::make($request->all(), [
+            'nama'      => 'required|max:255',
+            'is_active' => 'required',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $kategori = KategoriBerita::findOrFail($id);
+            $kategori->nama      = $request->input('nama');
+            $kategori->is_active = $request->input('is_active');
             $kategori->save();
 
-            Session::flash('success','Kategori Berhasil diupdate !');
+            Session::flash('success', 'Kategori berita berhasil di update!');
             return redirect()->route('backend-kategori-berita.index');
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -106,6 +132,9 @@ class KategoriBeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kategori = KategoriBerita::find($id);
+        $kategori->delete();
+        Session::flash('success', 'Kategori berita berhasil di hapus!');
+        return redirect()->route('backend-kategori-berita.index');
     }
 }

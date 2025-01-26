@@ -62,8 +62,21 @@ Image Slider
                                                 </td>
                                                 <td> {{$images->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                 <td>
-                                                    <a href=" {{route('backend-imageslider.edit', $images->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a>
+                                                    <div class="d-flex">
+                                                        <a href=" {{route('backend-imageslider.edit', $images->id)}} "
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form
+                                                            action="{{ route('backend-imageslider.destroy', $images->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus slider ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -142,7 +155,7 @@ Image Slider
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                         <a href="{{route('backend-imageslider.index')}}"
                                             class="btn btn-warning">Batal</a>
                                     </form>

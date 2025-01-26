@@ -5,14 +5,28 @@ namespace App\Http\Controllers\Backend\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProgramRequest;
 use App\Models\DataJurusan;
-use ErrorException;
-use Session;
-use DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
 {
+
+    protected $messages = [
+        'nama.required'      => 'Nama jurusan tidak boleh kosong.',
+        'nama.unique'        => 'Nama jurusan sudah pernah dibuat.',
+        'singkatan.required' => 'Singkatan tidak boleh kosong.',
+        'singkatan.unique'   => 'Singkatan sudah pernah dibuat.',
+        'content.required'   => 'Content tidak boleh kosong.',
+        'is_active.required' => 'Status tidak boleh kosong.',
+        'image.required'     => 'Gambar tidak boleh kosong.',
+        'image.mimes'        => 'Gambar yang dimasukan tidak valid.',
+        'image.mimetypes'    => 'Gambar yang dimasukan tidak valid.',
+        'image.max'          => 'Ukuran file gambar hanya bisa 1MB.',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -35,39 +49,50 @@ class ProgramController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProgramRequest $request)
+    public function store(Request $request)
     {
-        try {
-            DB::beginTransaction();
-            $url                = \Str::slug($request->nama);
+
+        $validator = Validator::make($request->all(), [
+            'nama'      => 'required|max:255',
+            'singkatan' => 'required|max:10',
+            'content'   => 'required',
+            'image'     => 'required|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect('program-studi/create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            // Buat slug dari nama jurusan
+            $url = Str::of($request->input('nama'))->slug('-');
+
             $jurusan = new Jurusan;
-            $jurusan->nama      = $request->nama;
+            $jurusan->nama      = $request->input('nama');
             $jurusan->slug      = $url;
-            $jurusan->singkatan = $request->singkatan;
+            $jurusan->singkatan = $request->input('singkatan');
             $jurusan->is_active = '0';
             $jurusan->save();
 
             if ($jurusan) {
-                $foto = $request->file('image');
-                $nama_foto = time()."_".$foto->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
-                $tujuan_upload = 'public/images/jurusan';
-                $foto->storeAs($tujuan_upload,$nama_foto);
 
+                // Simpan file gambar
+                $foto = $request->file('image');
+                $nama_foto = time() . "_" . $foto->getClientOriginalName();
+                $tujuan_upload = 'public/images/jurusan';
+                $foto->storeAs($tujuan_upload, $nama_foto);
+
+                // Simpan data ke tabel data_jurusans
                 $dataJurusan = new DataJurusan;
-                $dataJurusan->jurusan_id    = $jurusan->id;
-                $dataJurusan->content       = $request->content;
-                $dataJurusan->image         = $nama_foto;
+                $dataJurusan->jurusan_id = $jurusan->id;
+                $dataJurusan->content    = $request->input('content');
+                $dataJurusan->image      = $nama_foto;
                 $dataJurusan->save();
             }
 
-            DB::commit();
-            Session::flash('success','Program Studi Berhasil ditambah !');
+            Session::flash('success', 'Data jurusan berhasil di tambah!');
             return redirect()->route('program-studi.index');
-
-        } catch (ErrorException $e) {
-            DB::rollback();
-            throw new ErrorException($e->getMessage());
         }
     }
 
@@ -103,37 +128,67 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            DB::beginTransaction();
+
+        $validator = Validator::make($request->all(), [
+            'nama'      => 'required|max:255',
+            'singkatan' => 'required|max:10',
+            'is_active' => 'required',
+            'content'   => 'required',
+            'image'     => 'mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
             $jurusan = Jurusan::findOrFail($id);
-            $jurusan->nama      = $request->nama;
-            $jurusan->singkatan = $request->singkatan;
-            $jurusan->is_active = $request->is_active;
+            $jurusan->nama      = $request->input('nama');
+            $jurusan->singkatan = $request->input('singkatan');
+            $jurusan->is_active = $request->input('is_active');
             $jurusan->save();
 
             if ($jurusan) {
-                if ($request->image) {
-                    $foto = $request->file('image');
-                    $nama_foto = time()."_".$foto->getClientOriginalName();
-                    // isi dengan nama folder tempat kemana file diupload
-                    $tujuan_upload = 'public/images/jurusan';
-                    $foto->storeAs($tujuan_upload,$nama_foto);
+                $dataJurusan = DataJurusan::where('jurusan_id', $id)->first();
 
-                    $dataJurusan = DataJurusan::where('jurusan_id', $id)->first();
-                    $dataJurusan->content       = $request->content;
-                    $dataJurusan->image         = $nama_foto;
-                    $dataJurusan->save();
+                if ($request->hasFile('image')) {
+                    $disk = 'public';
+                    $folderPath = 'images/jurusan';
+                    $foto = $request->file('image');
+                    $nama_foto = time() . "_" . $foto->getClientOriginalName();
+
+
+                    // Hapus file lama jika ada
+                    if ($dataJurusan && $dataJurusan->image) {
+                        Storage::disk($disk)->delete("$folderPath/{$dataJurusan->image}");
+                    }
+
+                    // Simpan file baru
+                    $foto->storeAs($folderPath, $nama_foto, $disk);
+
+                    $dataJurusan->image   = $nama_foto;
                 }
+
+                $dataJurusan->content = $request->input('content');
+                $dataJurusan->save();
             }
 
-            DB::commit();
-            Session::flash('success','Program Studi Berhasil diupdate !');
+            Session::flash('success', 'Data jurusan berhasil di update!');
             return redirect()->route('program-studi.index');
-            
-        } catch (ErrorException $e) {
-            DB::rollback();
-            Session::flash('error','Program Studi Gagal diupdate !');
-            throw new ErrorException($e->getMessage());
         }
+    }
+
+    public function destroy($id)
+    {
+        $jurusan = Jurusan::find($id);
+        $jurusan_detail = DataJurusan::where('jurusan_id', $jurusan->id)->first();
+        $destinationPath = public_path('storage/images/jurusan/');
+        unlink($destinationPath . $jurusan_detail->image);
+
+        $jurusan->delete();
+        $jurusan_detail->delete();
+        Session::flash('success', 'Data jurusan berhasil di hapus!');
+        return redirect()->route('program-studi.index');
     }
 }

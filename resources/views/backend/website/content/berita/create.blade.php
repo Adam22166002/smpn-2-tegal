@@ -99,7 +99,7 @@ Tambah Berita
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                             <a href="{{route('backend-berita.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

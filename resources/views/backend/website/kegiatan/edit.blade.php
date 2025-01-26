@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Edit Kegiatan
+Edit Ekstrakurikuler
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Edit Kegiatan
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Ekstrakuliler</h2>
+                    <h2> Ekstrakurikuler</h2>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@ Edit Kegiatan
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-bottom">
-                        <h4>Edit Ekstrakuliler</h4>
+                        <h4>Edit Ekstrakurikuler</h4>
                     </div>
                     <div class="card-body">
                         <form action=" {{route('backend-kegiatan.update', $kegiatan->id)}} " method="post"
@@ -46,7 +46,7 @@ Edit Kegiatan
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Nama Ekstrakuliler</label> <span
+                                        <label for="basicInput">Nama Ekstrakurikuler</label> <span
                                             class="text-danger">*</span>
                                         <input type="text" class="form-control @error('nama') is-invalid @enderror"
                                             value=" {{$kegiatan->nama}} " name="nama" placeholder="Nama Kegiatan" />
@@ -80,7 +80,7 @@ Edit Kegiatan
                                     <div class="form-group">
                                         <label for="basicInput">Gambar</label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                            name="image" placeholder="image" />
+                                            name="image" />
                                         <span class="text-danger" style="font-size: 10px">Kosongkan jika tidak ingin
                                             mengubah.</span>
                                         @error('image')
@@ -105,7 +105,7 @@ Edit Kegiatan
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary mr-1" type="submit">Update</button>
                             <a href="{{route('backend-kegiatan.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

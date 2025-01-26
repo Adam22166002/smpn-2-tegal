@@ -69,8 +69,22 @@ Berita
                                                 <td> {{$beritas->kategori->nama}} </td>
                                                 <td> {{$beritas->is_active == '0' ? 'Publish' : 'Draft'}} </td>
                                                 <td>
-                                                    <a href=" {{route('backend-berita.edit', $beritas->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a>
+                                                    <div class="d-flex">
+                                                        <a href=" {{route('backend-berita.edit', $beritas->id)}} "
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form
+                                                            action="{{ route('backend-berita.destroy', $beritas->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
