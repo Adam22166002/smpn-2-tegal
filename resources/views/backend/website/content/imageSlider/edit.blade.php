@@ -103,11 +103,14 @@ Edit Image Slider
                                                     <label for="basicInput">Urutan Gambar Slider</label>
                                                     <select name="urutan"
                                                         class="form-control @error('urutan') is-invalid @enderror">
-                                                        <option value="0" {{$image->urutan ?? '0' ? 'selected' : ''}} >1
+                                                        <option value="0" {{$image->urutan == '0' ? 'selected' :
+                                                            ''}} >1
                                                         </option>
-                                                        <option value="1" {{$image->urutan ?? '1' ? 'selected' : ''}} >2
+                                                        <option value="1" {{$image->urutan == '1' ? 'selected' :
+                                                            ''}} >2
                                                         </option>
-                                                        <option value="2" {{$image->urutan ?? '2' ? 'selected' : ''}} >3
+                                                        <option value="2" {{$image->urutan == '2' ? 'selected' :
+                                                            ''}} >3
                                                         </option>
                                                     </select>
                                                     @error('urutan')
@@ -141,7 +144,7 @@ Edit Image Slider
                                                         class="text-danger">*</span>
                                                     <input type="text" name="title"
                                                         class="form-control @error('title') is-invalid @enderror"
-                                                        value=" {{$image->title}} ">
+                                                        value="{{$image->title}}">
                                                     @error('title')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -155,7 +158,7 @@ Edit Image Slider
                                                         class="text-danger">*</span>
                                                     <textarea name="desc"
                                                         class="form-control  @error('desc') is-invalid @enderror"
-                                                        rows="5"> {{$image->desc}} </textarea>
+                                                        rows="5">{{$image->desc}} </textarea>
                                                     @error('desc')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -165,7 +168,7 @@ Edit Image Slider
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Update</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Update</button>
                                         <a href="{{route('backend-imageslider.index')}}"
                                             class="btn btn-warning">Batal</a>
                                     </form>

@@ -24,8 +24,8 @@ class ProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama'      => ['required','unique:jurusans'],
-            'singkatan' => ['required','unique:jurusans'],
+            'nama'      => ['required', 'unique:jurusans'],
+            'singkatan' => ['required', 'unique:jurusans'],
             'content'   => ['required'],
             'image'     => ['required']
         ];
@@ -34,12 +34,15 @@ class ProgramRequest extends FormRequest
     public function messages()
     {
         return [
-           'nama.required'      => 'Program Studi tidak boleh kosong.',
-           'nama.unique'        => 'Program Studi sudah pernah dibuat.',
-           'singkatan.required' => 'Singkatan tidak boleh kosong.',
-           'singkatan.unique'   => 'Singkatan tsudah pernah dibuat.',
-           'content.required'   => 'Content tidak boleh kosong.',
-           'image.required'     => 'Gambar tidak boleh kosong.'
+            'nama.required'      => 'Nama jurusan tidak boleh kosong.',
+            'nama.unique'        => 'Nama jurusan sudah pernah dibuat.',
+            'singkatan.required' => 'Singkatan tidak boleh kosong.',
+            'singkatan.unique'   => 'Singkatan sudah pernah dibuat.',
+            'content.required'   => 'Content tidak boleh kosong.',
+            'image.required'     => 'Gambar tidak boleh kosong.',
+            'image.mimes'        => 'Hanya file gambar yang di upload.',
+            'image.mimetypes'    => 'Hanya file gambar yang di upload.',
+            'image.max'          => 'Ukuran file gambar hanya bisa 1MB',
         ];
     }
 }

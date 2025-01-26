@@ -48,7 +48,7 @@ Edit Pengajar
                                     <div class="form-group">
                                         <label for="basicInput">Nama Pengajar</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value=" {{$pengajar->name}} " placeholder="Nama" />
+                                            name="name" value="{{$pengajar->name}}" placeholder="Nama" />
                                         @error('name')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@ Edit Pengajar
                                     <div class="form-group">
                                         <label for="basicInput">Email</label> <span class="text-danger">*</span>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value=" {{$pengajar->email}} " placeholder="Email" />
+                                            name="email" value="{{$pengajar->email}}" placeholder="Email" />
                                         @error('email')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -76,8 +76,13 @@ Edit Pengajar
                                         <select name="mengajar"
                                             class="form-control @error('mengajar') is-invalid @enderror">
                                             <option value="">-- Pilih --</option>
+
                                             <option value="Matematika" {{$pengajar->userDetail->mengajar == 'Matematika'
                                                 ? 'selected' : ''}} >Matematika</option>
+
+                                            <option value="Bahasa Inggris" {{$pengajar->userDetail->mengajar == 'Bahasa
+                                                Inggris'
+                                                ? 'selected' : ''}} >Bahasa Inggris</option>
                                         </select>
                                         @error('mengajar')
                                         <div class="invalid-feedback">
@@ -90,9 +95,10 @@ Edit Pengajar
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="basicInput">NIP</label> <span class="text-danger">*</span>
-                                        <input type="text" class="form-control @error('nip') is-invalid @enderror"
-                                            name="nip" value=" {{$pengajar->userDetail->nip}} " placeholder="NIP" />
+                                        <input type="number" class="form-control @error('nip') is-invalid @enderror"
+                                            name="nip" value="{{$pengajar->userDetail->nip}}" placeholder="NIP" />
                                         @error('nip')
+
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                         </div>
@@ -133,92 +139,8 @@ Edit Pengajar
                                     </div>
                                 </div>
 
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Website</label>
-                                        <input type="text" class="form-control @error('website') is-invalid @enderror"
-                                            name="website" value=" {{$pengajar->userDetail->website}} "
-                                            placeholder="Website" />
-                                        @error('website')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Linkedln</label>
-                                        <input type="text" class="form-control @error('linkedln') is-invalid @enderror"
-                                            name="linkedln" value=" {{$pengajar->userDetail->linkidln}} "
-                                            placeholder="Linkedln" />
-                                        @error('linkedln')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Instagram</label>
-                                        <input type="text" class="form-control @error('instagram') is-invalid @enderror"
-                                            name="instagram" value=" {{$pengajar->userDetail->instagram}} "
-                                            placeholder="Instagram" />
-                                        @error('instagram')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Facebook</label>
-                                        <input type="text" class="form-control @error('facebook') is-invalid @enderror"
-                                            name="facebook" value=" {{$pengajar->userDetail->facebook}} "
-                                            placeholder="Facebook" />
-                                        @error('facebook')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Youtube</label>
-                                        <input type="text" class="form-control @error('youtube') is-invalid @enderror"
-                                            name="youtube" value=" {{$pengajar->userDetail->youtube}} "
-                                            placeholder="Youtube" />
-                                        @error('youtube')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Twitter</label>
-                                        <input type="text" class="form-control @error('twitter') is-invalid @enderror"
-                                            name="twitter" value=" {{$pengajar->userDetail->twitter}} "
-                                            placeholder="Twitter" />
-                                        @error('twitter')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
                             </div>
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary mr-1" type="submit">Update</button>
                             <a href="{{route('backend-pengguna-pengajar.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

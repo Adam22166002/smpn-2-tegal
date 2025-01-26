@@ -79,10 +79,10 @@ class ProfileController extends Controller
         try {
             if ($request->foto_profile) {
                 $image = $request->file('foto_profile');
-                $nama_image = time()."_".$image->getClientOriginalName();
+                $nama_image = time() . "_" . $image->getClientOriginalName();
                 // isi dengan nama folder tempat kemana file diupload
                 $tujuan_upload = 'public/images/profile';
-                $image->storeAs($tujuan_upload,$nama_image);
+                $image->storeAs($tujuan_upload, $nama_image);
             }
 
             $profile = User::find($id);
@@ -95,9 +95,8 @@ class ProfileController extends Controller
             }
             $profile->save();
 
-            Session::flash('success','Profile Berhasil diupdate !');
+            Session::flash('success', 'Profile Berhasil diupdate !');
             return back();
-
         } catch (ErrorException $e) {
             throw new ErrorException($e->getMessage());
         }
@@ -106,16 +105,15 @@ class ProfileController extends Controller
     // Ubah Password
     public function changePassword(ChangePasswordRequest $request, $id)
     {
-       try {
+        try {
             $profile = User::find($id);
             $profile->password   = bcrypt($request->password);
             $profile->save();
 
-            Session::flash('success','Password Berhasil diudate !');
+            Session::flash('success', 'Password Berhasil diudate !');
             return back();
-
-       } catch (ErrorException $e) {
-           throw new ErrorException($e->getMessage());
-       }
+        } catch (ErrorException $e) {
+            throw new ErrorException($e->getMessage());
+        }
     }
 }

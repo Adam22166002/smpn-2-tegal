@@ -6,14 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
-use App\Http\Requests\BeritaRequest;
-use ErrorException;
-use Session;
-use Str;
-use Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaController extends Controller
 {
+
+    protected $messages = [
+        'title.required'        => 'Judul berita tidak boleh kosong.',
+        'title.max'             => 'Judul berita tidak boleh lebih dari 255 karakter.',
+        'kategori_id.required'  => 'Kategori berita tidak boleh kosong.',
+        'thumbnail.required'    => 'Gambar thumbnail tidak boleh kosong.',
+        'thumbnail.mimes'       => 'Gambar thumbnail yang dimasukan tidak valid.',
+        'thumbnail.mimetypes'   => 'Gambar thumbnail yang dimasukan tidak valid.',
+        'thumbnail.max'         => 'Maksimal gambar thumbnail tidak boleh lebih dari 1MB.',
+        'content.required'      => 'Content tidak boleh kosong.',
+        'is_active.required'    => 'Status tidak boleh kosong.'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +35,11 @@ class BeritaController extends Controller
     public function index()
     {
         //Cek kategori
-        $kategori = KategoriBerita::where('is_Active','0')->get();
+        $kategori = KategoriBerita::where('is_Active', '0')->get();
 
         //Berita
         $berita = Berita::all();
-        return view('backend.website.content.berita.index', compact('kategori','berita'));
+        return view('backend.website.content.berita.index', compact('kategori', 'berita'));
     }
 
     /**
@@ -36,7 +49,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        $kategori = KategoriBerita::where('is_Active','0')->get();
+        $kategori = KategoriBerita::where('is_Active', '0')->get();
         return view('backend.website.content.berita.create', compact('kategori'));
     }
 
@@ -46,36 +59,47 @@ class BeritaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BeritaRequest $request)
+    public function store(Request $request)
     {
-        try {
+        $validator = Validator::make($request->all(), [
+            'title'        => 'required|max:255',
+            'content'      => 'required',
+            'kategori_id'  => 'required',
+            'thumbnail'    => 'required|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
 
             $image = $request->file('thumbnail');
-            $nama_image = time()."_".$image->getClientOriginalName();
-            // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'public/images/berita';
-            $image->storeAs($tujuan_upload,$nama_image);
+            $nama_image = time() . "_" . $image->getClientOriginalName();
 
-            // Create Slug
+            // Lokasi penyimpanan
+            $tujuan_upload = 'public/images/berita';
+            $image->storeAs($tujuan_upload, $nama_image);
+
+            // Create buat slug judul
             $slug = Str::slug($request->title);
 
+            // Simpan data berita
             $berita = new Berita;
             $berita->title          = $request->title;
             $berita->slug           = $slug;
-            $berita->content        = $request->content;    
+            $berita->content        = $request->content;
             $berita->kategori_id    = $request->kategori_id;
             $berita->thumbnail      = $nama_image;
             $berita->created_by     = Auth::id();
             $berita->is_active      = '0';
             $berita->save();
 
-            Session::flash('success','Berita Berhasil ditambah !');
+            Session::flash('success', 'Berita berhasil di tambah!');
             return redirect()->route('backend-berita.index');
-
-        }   catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -96,9 +120,9 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        $kategori = KategoriBerita::where('is_Active','0')->get();
+        $kategori = KategoriBerita::where('is_Active', '0')->get();
         $berita = Berita::find($id);
-        return view('backend.website.content.berita.edit', compact('kategori','berita'));
+        return view('backend.website.content.berita.edit', compact('kategori', 'berita'));
     }
 
     /**
@@ -108,34 +132,53 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BeritaRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
+        $validator = Validator::make($request->all(), [
+            'title'       => 'required|max:255',
+            'content'     => 'required',
+            'kategori_id' => 'required',
+            'thumbnail'   => 'nullable|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+            'is_active'   => 'required',
+        ]);
 
-            if ($request->thumbnail) {
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $berita = Berita::findOrFail($id);
+            $berita->title       = $request->input('title');
+            $berita->slug        = Str::slug($request->input('title'));
+            $berita->content     = $request->input('content');
+            $berita->kategori_id = $request->input('kategori_id');
+            $berita->is_active   = $request->input('is_active');
+
+            // Cek jika ada file thumbnail baru
+            if ($request->hasFile('thumbnail')) {
                 $image = $request->file('thumbnail');
-                $nama_image = time()."_".$image->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
-                $tujuan_upload = 'public/images/berita';
-                $image->storeAs($tujuan_upload,$nama_image);
+                $nama_image = time() . "_" . $image->getClientOriginalName();
+
+                // Lokasi penyimpanan di disk "public"
+                $tujuan_upload = 'images/berita';
+                $image->storeAs($tujuan_upload, $nama_image, 'public');
+
+                // Hapus file lama jika ada
+                if ($berita->thumbnail) {
+                    Storage::disk('public')->delete("images/berita/{$berita->thumbnail}");
+                }
+
+                // Update thumbnail dengan file baru
+                $berita->thumbnail = $nama_image;
             }
 
-            $berita = Berita::find($id);
-            $berita->title          = $request->title;
-            $berita->slug           = $berita->slug;
-            $berita->content        = $request->content;    
-            $berita->kategori_id    = $request->kategori_id;
-            $berita->thumbnail      = $nama_image ?? $berita->thumbnail;
-            $berita->is_active      = $request->is_active;
             $berita->save();
-
-            Session::flash('success','Berita Berhasil diupdate !');
+            Session::flash('success', 'Berita berhasil di update!');
             return redirect()->route('backend-berita.index');
-
-        }   catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -145,6 +188,12 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $berita = Berita::find($id);
+        $destinationPath = public_path('storage/images/berita/');
+        unlink($destinationPath . $berita->thumbnail);
+
+        $berita->delete();
+        Session::flash('success', 'Data berita berhasil di hapus!');
+        return redirect()->route('backend-berita.index');
     }
 }

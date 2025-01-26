@@ -24,7 +24,7 @@ class KegiatanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama'      => ['required','unique:kegiatans'],
+            'nama'      => ['required', 'unique:kegiatans'],
             'content'   => ['required']
         ];
     }
@@ -32,8 +32,12 @@ class KegiatanRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama.required'      => 'Nama Kegiatan tidak boleh kosong.',
-            'nama.unique'        => 'Nama Kegiatan sudah pernah dibuat.',
+            'nama.required'      => 'Ekstrakuliler tidak boleh kosong.',
+            'nama.unique'        => 'Ekstrakuliler sudah pernah dibuat.',
+            'image.required'     => 'Gambar wajib di isi.',
+            'image.mimes'        => 'Hanya file gambar yang di izinkan.',
+            'image.mimetypes'    => 'Hanya file gambar yang di izinkan.',
+            'image.max'          => 'Ukuran hanya boleh 1MB.',
             'content.required'   => 'Content tidak boleh kosong.'
         ];
     }

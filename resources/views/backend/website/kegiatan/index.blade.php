@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Kegiatan
+Ekstrakurikuler
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Kegiatan
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Ekstrakuliler</h2>
+                    <h2> Ekstrakurikuler</h2>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ Kegiatan
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Ekstrakuliler <a
+                                    <h4 class="card-title">Ekstrakurikuler <a
                                             href=" {{route('backend-kegiatan.create')}} "
                                             class="btn btn-primary">Tambah</a></h4>
                                 </div>
@@ -62,8 +62,21 @@ Kegiatan
                                                 <td> {{$kegiatans->nama}} </td>
                                                 <td> {{$kegiatans->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                 <td>
-                                                    <a href=" {{route('backend-kegiatan.edit', $kegiatans->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a>
+                                                    <div class="d-flex">
+                                                        <a href=" {{route('backend-kegiatan.edit', $kegiatans->id)}} "
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form
+                                                            action="{{ route('backend-kegiatan.destroy', $kegiatans->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

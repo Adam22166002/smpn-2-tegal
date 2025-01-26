@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Tambah Program Studi
+Tambah Program Jurusan
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Tambah Program Studi
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Program Studi</h2>
+                    <h2> Program Jurusan</h2>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@ Tambah Program Studi
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-bottom">
-                        <h4>Tambah Program Studi</h4>
+                        <h4>Tambah Program Jurusan</h4>
                     </div>
                     <div class="card-body">
                         <form action=" {{route('program-studi.store')}} " method="post" enctype="multipart/form-data">
@@ -44,10 +44,9 @@ Tambah Program Studi
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Nama Program Studi</label> <span
-                                            class="text-danger">*</span>
+                                        <label for="basicInput">Nama Jurusan</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                            name="nama" placeholder="Nama Program Studi" />
+                                            name="nama" placeholder="Masukkan Nama Jurusan" />
                                         @error('nama')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -60,7 +59,7 @@ Tambah Program Studi
                                     <div class="form-group">
                                         <label for="basicInput">Singkatan</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('singkatan') is-invalid @enderror"
-                                            name="singkatan" placeholder="Singkatan" />
+                                            name="singkatan" placeholder="Masukkan Singkatan" />
                                         @error('singkatan')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -81,6 +80,7 @@ Tambah Program Studi
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Content</label> <span class="text-danger">*</span>
@@ -96,7 +96,7 @@ Tambah Program Studi
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                             <a href="{{route('program-studi.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>
