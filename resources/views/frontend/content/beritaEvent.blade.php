@@ -1,13 +1,13 @@
 <div class="news-event-area">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="news-box col-xs-12">
                 <h2 class="title-default-left">Berita Terbaru</h2>
-                <div class="news-inner-area">
-
-                    @foreach ($berita as $beritas)
-                        <ul class="news-wrapper">
-                            <li>
+                <div class="container mt-5">
+                    <div class="news-carousel">
+                        <div class="news-track">
+                            @foreach ($berita_test as $beritas)
+                            <div class="card news-card position-relative">
                                 <div class="news-img-holder">
                                     <a href="{{route('detail.berita', $beritas->slug)}}"><img src="{{asset('storage/images/berita/' .$beritas->thumbnail)}}" class="img-responsive" alt="news" style="max-height: 100px; max-weidth:100px"></a>
                                 </div>
@@ -18,71 +18,11 @@
                                     <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
                                     <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                            @endforeach
 
-                        <ul class="news-wrapper">
-                            <li>
-                                <div class="news-img-holder">
-                                    <a href="{{route('detail.berita', $beritas->slug)}}"><img src="{{asset('storage/images/berita/' .$beritas->thumbnail)}}" class="img-responsive" alt="news" style="max-height: 100px; max-weidth:100px"></a>
-                                </div>
-
-                                    <a href="{{route('berita')}}">Lihat Semua</a>
-
-                                <div class="news-content-holder">
-                                    <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <ul class="news-wrapper">
-                            <li>
-                                <div class="news-img-holder">
-                                    <a href="{{route('detail.berita', $beritas->slug)}}"><img src="{{asset('storage/images/berita/' .$beritas->thumbnail)}}" class="img-responsive" alt="news" style="max-height: 100px; max-weidth:100px"></a>
-                                </div>
-
-                                    <a href="{{route('berita')}}">Lihat Semua</a>
-
-                                <div class="news-content-holder">
-                                    <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <ul class="news-wrapper">
-                            <li>
-                                <div class="news-img-holder">
-                                    <a href="{{route('detail.berita', $beritas->slug)}}"><img src="{{asset('storage/images/berita/' .$beritas->thumbnail)}}" class="img-responsive" alt="news" style="max-height: 100px; max-weidth:100px"></a>
-                                </div>
-
-                                    <a href="{{route('berita')}}">Lihat Semua</a>
-
-                                <div class="news-content-holder">
-                                    <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <ul class="news-wrapper">
-                            <li>
-                                <div class="news-img-holder">
-                                    <a href="{{route('detail.berita', $beritas->slug)}}"><img src="{{asset('storage/images/berita/' .$beritas->thumbnail)}}" class="img-responsive" alt="news" style="max-height: 100px; max-weidth:100px"></a>
-                                </div>
-
-                                    <a href="{{route('berita')}}">Lihat Semua</a>
-
-                                <div class="news-content-holder">
-                                    <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
-                                </div>
-                            </li>
-                        </ul>
-                    @endforeach
-
-
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -92,7 +32,7 @@
                 <h2 class="title-default-left">Events Terbaru</h2>
                 <div style="display: flex; justify-content: center; gap: 20px; overflow-x: auto; max-width: 1200px; margin: 0 auto;">
                     <ul class="event-wrapper" style="display: flex; list-style-type: none; padding: 0; gap: 100px;">
-                        @foreach ($event->take(3) as $events)
+                        @foreach ($event_test as $events)
                             <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" style="flex: 0 0 300px; border: 1px solid #ddd; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px;">
                                 <div class="event-calender-wrapper">
                                     <div class="event-calender-holder">
@@ -110,61 +50,6 @@
                                     </ul>
                                 </div>
                             </li>
-
-                            <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" style="flex: 0 0 300px; border: 1px solid #ddd; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px;">
-                                <div class="event-calender-wrapper">
-                                    <div class="event-calender-holder">
-                                        <h3>{{Carbon\Carbon::parse($events->acara)->format('d')}}</h3>
-                                        <p>{{Carbon\Carbon::parse($events->acara)->format('M')}}</p>
-                                        <span>{{Carbon\Carbon::parse($events->acara)->format('Y')}}</span>
-                                    </div>
-                                </div>
-                                <div class="event-content-holder">
-                                    <h3><a href="{{route('detail.event', $events->slug)}}">{{$events->title}}</a></h3>
-                                    <p>{{$events->desc}}</p>
-                                    <ul>
-                                        <li>{{Carbon\Carbon::parse($events->acara)->format('h:i')}} - Selesai</li>
-                                        <li>{{$events->lokasi}}</li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" style="flex: 0 0 300px; border: 1px solid #ddd; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px;">
-                                <div class="event-calender-wrapper">
-                                    <div class="event-calender-holder">
-                                        <h3>{{Carbon\Carbon::parse($events->acara)->format('d')}}</h3>
-                                        <p>{{Carbon\Carbon::parse($events->acara)->format('M')}}</p>
-                                        <span>{{Carbon\Carbon::parse($events->acara)->format('Y')}}</span>
-                                    </div>
-                                </div>
-                                <div class="event-content-holder">
-                                    <h3><a href="{{route('detail.event', $events->slug)}}">{{$events->title}}</a></h3>
-                                    <p>{{$events->desc}}</p>
-                                    <ul>
-                                        <li>{{Carbon\Carbon::parse($events->acara)->format('h:i')}} - Selesai</li>
-                                        <li>{{$events->lokasi}}</li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="wow bounceInUp" data-wow-duration="2s" data-wow-delay=".1s" style="flex: 0 0 300px; border: 1px solid #ddd; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px;">
-                                <div class="event-calender-wrapper">
-                                    <div class="event-calender-holder">
-                                        <h3>{{Carbon\Carbon::parse($events->acara)->format('d')}}</h3>
-                                        <p>{{Carbon\Carbon::parse($events->acara)->format('M')}}</p>
-                                        <span>{{Carbon\Carbon::parse($events->acara)->format('Y')}}</span>
-                                    </div>
-                                </div>
-                                <div class="event-content-holder">
-                                    <h3><a href="{{route('detail.event', $events->slug)}}">{{$events->title}}</a></h3>
-                                    <p>{{$events->desc}}</p>
-                                    <ul>
-                                        <li>{{Carbon\Carbon::parse($events->acara)->format('h:i')}} - Selesai</li>
-                                        <li>{{$events->lokasi}}</li>
-                                    </ul>
-                                </div>
-                            </li>
-
 
                         @endforeach
                     </ul>

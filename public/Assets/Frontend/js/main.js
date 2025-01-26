@@ -2,7 +2,7 @@
 
     "use strict";
 
-    // Document ready function 
+    // Document ready function
     $(function() {
 
         /* Fixing for hover effect at IOS */
@@ -562,3 +562,32 @@
     }
 
 })(jQuery);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.news-track');
+            const cards = document.querySelectorAll('.news-card');
+            let currentIndex = 0;
+
+            function autoScroll() {
+                currentIndex++;
+                if (currentIndex >= cards.length) {
+                    currentIndex = 0;
+                }
+
+                const offset = -currentIndex * (cards[0].offsetWidth + 20);
+                track.style.transform = `translateX(${offset}px)`;
+            }
+
+            let autoScrollInterval = setInterval(autoScroll, 3000);
+
+            track.addEventListener('mouseenter', () => {
+                clearInterval(autoScrollInterval);
+            });
+
+            track.addEventListener('mouseleave', () => {
+                autoScrollInterval = setInterval(autoScroll, 3000);
+            });
+        });
+
+
