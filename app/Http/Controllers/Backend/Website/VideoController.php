@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Backend\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use Illuminate\Http\Request;
-use App\Http\Requests\VideoRequest;
-use ErrorException;
-use Session;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class VideoController extends Controller
 {
@@ -38,15 +37,31 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VideoRequest $request)
+    public function store(Request $request)
     {
-        try {
-            if ($request->is_active == '0') {
-                $video = Video::where('is_active','0')->update([
-                    'is_active' => '1'
-                ]);
-            }
 
+        $validator = Validator::make($request->all(), [
+            'title'     => 'required|max:255',
+            'desc'      => 'required',
+            'url'       => 'required|url',
+            'is_active' => 'required|boolean',
+        ], [
+            'title.required'    => 'Judul harus diisi.',
+            'title.max'         => 'Judul tidak boleh lebih dari 255 karakter.',
+            'desc.required'     => 'Deskripsi harus diisi.',
+            'url.required'      => 'URL harus diisi.',
+            'url.url'           => 'URL harus berupa link yang valid.',
+            'is_active.required' => 'Status aktif harus diisi.',
+            'is_active.boolean'  => 'Status aktif tidak valid.',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            // Simpan data video baru
             $video = new Video;
             $video->title       = $request->title;
             $video->desc        = $request->desc;
@@ -54,12 +69,11 @@ class VideoController extends Controller
             $video->is_active   = $request->is_active;
             $video->save();
 
-            Session::flash('success','Video Berhasil ditambah !');
+            Session::flash('success', 'Video berhasil di tambah!');
             return redirect()->route('backend-video.index');
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -93,26 +107,40 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            if ($request->is_active == '0') {
-                $video = Video::where('is_active','0')->update([
-                    'is_active' => '1'
-                ]);
-            }
 
-            $video = Video::find($id);
-            $video->title       = $request->title ?? $video->title;
-            $video->desc        = $request->desc ?? $video->desc;
-            $video->url         = $request->url ?? $video->url;
+        $validator = Validator::make($request->all(), [
+            'title'     => 'required|max:255',
+            'desc'      => 'required',
+            'url'       => 'required|url',
+            'is_active' => 'required|boolean',
+        ], [
+            'title.required'    => 'Judul harus diisi.',
+            'title.max'         => 'Judul tidak boleh lebih dari 255 karakter.',
+            'desc.required'     => 'Deskripsi harus diisi.',
+            'url.required'      => 'URL harus diisi.',
+            'url.url'           => 'URL harus berupa link yang valid.',
+            'is_active.required' => 'Status aktif harus diisi.',
+            'is_active.boolean'  => 'Status aktif tidak valid.',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $video = Video::findOrFail($id);
+            $video->title       = $request->title;
+            $video->desc        = $request->desc;
+            $video->url         = $request->url;
             $video->is_active   = $request->is_active;
             $video->save();
 
-            Session::flash('success','Video Berhasil diupdate !');
+            Session::flash('success', 'Video berhasil di update!');
             return redirect()->route('backend-video.index');
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -122,6 +150,10 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = Video::find($id);
+        $video->delete();
+
+        Session::flash('success', 'Video berhasil di hapus!');
+        return redirect()->route('backend-video.index');
     }
 }

@@ -20,7 +20,8 @@ class CreateDataMuridsTable extends Migration
             $table->bigInteger('nisn')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
-            $table->enum('agama',['Islam','Kristen Katolik','Kristen Protestan','Hindu','Budha','Konghucu'])->nullable();
+            $table->enum('agama', ['Islam', 'Kristen Katolik', 'Kristen Protestan', 'Hindu', 'Budha', 'Konghucu'])->nullable();
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan'])->nullable();
             $table->string('telp')->nullable();
             $table->string('whatsapp')->nullable();
             $table->text('alamat')->nullable();

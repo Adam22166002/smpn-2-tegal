@@ -47,7 +47,7 @@ Tambah Pengajar
                                     <div class="form-group">
                                         <label for="basicInput">Nama Pengajar</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value=" {{old('name')}} " placeholder="Nama" />
+                                            name="name" value="{{old('name')}}" placeholder="Nama" />
                                         @error('name')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@ Tambah Pengajar
                                     <div class="form-group">
                                         <label for="basicInput">NIP</label> <span class="text-danger">*</span>
                                         <input type="number" class="form-control @error('nip') is-invalid @enderror"
-                                            name="nip" value=" {{old('nip')}} " placeholder="NIP" />
+                                            name="nip" value="{{old('nip')}}" placeholder="NIP" />
                                         @error('nip')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -102,86 +102,21 @@ Tambah Pengajar
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-3">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label for="basicInput">Website</label>
-                                        <input type="text" class="form-control @error('website') is-invalid @enderror"
-                                            name="website" value=" {{old('website')}} " placeholder="Website" />
-                                        @error('website')
+                                        <label for="basicInput">Email</label> <span class="text-danger">*</span>
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                            name="email" value="{{old('email')}}" placeholder="Email" />
+                                        @error('email')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                         </div>
                                         @enderror
                                     </div>
                                 </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Linkedln</label>
-                                        <input type="text" class="form-control @error('linkedln') is-invalid @enderror"
-                                            name="linkedln" value=" {{old('linkidln')}} " placeholder="Linkedln" />
-                                        @error('linkedln')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Instagram</label>
-                                        <input type="text" class="form-control @error('instagram') is-invalid @enderror"
-                                            name="instagram" value=" {{old('instagram')}} " placeholder="Instagram" />
-                                        @error('instagram')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Facebook</label>
-                                        <input type="text" class="form-control @error('facebook') is-invalid @enderror"
-                                            name="facebook" value=" {{old('facebook')}} " placeholder="Facebook" />
-                                        @error('facebook')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Youtube</label>
-                                        <input type="text" class="form-control @error('youtube') is-invalid @enderror"
-                                            name="youtube" value=" {{old('youtube')}} " placeholder="Youtube" />
-                                        @error('youtube')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-3">
-                                    <div class="form-group">
-                                        <label for="basicInput">Twitter</label>
-                                        <input type="text" class="form-control @error('twitter') is-invalid @enderror"
-                                            name="twitter" value=" {{old('twitter')}} " placeholder="Twitter" />
-                                        @error('twitter')
-                                        <div class="invalid-feedback">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                        @enderror
-                                    </div>
-                                </div> --}}
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary mr-2" type="submit">Tambah</button>
                             <a href="{{route('backend-pengguna-pengajar.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

@@ -38,8 +38,9 @@ Footer
                     <div class="card-header header-bottom">
                         <h4>Footer</h4>
                     </div>
-                    {{-- Jika footer masih kosong tampilkan ini --}}
-                    @if ($footer == NULL)
+                    {{-- Jika footer masih kosong dan beberapa dari salah satu sosmed nya masih kosong
+                    tampilkan ini --}}
+                    @if (!$footer)
                     <div class="card-body">
                         <form action=" {{route('backend-footer.store')}} " method="post" enctype="multipart/form-data">
                             @csrf
@@ -48,7 +49,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Facebook</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('facebook') is-invalid @enderror"
-                                            name="facebook" value=" {{old('facebook')}} " />
+                                            name="facebook" value="{{old('facebook')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('facebook')
@@ -63,7 +64,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Instagram</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('instagram') is-invalid @enderror"
-                                            name="instagram" value=" {{old('instagram')}} " />
+                                            name="instagram" value="{{old('instagram')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('instagram')
@@ -77,7 +78,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Twitter</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('twitter') is-invalid @enderror"
-                                            name="twitter" value=" {{old('twitter')}} " />
+                                            name="twitter" value="{{old('twitter')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('twitter')
@@ -91,7 +92,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Youtube</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('youtube') is-invalid @enderror"
-                                            name="youtube" value=" {{old('youtube')}} " />
+                                            name="youtube" value="{{old('youtube')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('youtube')
@@ -106,7 +107,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Logo Sekolah</label> <span class="text-danger">*</span>
                                         <input type="file" class="form-control @error('logo') is-invalid @enderror"
-                                            name="logo" value=" {{old('logo')}} " />
+                                            name="logo" value="{{old('logo')}}" />
                                         <small class="text-danger" style="font-size: 10px">Ukuran yang disarankan 168x41
                                             dengan format .png.</small>
                                         @error('logo')
@@ -123,12 +124,12 @@ Footer
                                         <label for="basicInput">Nama Sekolah</label> <span class="text-danger">*</span>
                                         <input type="text"
                                             class="form-control @error('school_name') is-invalid @enderror"
-                                            name="school_name" value=" {{ old('school_name') }}" />
+                                            name="school_name" value="{{ old('school_name') }}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             nama sekolah saja.</small>
                                         @error('school_name')
                                         <div class="invalid-feedback">
-                                            {{-- <strong>{{ $message }}</strong> --}}
+                                            <strong>{{ $message }}</strong>
                                         </div>
                                         @enderror
                                     </div>
@@ -141,12 +142,12 @@ Footer
                                             class="text-danger">*</span>
                                         <input type="text"
                                             class="form-control @error('school_address') is-invalid @enderror"
-                                            name="school_address" value=" {{ old('school_address') }}" />
+                                            name="school_address" value="{{ old('school_address') }}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             alamat sekolah saja.</small>
                                         @error('school_address')
                                         <div class="invalid-feedback">
-                                            {{-- <strong>{{ $message }}</strong> --}}
+                                            <strong>{{ $message }}</strong>
                                         </div>
                                         @enderror
                                     </div>
@@ -156,7 +157,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">No Telepon</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('telp') is-invalid @enderror"
-                                            name="telp" value=" {{old('telp')}} " />
+                                            name="telp" value="{{old('telp')}} " />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             no telepon sekolah saja.</small>
                                         @error('telp')
@@ -171,7 +172,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">No WhatsApp</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('whatsapp') is-invalid @enderror"
-                                            name="whatsapp" value=" {{old('whatsapp')}}" />
+                                            name="whatsapp" value="{{old('whatsapp')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             no WA saja.</small>
                                         @error('whatsapp')
@@ -186,7 +187,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Email</label> <span class="text-danger">*</span>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value=" {{old('email')}}" />
+                                            name="email" value="{{old('email')}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             email saja.</small>
                                         @error('email')
@@ -202,7 +203,7 @@ Footer
                                         <label for="basicInput">Deskripsi Singkat Sekolah</label> <span
                                             class="text-danger">*</span>
                                         <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"
-                                            rows="3"> {{old('desc')}} </textarea>
+                                            rows="3">{{old('desc')}} </textarea>
                                         @error('desc')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -211,7 +212,7 @@ Footer
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-primary mr-1" type="submit">Submit</button>
                             <a href="{{route('backend-footer.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>
@@ -226,7 +227,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Facebook</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('facebook') is-invalid @enderror"
-                                            name="facebook" value=" {{$footer->facebook}} " />
+                                            name="facebook" value="{{$footer->facebook}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('facebook')
@@ -241,7 +242,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Instagram</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('instagram') is-invalid @enderror"
-                                            name="instagram" value=" {{$footer->instagram}} " />
+                                            name="instagram" value="{{$footer->instagram}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('instagram')
@@ -255,7 +256,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Twitter</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('twitter') is-invalid @enderror"
-                                            name="twitter" value=" {{$footer->twitter}} " />
+                                            name="twitter" value="{{$footer->twitter}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('twitter')
@@ -269,7 +270,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Youtube</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('youtube') is-invalid @enderror"
-                                            name="youtube" value=" {{$footer->youtube}} " />
+                                            name="youtube" value="{{$footer->youtube}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             username saja.</small>
                                         @error('youtube')
@@ -284,9 +285,8 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Logo Sekolah</label> <span class="text-danger">*</span>
                                         <input type="file" class="form-control @error('logo') is-invalid @enderror"
-                                            name="logo" value=" {{$footer->logo}} " />
-                                        <small class="text-danger" style="font-size: 10px">Ukuran yang disarankan 168x41
-                                            dengan format .png.</small>
+                                            name="logo" />
+                                        <small class="text-danger" style="font-size: 10px">Boleh di kosongkan.</small>
                                         @error('logo')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -301,12 +301,12 @@ Footer
                                         <label for="basicInput">Nama Sekolah</label> <span class="text-danger">*</span>
                                         <input type="text"
                                             class="form-control @error('school_name') is-invalid @enderror"
-                                            name="school_name" value=" {{ old('school_name') }}" />
+                                            name="school_name" value="{{$footer->school_name}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             nama sekolah saja.</small>
                                         @error('school_name')
                                         <div class="invalid-feedback">
-                                            {{-- <strong>{{ $message }}</strong> --}}
+                                            <strong>{{ $message }}</strong>
                                         </div>
                                         @enderror
                                     </div>
@@ -319,12 +319,12 @@ Footer
                                             class="text-danger">*</span>
                                         <input type="text"
                                             class="form-control @error('school_address') is-invalid @enderror"
-                                            name="school_address" value=" {{ old('school_address') }}" />
+                                            name="school_address" value="{{$footer->school_address}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             alamat sekolah saja.</small>
                                         @error('school_address')
                                         <div class="invalid-feedback">
-                                            {{-- <strong>{{ $message }}</strong> --}}
+                                            <strong>{{ $message }}</strong>
                                         </div>
                                         @enderror
                                     </div>
@@ -333,8 +333,8 @@ Footer
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="basicInput">No Telepon</label> <span class="text-danger">*</span>
-                                        <input type="text" class="form-control @error('telp') is-invalid @enderror"
-                                            name="telp" value=" {{$footer->telp}} " />
+                                        <input type="number" class="form-control @error('telp') is-invalid @enderror"
+                                            name="telp" value="{{$footer->telp}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             no telepon sekolah saja.</small>
                                         @error('telp')
@@ -348,8 +348,9 @@ Footer
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="basicInput">No WhatsApp</label> <span class="text-danger">*</span>
-                                        <input type="text" class="form-control @error('whatsapp') is-invalid @enderror"
-                                            name="whatsapp" value=" {{$footer->whatsapp}}" />
+                                        <input type="number"
+                                            class="form-control @error('whatsapp') is-invalid @enderror" name="whatsapp"
+                                            value="{{$footer->whatsapp}}" />
                                         <small class="text-danger" style="font-size: 10px">Harap hanya memasukan
                                             no WA saja.</small>
                                         @error('whatsapp')
@@ -364,7 +365,7 @@ Footer
                                     <div class="form-group">
                                         <label for="basicInput">Email</label> <span class="text-danger">*</span>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value=" {{$footer->email}}" />
+                                            name="email" value="{{$footer->email}}" />
                                         @error('email')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -378,7 +379,7 @@ Footer
                                         <label for="basicInput">Deskripsi Singkat Sekolah</label> <span
                                             class="text-danger">*</span>
                                         <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"
-                                            rows="3"> {{$footer->desc}} </textarea>
+                                            rows="3">{{$footer->desc}} </textarea>
                                         @error('desc')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -388,7 +389,7 @@ Footer
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button class="btn btn-primary mr-1" type="submit">Update</button>
                             <a href="{{route('backend-footer.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

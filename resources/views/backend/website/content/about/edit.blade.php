@@ -88,7 +88,7 @@ About
                                                         class="text-danger">*</span>
                                                     <input type="text" name="title"
                                                         class="form-control @error('title') is-invalid @enderror"
-                                                        value=" {{$about->title}} ">
+                                                        value="{{$about->title}}">
                                                     @error('title')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -103,7 +103,7 @@ About
                                                         class="text-danger">*</span>
                                                     <textarea name="desc"
                                                         class="form-control  @error('desc') is-invalid @enderror"
-                                                        rows="5"> {{$about->desc}} </textarea>
+                                                        rows="5">{{$about->desc}} </textarea>
                                                     @error('desc')
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -113,7 +113,7 @@ About
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Update</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Update</button>
                                         <a href="{{route('backend-about.index')}}" class="btn btn-warning">Batal</a>`
                                     </form>
                                 </div>

@@ -48,7 +48,7 @@ Edit Event
                                     <div class="form-group">
                                         <label for="basicInput">Nama Event</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                            name="title" value=" {{$event->title}} " placeholder="Nama Event" />
+                                            name="title" value="{{$event->title}}" placeholder="Nama Event" />
                                         @error('title')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@ Edit Event
                                     <div class="form-group">
                                         <label for="basicInput">Lokasi</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
-                                            name="lokasi" value=" {{$event->lokasi}} " placeholder="Lokasi Event" />
+                                            name="lokasi" value="{{$event->lokasi}}" placeholder="Lokasi Event" />
                                         @error('lokasi')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -74,8 +74,7 @@ Edit Event
                                         <label for="basicInput">Waktu Dimulai</label> <span class="text-danger">*</span>
                                         <input type="datetime-local"
                                             class="form-control @error('acara') is-invalid @enderror"
-                                            value=" {{$event->acara}} " name="acara"
-                                            placeholder="Waktu dimulai Acara" />
+                                            value="{{$event->acara}}" name="acara" placeholder="Waktu dimulai Acara" />
                                         @error('acara')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -106,7 +105,7 @@ Edit Event
                                         <label for="basicInput">Deskripsi Singkat Event</label> <span
                                             class="text-danger">*</span>
                                         <textarea name="desc" class="form-control  @error('desc') is-invalid @enderror"
-                                            rows="3"> {{ $event->desc }} </textarea>
+                                            rows="3">{{ $event->desc }} </textarea>
                                         @error('desc')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -119,7 +118,7 @@ Edit Event
                                         <label for="basicInput">Content</label> <span class="text-danger">*</span>
                                         <textarea name="content"
                                             class="form-control  @error('content') is-invalid @enderror" cols="30"
-                                            rows="10"> {{$event->content}} </textarea>
+                                            rows="10">{{$event->content}} </textarea>
                                         @error('content')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -143,7 +142,7 @@ Edit Event
                                 </div>
 
                             </div>
-                            <button class="btn btn-primary" type="submit">Edit</button>
+                            <button class="btn btn-primary mr-1" type="submit">Edit</button>
                             <a href="{{route('backend-event.index')}}" class="btn btn-warning">Batal</a>
                         </form>
                     </div>

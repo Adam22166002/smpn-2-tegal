@@ -63,8 +63,20 @@ About
                                                 </td>
                                                 <td> {{$abouts->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
                                                 <td>
-                                                    <a href=" {{route('backend-about.edit', $abouts->id)}} "
-                                                        class="btn btn-success btn-sm">Edit</a>
+                                                    <div class="d-flex">
+                                                        <a href=" {{route('backend-about.edit', $abouts->id)}} "
+                                                            class="btn btn-success btn-sm mr-2">Edit</a>
+
+                                                        <form action="{{ route('backend-about.destroy', $abouts->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus about ini?')">
+                                                                <i class="bi bi-trash-fill"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -144,7 +156,7 @@ About
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                         <a href="{{route('backend-about.index')}}" class="btn btn-warning">Batal</a>`
                                     </form>
                                 </div>

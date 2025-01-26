@@ -15,6 +15,8 @@ class CreateFootersTable extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
+            $table->string('school_name');
+            $table->string('school_address');
             $table->string('facebook');
             $table->string('instagram');
             $table->string('twitter');

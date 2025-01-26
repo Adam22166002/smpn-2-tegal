@@ -8,9 +8,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use ErrorException;
-use Session;
-use DB;
-use Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class MuridController extends Controller
 {
@@ -21,7 +22,7 @@ class MuridController extends Controller
      */
     public function index()
     {
-        $murid = User::whereIn('role',['Guest','Murid'])->get();
+        $murid = User::whereIn('role', ['Guest', 'Murid'])->get();
         return view('backend.pengguna.murid.index', compact('murid'));
     }
 
@@ -43,66 +44,68 @@ class MuridController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            DB::beginTransaction();
-
-            $validator = Validator::make($request->all(), [
+        // Validasi menggunakan Validator
+        $validator = Validator::make(
+            $request->all(),
+            [
                 'name' => 'required|max:255',
                 'email' => 'required|email|unique:users',
+                'nisn' => 'required|unique:data_murids',
+                'foto_profile' => 'required|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024'
             ],
             [
-                'name.required'     => 'Nama tidak boleh kosong.',
-                'email.required'    => 'Email tidak boleh kosong.',
-                'email.unique'      => 'Email sudah pernah digunakan.',
-                'email.email'       => 'Email yang dimasukan tidak valid.'
+                'name.required' => 'Nama tidak boleh kosong.',
+                'email.required' => 'Email tidak boleh kosong.',
+                'email.unique' => 'Email sudah pernah digunakan.',
+                'nisn.required' => 'NISN tidak boleh kosong.',
+                'nisn.unique' => 'NISN sudah pernah digunakan.',
+                'email.email' => 'Email yang dimasukkan tidak valid.',
+                'foto_profile.required' => 'Foto profil harus diunggah.',
+                'foto_profile.mimes'    => 'Foto profil yang di masukkan tidak valid.',
+                'foto_profile.mimetypes' => 'Foto profil yang di masukkan tidak valid.',
+                'foto_profile.max'      => 'Ukuran foto profil tidak boleh lebih dari 1MB.'
             ]
-            );
+        );
 
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
 
-            $errors = $validator->errors();
-
-            if ($request->foto_profile) {
+            if ($request->hasFile('foto_profile')) {
                 $image = $request->file('foto_profile');
-                $nama_img = time()."_".$image->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
-                $tujuan_upload = 'public/images/profile';
-                $image->storeAs($tujuan_upload,$nama_img);
+                $nama_img = time() . "_" . $image->getClientOriginalName();
+                $image->move(public_path('Assets/Frontend/img/'), $nama_img);
             }
 
-            // Pilih kalimat
-            $kalimatKe  = "1";
-            $username   = implode(" ", array_slice(explode(" ", $request->name), 0, $kalimatKe)); // ambil kalimat
+            // Ambil username dari kalimat pertama nama
+            $username = explode(" ", $request->name)[0];
 
+            // Simpan data user
             $murid = new User();
-            $murid->name            = $request->name;
-            $murid->username        = $username;
-            $murid->email           = $request->email;
-            $murid->role            = 'Guest';
-            $murid->foto_profile    = $nama_img ?? '';
-            $murid->password        = bcrypt( $request->password);
+            $murid->name = $request->name;
+            $murid->username = $username;
+            $murid->email = $request->email;
+            $murid->password = bcrypt($request->password);
+            $murid->foto_profile = $nama_img;
+            $murid->role = 'Murid';
             $murid->save();
 
-            if ($murid) {
-                $detail = new dataMurid();
-                $detail->user_id    = $murid->id;
-                $detail->save();
-            }
+            // Simpan data murid
+            $detail = new dataMurid();
+            $detail->user_id = $murid->id;
+            $detail->nisn = $request->nisn;
+            $detail->jenis_kelamin = $request->jenis_kelamin;
+            $detail->save();
 
             $murid->assignRole($murid->role);
-            
-            DB::commit();
-            Session::flash('success','Calon Murid Berhasil disimpan !');
+
+            Session::flash('success', 'Calon Murid Berhasil disimpan!');
             return redirect()->route('backend-pengguna-murid.index');
-        } catch (ErrorException $e) {
-            DB::rollback();
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -123,7 +126,7 @@ class MuridController extends Controller
      */
     public function edit($id)
     {
-        $murid = User::whereIn('role',['Guest','Murid'])->find($id);
+        $murid = User::whereIn('role', ['Guest', 'Murid'])->find($id);
         return view('backend.pengguna.murid.edit', compact('murid'));
     }
 
@@ -136,14 +139,14 @@ class MuridController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            DB::beginTransaction();
 
-            $validator = Validator::make($request->all(), [
+        $validator = Validator::make(
+            $request->all(),
+            [
                 'name'      => 'required|max:255',
                 'email'     => 'required',
-                'status'    => ['required',Rule::in(['Aktif','Tidak Aktif'])],
-                'role'      => ['required',Rule::in(['Murid','Guest'])],
+                'status'    => ['required', Rule::in(['Aktif', 'Tidak Aktif'])],
+                'role'      => ['required', Rule::in(['Murid', 'Guest'])],
             ],
             [
                 'name.required'     => 'Nama tidak boleh kosong.',
@@ -154,15 +157,13 @@ class MuridController extends Controller
                 'role.required'     => 'Role Murid harus dipilih.',
                 'role.in'           => 'Role yang dipilih tidak valid.'
             ]
-            );
+        );
 
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-
-            $errors = $validator->errors();
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
 
             $murid = User::find($id);
             $murid->name            = $request->name;
@@ -171,15 +172,11 @@ class MuridController extends Controller
             $murid->status          = $request->status;
             $murid->update();
 
-            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
             $murid->assignRole($request->role);
 
-            DB::commit();
-            Session::flash('success','Calon Murid Berhasil diupdate !');
+            Session::flash('success', 'Calon Murid Berhasil di update!');
             return redirect()->route('backend-pengguna-murid.index');
-        } catch (ErrorException $e) {
-            DB::rollback();
-            throw new ErrorException($e->getMessage());
         }
     }
 
@@ -191,6 +188,10 @@ class MuridController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Session::flash('success', 'Calon Murid Berhasil di hapus!');
+        return redirect()->route('backend-pengguna-murid.index');
     }
 }

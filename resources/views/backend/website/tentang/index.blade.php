@@ -53,7 +53,7 @@ Profile Sekolah
                                                         class="text-danger">*</span>
                                                     <input type="text"
                                                         class="form-control @error('title') is-invalid @enderror"
-                                                        name="title" value=" {{old('title')}} "
+                                                        name="title" value="{{old('title')}}"
                                                         placeholder="Contoh : PROFILE SEKOLAH SMK NASIONAL" />
                                                     @error('title')
                                                     <div class="invalid-feedback">
@@ -95,7 +95,7 @@ Profile Sekolah
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                         <a href="{{route('backend-profile-sekolah.index')}}"
                                             class="btn btn-warning">Batal</a>
                                     </form>
@@ -104,14 +104,15 @@ Profile Sekolah
                                         method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
+
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="basicInput">Title</label> <span
+                                                    <label for="basicInput">Nama Sekolah</label> <span
                                                         class="text-danger">*</span>
                                                     <input type="text"
                                                         class="form-control @error('title') is-invalid @enderror"
-                                                        name="title" value=" {{$profile->title}} "
+                                                        name="title" value="{{$profile->title}}"
                                                         placeholder="Contoh : PROFILE SEKOLAH SMK NASIONAL" />
                                                     @error('title')
                                                     <div class="invalid-feedback">
@@ -155,7 +156,7 @@ Profile Sekolah
                                             </div>
 
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Update</button>
+                                        <button class="btn btn-primary mr-1" type="submit">Update</button>
                                         <a href="{{route('backend-profile-sekolah.index')}}"
                                             class="btn btn-warning">Batal</a>
                                     </form>

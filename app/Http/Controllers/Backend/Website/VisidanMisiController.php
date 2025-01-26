@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Backend\Website;
 use App\Http\Controllers\Controller;
 use App\Models\Visimisi;
 use Illuminate\Http\Request;
-use App\Http\Requests\VisidanMisiRequest;
-use ErrorException;
-use Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class VisidanMisiController extends Controller
 {
+
+    protected $messages = [
+        'visi.required'      => 'Visi wajib diisi.',
+        'misi.required'      => 'Misi wajib diisi.',
+        'image.required'     => 'Gambar tidak boleh kosong.',
+        'image.mimes'        => 'Gambar yang dimasukan tidak valid.',
+        'image.mimetypes'    => 'Gambar yang dimasukan tidak valid.',
+        'image.max'          => 'Ukuran file gambar hanya bisa 1MB.'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,28 +48,39 @@ class VisidanMisiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VisidanMisiRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $image = $request->file('image');
-            $nama_img = time()."_".$image->getClientOriginalName();
-            // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'public/images/visimisi';
-            $image->storeAs($tujuan_upload,$nama_img);
 
+        $validator = Validator::make($request->all(), [
+            'visi'   => 'required|max:255',
+            'misi'   => 'required',
+            'image'  => 'required|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $image = $request->file('image');
+            $nama_img = time() . "_" . $image->getClientOriginalName();
+
+            $folderPath = 'images/visimisi';
+            $image->storeAs($folderPath, $nama_img, 'public');
+
+            // Simpan data ke database
             $visimisi = new Visimisi();
-            $visimisi->visi     = $request->visi;
-            $visimisi->misi     = $request->misi;
-            $visimisi->image    = $nama_img;
+            $visimisi->visi  = $request->input('visi');
+            $visimisi->misi  = $request->input('misi');
+            $visimisi->image = $nama_img;
             $visimisi->save();
 
-            Session::flash('success','Visi dan Misi Berhasil dibuat!');
+            Session::flash('success', 'Visi dan Misi berhasil di tambah!');
             return redirect()->route('backend-visimisi.index');
-
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -90,30 +111,49 @@ class VisidanMisiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(VisidanMisiRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
-            if ($request->image) {
+        $validator = Validator::make($request->all(), [
+            'visi'   => 'required|string|max:255',
+            'misi'   => 'required|string',
+            'image'  => 'nullable|mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+        ], $this->messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $visimisi = Visimisi::findOrFail($id);
+            $visimisi->visi  = $request->input('visi');
+            $visimisi->misi  = $request->input('misi');
+
+            // Jika ada file gambar yang diunggah
+            if ($request->hasFile('image')) {
+
+                // Lakukan simpan file
                 $image = $request->file('image');
-                $nama_img = time()."_".$image->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
-                $tujuan_upload = 'public/images/visimisi';
-                $image->storeAs($tujuan_upload,$nama_img);
+                $nama_img = time() . "_" . $image->getClientOriginalName();
+
+                // Lokasi penyimpanan di disk "public"
+                $folderPath = 'images/visimisi';
+                $image->storeAs($folderPath, $nama_img, 'public');
+
+                // Hapus gambar lama dari storage jika ada
+                if ($visimisi->image) {
+                    Storage::disk('public')->delete("images/visimisi/{$visimisi->image}");
+                }
+
+                $visimisi->image = $nama_img;
             }
 
-            $visimisi = Visimisi::find($id);
-            $visimisi->visi     = $request->visi;
-            $visimisi->misi     = $request->misi;
-            $visimisi->image    = $nama_img ?? $visimisi->image;
-            $visimisi->update();
-
-            Session::flash('success','Visi dan Misi Berhasil diupdate!');
+            $visimisi->save();
+            Session::flash('success', 'Visi dan Misi berhasil di update!');
             return redirect()->route('backend-visimisi.index');
-
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
