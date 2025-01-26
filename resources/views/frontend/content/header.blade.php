@@ -31,6 +31,7 @@
             </div>
         </div>
     </div>
+    
     <div class="main-menu-area bg-primary" id="sticker">
         <div class="container">
             <div class="row">
@@ -64,14 +65,8 @@
                                 </ul>
                             </li>
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
-
-                            <li><a href="#">Lainnya</a>
-                                <ul>
-                                    <li><a href=" {{url('murid/perpustakaan')}} ">Perpustakaan</a></li>
-                                    <li><a href="">Alumni</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{url('ppdb')}}" target="_blank">BK</a></li>
+                            <li><a href="#">Rapot</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -114,13 +109,9 @@
                                 </ul>
                             </li>
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
+                            <li><a href="{{url('ppdb')}}" target="_blank">BK</a></li>
 
-                            <li><a href="#">Lainnya</a>
-                                <ul>
-                                    <li><a href="">Perpustakaan</a></li>
-                                    <li><a href="">Alumni</a></li>
-                                </ul>
+                            <li><a href="#">RAPOT</a>
                             </li>
                             <li>
                                 @auth
