@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="main-menu-area bg-primary" id="sticker">
         <div class="container">
             <div class="row">
@@ -45,7 +45,6 @@
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
                                 </ul>
                             </li>
-
                             <li><a href="#">Program</a>
                                 <ul>
                                     <li class="has-child-menu"><a href="#">Program Studi</a>
