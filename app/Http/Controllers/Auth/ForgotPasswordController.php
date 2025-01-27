@@ -18,5 +18,10 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails;
+    // use SendsPasswordResetEmails;
+
+    public function index()
+    {
+        return view('auth.forgot-password');
+    }
 }

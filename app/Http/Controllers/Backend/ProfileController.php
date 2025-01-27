@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ProfileSettingsRequest;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ChangePasswordRequest;
 use ErrorException;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
@@ -74,46 +75,98 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProfileSettingsRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        try {
-            if ($request->foto_profile) {
+        // Validasi input menggunakan Validator
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name'          => 'required|max:255',
+                'username'      => 'required|max:50',
+                'email'         => 'required|email',
+                'foto_profile'  => 'mimes:jpeg,png,jpg|mimetypes:image/jpeg,image/png|max:1024',
+            ],
+            [
+                'name.required'         => 'Nama tidak boleh kosong.',
+                'name.max'              => 'Nama tidak boleh lebih dari 255 karakter.',
+                'username.required'     => 'Username tidak boleh kosong.',
+                'username.max'          => 'Username tidak boleh lebih dari 50 karakter.',
+                'email.required'        => 'Email tidak boleh kosong.',
+                'email.email'           => 'Format email tidak valid.',
+                'foto_profile.mimes'    => 'Foto profile yang dimasukkan tidak valid.',
+                'foto_profile.mimetypes' => 'Foto profile yang dimasukkan tidak valid.',
+                'foto_profile.max'      => 'Ukuran foto profile tidak boleh lebih dari 1MB.',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $profile = User::findOrFail($id);
+            $profile->name = $request->name;
+            $profile->username = $request->username;
+            $profile->email = $request->email;
+
+            // Proses upload foto profil jika ada
+            if ($request->hasFile('foto_profile')) {
+
+                // Hapus file lama jika ada
+                // if ($profile->foto_profile) {
+                //     Storage::delete('public/images/profile/' . $profile->foto_profile);
+                // }
+
+                // Upload file baru
                 $image = $request->file('foto_profile');
                 $nama_image = time() . "_" . $image->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
                 $tujuan_upload = 'public/images/profile';
                 $image->storeAs($tujuan_upload, $nama_image);
+                $profile->foto_profile = $nama_image;
             }
 
-            $profile = User::find($id);
-            $profile->name          = $request->name;
-            $profile->username      = $request->username;
-            $profile->email         = $request->email;
-            $profile->foto_profile  = $nama_image ?? $profile->foto_profile;
-            if ($request->email) {
-                $profile->email_verified_at  = NULL;
-            }
+            // Reset email_verified_at jika email diubah
+            // if ($request->email !== $profile->email) {
+            //     $profile->email_verified_at = null;
+            // }
+
             $profile->save();
 
-            Session::flash('success', 'Profile Berhasil diupdate !');
-            return back();
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
+            Session::flash('success', 'Profile berhasil di update!');
+            return redirect()->back();
         }
     }
 
     // Ubah Password
-    public function changePassword(ChangePasswordRequest $request, $id)
+    public function changePassword(Request $request, $id)
     {
-        try {
-            $profile = User::find($id);
-            $profile->password   = bcrypt($request->password);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'password' => 'required|min:8|confirmed',
+                'password_confirmation' => 'required',
+            ],
+            [
+                'password.required'  => 'Password tidak boleh kosong.',
+                'password.min'       => 'Password harus memiliki minimal 8 karakter.',
+                'password.confirmed' => 'Konfirmasi password tidak cocok.',
+                'password_confirmation.required' => 'Konfirmasi password harus di isi.'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $profile = User::findOrFail($id);
+            $profile->password = bcrypt($request->password);
             $profile->save();
 
-            Session::flash('success', 'Password Berhasil diudate !');
-            return back();
-        } catch (ErrorException $e) {
-            throw new ErrorException($e->getMessage());
+            Session::flash('success', 'Password berhasil di update!');
+            return redirect()->back();
         }
     }
 }

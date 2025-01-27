@@ -10,7 +10,7 @@
         content="Sekolahku adalah aplikasi manajemen sekolah berbasis website yang di bangun dan di kembangkan dengan Framework Laravel">
     <meta name="keywords" content="">
     <meta name="author" content="Andri Desmana">
-    <title>Login Page - SMPN 2 Tegal</title>
+    <title>Forgot Password Page - SMPN 2 Tegal</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
         rel="stylesheet">
 
@@ -61,11 +61,13 @@
                         <!-- /Brand logo-->
                         <!-- Left Text-->
                         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
-                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
-                                    class="img-fluid" src="{{asset('Assets/Backend/images/illustration/login-v2.svg')}}"
-                                    alt="Login V2" /></div>
+                            <div class="w-75 d-lg-flex align-items-center justify-content-center px-5"><img
+                                    class="img-fluid"
+                                    src="{{asset('Assets\Backend\images\pages\forgot-password-v2-dark.svg')}}"
+                                    alt="Forgot Password V2" /></div>
                         </div>
                         <!-- /Left Text-->
+
                         <!-- Login-->
                         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
@@ -85,20 +87,18 @@
                                 </div>
                                 @endif
 
-
-                                <h2 class="card-title font-weight-bold mb-1">Login!</h2>
+                                <h2 class="card-title font-weight-bold mb-1">Forgot Password!</h2>
 
                                 @if(session()->has('status'))
                                 <div class="alert alert-success text-center" role="alert">
-                                    <p class="card-text mb-2">Password berhasil di reset. Silakan login dengan password
-                                        baru.</p>
+                                    {{session()->get('status')}}
                                 </div>
 
                                 @else
-                                <p class="card-text mb-2">Silakan masuk ke akun Anda.</p>
+                                <p class="card-text mb-2">Silakan masukkan email Anda.</p>
                                 @endif
 
-                                <form class="auth-login-form mt-2" action="{{route('login')}}" method="POST">
+                                <form class="auth-login-form mt-2" action="{{route('password.email')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="login-email">Email</label>
@@ -112,36 +112,8 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <div class="d-flex justify-content-between">
-                                            <label for="login-password">Password</label><a
-                                                href="{{ url('/forgot-password') }}"><small>Forgot
-                                                    Password?</small></a>
-                                        </div>
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input
-                                                class="form-control form-control-merge @error('password') is-invalid @enderror"
-                                                id="login-password" type="password" name="password"
-                                                placeholder="Masukkan Password" aria-describedby="login-password"
-                                                tabindex="2" />
-                                            <div class="input-group-append"><span
-                                                    class="input-group-text cursor-pointer"><i
-                                                        data-feather="eye"></i></span></div>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" id="remember-me" type="checkbox"
-                                                tabindex="3" />
-                                            <label class="custom-control-label" for="remember-me"> Remember Me</label>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary btn-block" tabindex="4">Masuk</button>
+
+                                    <button type="submit" class="btn btn-primary btn-block" tabindex="4">Kirim</button>
                                 </form>
                             </div>
                         </div>
