@@ -9,7 +9,7 @@
     <meta name="description"
         content="Sekolahku adalah aplikasi manajemen sekolah berbasis website yang di bangun dan di kembangkan dengan Framework Laravel">
     <meta name="keywords" content="">
-    <meta name="author" content="Andri Desmana">
+    <meta name="author" content="Develop STMIK">
     <title>Login Page - SMPN 2 Tegal</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
         rel="stylesheet">
@@ -38,7 +38,6 @@
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-
 <body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click"
     data-menu="vertical-menu-modern" data-col="blank-page">
     <!-- BEGIN: Content-->

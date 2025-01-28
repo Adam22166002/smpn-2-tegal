@@ -155,6 +155,7 @@ Route::middleware('auth')->group(function () {
             'backend-event' => Backend\Website\EventsController::class,
             /// FOOTER \\\
             'backend-footer'    => Backend\Website\FooterController::class,
+            'gallery'    => Backend\Website\GalleryController::class,
         ]);
 
         ///// PENGGUNA \\\\\
@@ -170,7 +171,8 @@ Route::middleware('auth')->group(function () {
             /// PERPUSTAKAAN \\\
             'backend-pengguna-perpus' => Backend\Pengguna\PerpusController::class,
             /// BENDAHARA \\\
-            'backend-pengguna-bendahara'  => Backend\Pengguna\BendaharaController::class
+            'backend-pengguna-bendahara'  => Backend\Pengguna\BendaharaController::class,
+
         ]);
 
         Route::post('/importExcel', [MuridController::class, 'importExcel']);

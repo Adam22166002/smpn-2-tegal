@@ -10,14 +10,14 @@ Kategori Berita
 <div class="alert alert-success" role="alert">
     <div class="alert-body">
         <strong>{{ $message }}</strong>
-        <button type="button" class="close" data-dismiss="alert">×</button>
+        <button type="button" class="close" data-dismiss="alert">x</button>
     </div>
 </div>
 @elseif($message = Session::get('error'))
 <div class="alert alert-danger" role="alert">
     <div class="alert-body">
         <strong>{{ $message }}</strong>
-        <button type="button" class="close" data-dismiss="alert">×</button>
+        <button type="button" class="close" data-dismiss="alert">x</button>
     </div>
 </div>
 @endif

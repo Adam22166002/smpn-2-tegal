@@ -1,29 +1,31 @@
 @extends('layouts.Frontend.app')
 @section('title')
-    Sekolahku
+    SMPN 2 Tegal
 @endsection
 
 @section('content')
+
+{{-- About --}}
+    @section('about')
+        @include('frontend.content.about')
+    @endsection
     
     {{-- Slider --}}
     @section('slider')
         @include('frontend.content.slider')
     @endsection
 
-    {{-- About --}}
-    @section('about')
-        @include('frontend.content.about')
+    {{-- Guru --}}
+    @section('guru')
+        @include('frontend.content.guru')
     @endsection
+
 
     {{-- Video --}}
     @section('video')
         @include('frontend.content.video')
     @endsection
 
-    {{-- Guru --}}
-    @section('guru')
-        @include('frontend.content.guru')
-    @endsection
 
      {{-- Berita & Event --}}
      @section('beritaEvent')
