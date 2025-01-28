@@ -1,7 +1,8 @@
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
     <div class="navbar-container d-flex content">
 
-        <ul class="nav navbar-nav align-items-center ml-auto">
+        <ul class="nav navbar-nav align-items-center justify-content-betwen ml-auto">
+        <button class="navbar-toggler d-lg-none" id="sidebarToggleTop"><span class="navbar-toggler-icon"></span></button>
 
             <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
 
@@ -38,3 +39,9 @@
         </ul>
     </div>
 </nav>
+
+<script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    console.log('Toggle button clicked');
+});
+</script>

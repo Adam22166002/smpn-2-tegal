@@ -26,23 +26,25 @@
         </header>
         <!-- Header Area End Here -->
 
+        <!-- About 1 Area Start Here -->
+        @yield('about')
+        <!-- About 1 Area End Here -->
+
         <!-- Slider 1 Area Start Here -->
         <div class="slider1-area overlay-default">
             @yield('slider')
         </div>
         <!-- Slider 1 Area End Here -->
+
+        <!-- Lecturers Area Start Here -->
+                @yield('guru')
+        <!-- Lecturers Area End Here -->
         
-        <!-- About 1 Area Start Here -->
-            @yield('about')
-        <!-- About 1 Area End Here -->
 
         <!-- Video Area Start Here -->
             @yield('video')
         <!-- Video Area End Here -->
 
-        <!-- Lecturers Area Start Here -->
-            @yield('guru')
-        <!-- Lecturers Area End Here -->
 
         <!-- News and Event Area Start Here -->
             @yield('beritaEvent')

@@ -12,7 +12,7 @@
                     <div class="title1">{{$sliders->title}}</div>
                     <p> {{$sliders->desc}} </p>
                     <div class="slider-btn-area">
-                        <a href="{{url('ppdb')}}" class="default-big-btn">Daftar !</a>
+                        <a href="{{ route('event') }}" class="default-big-btn">View All</a>
                     </div>
                 </div>
             </div>
