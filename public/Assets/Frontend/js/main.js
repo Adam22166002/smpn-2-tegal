@@ -564,30 +564,46 @@
 })(jQuery);
 
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
-            const track = document.querySelector('.news-track');
-            const cards = document.querySelectorAll('.news-card');
-            let currentIndex = 0;
+    const track = document.querySelector('.news-track');
+    const cards = Array.from(document.querySelectorAll('.news-card'));
+    const cardWidth = cards[0].offsetWidth + 20; // Width + margin
+    const totalCards = cards.length;
 
-            function autoScroll() {
-                currentIndex++;
-                if (currentIndex >= cards.length) {
-                    currentIndex = 0;
-                }
+    // Clone first few cards and append to the end
+    cards.forEach((card) => {
+        const clonedCard = card.cloneNode(true);
+        track.appendChild(clonedCard);
+    });
 
-                const offset = -currentIndex * (cards[0].offsetWidth + 20);
-                track.style.transform = `translateX(${offset}px)`;
-            }
+    let currentIndex = 0;
 
-            let autoScrollInterval = setInterval(autoScroll, 3000);
+    function autoScroll() {
+        currentIndex++;
+        track.style.transition = "transform 0.5s ease-in-out";
+        track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
 
-            track.addEventListener('mouseenter', () => {
-                clearInterval(autoScrollInterval);
-            });
+        // When reaching the last cloned card, reset position
+        if (currentIndex === totalCards) {
+            setTimeout(() => {
+                track.style.transition = "none"; // Disable transition
+                track.style.transform = "translateX(0)";
+                currentIndex = 0;
+            }, 500); // Match the transition duration
+        }
+    }
 
-            track.addEventListener('mouseleave', () => {
-                autoScrollInterval = setInterval(autoScroll, 3000);
-            });
-        });
+    // Auto scroll every 3 seconds
+    let autoScrollInterval = setInterval(autoScroll, 3000);
 
+    // Pause scrolling on hover
+    track.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
 
+    track.addEventListener('mouseleave', () => {
+        autoScrollInterval = setInterval(autoScroll, 3000);
+    });
+});
