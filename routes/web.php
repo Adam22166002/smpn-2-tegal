@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\Pengguna\MuridController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -173,5 +174,7 @@ Route::middleware('auth')->group(function () {
             'backend-pengguna-bendahara'  => Backend\Pengguna\BendaharaController::class,
 
         ]);
+
+        Route::post('/importExcel', [MuridController::class, 'importExcel']);
     });
 });

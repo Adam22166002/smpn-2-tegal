@@ -29,6 +29,15 @@
 <script src="{{asset('Assets/Backend/js/scripts/components/components-modals.js')}}"></script>
 <!-- END: Page JS-->
 
+@if(Request::path() == "backend-pengguna-murid")
+<script>
+    // Menangani perubahan pada input file dan otomatis submit form
+    document.getElementById('fileInput').addEventListener('change', function() {
+        document.getElementById('importForm').submit();
+    });
+</script>
+@endif
+
 <script>
     $(window).on('load', function() {
         if (feather) {

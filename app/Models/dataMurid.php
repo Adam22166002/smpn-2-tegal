@@ -10,4 +10,10 @@ class dataMurid extends Model
     use HasFactory;
 
     protected $table = 'data_murids';
+    protected $guarded = [];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
