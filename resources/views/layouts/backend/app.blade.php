@@ -47,14 +47,8 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-<<<<<<< HEAD
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy;
-                {{date('Y')}}<a class="ml-25" href="https://andridesmana.pw" target="_blank">Andri Desmana</a><span
-                    class="d-none d-sm-inline-block">, All rights Reserved</span></span><span
-                class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
-=======
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; {{date('Y')}}<a class="ml-25" href="#" target="_blank">SMPN Tegal Develop</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span></p>
->>>>>>> f57e86c6ea618fdc16325fc9823c18a4d38b0080
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; {{date('Y')}}<a class="ml-25" href="#" target="_blank">SMPN Tegal Develop</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span> <span
+        class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->

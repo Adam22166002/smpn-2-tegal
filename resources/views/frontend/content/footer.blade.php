@@ -1,7 +1,21 @@
+<style>
+    .flickr-title li{
+        margin-bottom: 10px;
+    }
+
+    .flickr-title li a {
+        color: white;
+    }
+
+    .flickr-title li a:hover {
+        color: skyblue;
+    }
+</style>
+
 <div class="footer-area-top">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="row ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="footer-box">
                     <a href="/">
                         @if (@$footer->logo == NULL)
@@ -21,7 +35,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="footer-box">
                     <h3>Informasi</h3>
                     <ul class="corporate-address">
@@ -41,27 +55,52 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="footer-box">
-                    <h3>Photos</h3>
-                    <ul class="flickr-photos">
+                    <h3>Tautan Internal</h3>
+                    <ul class="flickr-title">
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/1.jpg')}}" alt="flickr"></a>
+                            <a href="{{route('profile.sekolah')}}">Profile Sekolah</a>
                         </li>
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/2.jpg')}}" alt="flickr"></a>
+                            <a href="{{route('visimisi.sekolah')}}">Visi & Misi</a>
                         </li>
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/3.jpg')}}" alt="flickr"></a>
+                            <a href="{{route('profile.sekolah')}} ">Sambutan Kepala Sekolah</a>
                         </li>
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/4.jpg')}}" alt="flickr"></a>
+                            <a href="{{route('berita')}}">Berita</a>
                         </li>
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/5.jpg')}}" alt="flickr"></a>
+                            <a href="#">Galeri</a>
                         </li>
                         <li>
-                            <a href="#"><img class="img-responsive" src="{{asset('Assets/Frontend/img/footer/6.jpg')}}" alt="flickr"></a>
+                            <a href="#">Kegiatan Sekolah</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="footer-box">
+                    <h3>Layanan Sekolah</h3>
+                    <ul class="flickr-title">
+                        <li>
+                            <a href="#">Bimbingan Konseling</a>
+                        </li>
+                        <li>
+                            <a href="#">Rapot Siswa</a>
+                        </li>
+                        <li>
+                            <a href="#">Perpustakaan Sekolah</a>
+                        </li>
+                        <li>
+                            <a href="#">Laboratorium IPA</a>
+                        </li>
+                        <li>
+                            <a href="#">Laboratorium Komputer</a>
+                        </li>
+                        <li>
+                            <a href="#">Laboratorium Bahasa</a>
                         </li>
                     </ul>
                 </div>
@@ -73,7 +112,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <p>&copy; {{date('Y')}} <a href="#" target="_blank">Develop SMPN 2 TEGAL</a> All Rights Reserved.</p>
+                <p>&copy; {{date('Y')}} <a href="http://andridesmana.pw/" target="_blank">Andri Desmana</a> All Rights Reserved.</p>
             </div>
             {{-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <ul class="payment-method">
@@ -92,5 +131,5 @@
                 </ul>
             </div> --}}
         </div>
-    </div>
+ </div>
 </div>
