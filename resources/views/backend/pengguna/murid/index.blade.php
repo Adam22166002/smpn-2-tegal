@@ -39,8 +39,20 @@ Murid
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Murid <a href=" {{route('backend-pengguna-murid.create')}} "
-                                            class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Murid
+
+                                        <form id="importForm" action="{{ url('importExcel') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+
+                                            <label for="fileInput" class="btn btn-success mt-1">
+                                                <img src="{{asset('Assets/Backend/images/excel.png')}}"
+                                                    style="width:15px; margin-right:5px;">
+                                                Import
+                                                Excel</label>
+                                            <input type="file" name="file" id="fileInput" class="d-none" required>
+                                        </form>
+                                    </h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -51,28 +63,34 @@ Murid
                                                 <th>Nama</th>
                                                 <th>NISN</th>
                                                 <th>Email</th>
-                                                <th>Status</th>
                                                 <th>Jenis Kelamin</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($murid as $key => $murids)
+
+                                            @php
+                                            $no = 1;
+                                            @endphp
+
+                                            @foreach ($murid as $user)
+                                            @foreach($user->dataMurid as $userDetail)
                                             <tr>
                                                 <td></td>
-                                                <td> {{$key+1}} </td>
-                                                <td> {{$murids->name}} </td>
-                                                <td> {{$murids->nisn}} </td>
-                                                <td> {{$murids->email}} </td>
-                                                <td> {{$murids->status}} </td>
-                                                <td> {{$murids->jenis_kelamin}} </td>
+                                                <td> {{$no++}} </td>
+                                                <td> {{$user->name}} </td>
+                                                <td> {{$userDetail->nisn}} </td>
+                                                <td> {{$user->email}} </td>
+                                                <td> {{$userDetail->jenis_kelamin}} </td>
+                                                <td> {{$user->status}} </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href=" {{route('backend-pengguna-murid.edit', $murids->id)}} "
+                                                        <a href=" {{route('backend-pengguna-murid.edit', $user->id)}} "
                                                             class="btn btn-success btn-sm mr-2">Edit</a>
 
                                                         <form
-                                                            action="{{ route('backend-pengguna-murid.destroy', $murids->id) }}"
+                                                            action="{{ route('backend-pengguna-murid.destroy', $user->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
@@ -84,6 +102,7 @@ Murid
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>

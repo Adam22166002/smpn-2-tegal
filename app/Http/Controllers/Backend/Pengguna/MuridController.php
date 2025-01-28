@@ -7,11 +7,11 @@ use App\Models\dataMurid;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use ErrorException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UsersImport;
 
 class MuridController extends Controller
 {
@@ -22,7 +22,9 @@ class MuridController extends Controller
      */
     public function index()
     {
-        $murid = User::whereIn('role', ['Guest', 'Murid'])->get();
+        $murid = User::with('dataMurid')
+            ->get();
+
         return view('backend.pengguna.murid.index', compact('murid'));
     }
 
@@ -33,7 +35,8 @@ class MuridController extends Controller
      */
     public function create()
     {
-        return view('backend.pengguna.murid.create');
+        return abort(404);
+        // return view('backend.pengguna.murid.create');
     }
 
     /**
@@ -101,7 +104,7 @@ class MuridController extends Controller
 
             $murid->assignRole($murid->role);
 
-            Session::flash('success', 'Calon Murid Berhasil disimpan!');
+            Session::flash('success', 'Data Murid Berhasil disimpan!');
             return redirect()->route('backend-pengguna-murid.index');
         }
     }
@@ -175,7 +178,7 @@ class MuridController extends Controller
             DB::table('model_has_roles')->where('model_id', $id)->delete();
             $murid->assignRole($request->role);
 
-            Session::flash('success', 'Calon Murid Berhasil di update!');
+            Session::flash('success', 'Data Murid Berhasil di update!');
             return redirect()->route('backend-pengguna-murid.index');
         }
     }
@@ -191,7 +194,33 @@ class MuridController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        Session::flash('success', 'Calon Murid Berhasil di hapus!');
+        Session::flash('success', 'Data Murid Berhasil di hapus!');
         return redirect()->route('backend-pengguna-murid.index');
+    }
+
+    public function importExcel(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'file' => 'required|mimes:xlsx,csv'
+            ],
+            [
+                'file.required'     => 'File Excel harus di unggah.',
+                'file.mimes'        => 'Format file Excel tidak valid.'
+            ]
+        );
+
+        if ($validator->fails()) {
+            Session::flash('error', 'File Excel gagal di unggah. Pastikan memasukkan format file Excel dengan benar.');
+            return redirect()->back();
+        } else {
+
+            // Melakukan import menggunakan import class yang sudah dibuat
+            Excel::import(new UsersImport, $request->file('file'));
+
+            Session::flash('success', 'File Excel berhasil di unggah.');
+            return redirect()->back();
+        }
     }
 }
