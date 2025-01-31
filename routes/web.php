@@ -155,7 +155,8 @@ Route::middleware('auth')->group(function () {
             'backend-event' => Backend\Website\EventsController::class,
             /// FOOTER \\\
             'backend-footer'    => Backend\Website\FooterController::class,
-            'gallery'    => Backend\Website\GalleryController::class,
+
+            'backend-gallery'    => Backend\Website\GalleryController::class,
         ]);
 
         ///// PENGGUNA \\\\\

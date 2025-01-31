@@ -7,22 +7,25 @@
                         <div class="logo-area">
                             @if (@$footer->logo == NULL)
                             <img class="img-responsive" src="{{asset('Assets/Frontend/img/logo.jp')}}" alt="logo">
-                        @else
-                            <img class="img-responsive" src="{{asset('storage/images/logo/' .$footer->logo)}}" alt="logo">
-                        @endif
+                            @else
+                            <img class="img-responsive" src="{{asset('storage/images/logo/' .$footer->logo)}}"
+                                alt="logo">
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     <div class="header-top-right">
                         <ul>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}"> {{@$footer->telp}} </a></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{@$footer->email}}</a></li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}">
+                                    {{@$footer->telp}} </a></li>
+                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{@$footer->email}}</a>
+                            </li>
                             <li>
                                 @auth
-                                    <a href="/home" class="apply-now-btn2">Home</a>
+                                <a href="/home" class="apply-now-btn2">Home</a>
                                 @else
-                                    <a class="apply-now-btn2" href="{{route('login')}}"> Masuk</a>
+                                <a class="apply-now-btn2" href="{{route('login')}}"> Masuk</a>
                                 @endauth
                             </li>
                         </ul>
@@ -45,28 +48,35 @@
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
                                 </ul>
                             </li>
+
                             <li><a href="#">Program</a>
                                 <ul>
-                                    <li class="has-child-menu"><a href="#">Program </a>
+                                    {{-- <li class="has-child-menu"><a href="#">Program </a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
-                                                <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}} </a></li>
+                                            <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
+                                                </a></li>
                                             @endforeach
                                         </ul>
-                                    </li>
-                                    <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
+                                    </li> --}}
+                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
-                                                <li><a href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a></li>
+                                            <li><a
+                                                    href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a>
+                                            </li>
                                             @endforeach
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
+
                             <li><a href="#">Informasi</a>
                                 <ul>
-                                    <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita Terkini</a></li>
-                                    <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a href=" {{route('event')}} ">Event Terbaru</a></li>
+                                    <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
+                                            href=" {{route('berita')}} ">Berita Terkini</a></li>
+                                    <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a
+                                            href=" {{route('event')}} ">Event Terbaru</a></li>
                                     <li><a href="#">Galeri Sekolah</a></li>
                                 </ul>
                             </li>
@@ -98,32 +108,36 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    <li class="has-child-menu"><a href="#">Program Studi</a>
+                                    {{-- <li class="has-child-menu"><a href="#">Program Studi</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
-                                                <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}} </a></li>
+                                            <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
+                                                </a></li>
                                             @endforeach
                                         </ul>
-                                    </li>
-                                    <li class="has-child-menu"><a href="#">Kegiatan</a>
+                                    </li> --}}
+                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
-                                                <li><a href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a></li>
+                                            <li><a
+                                                    href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a>
+                                            </li>
                                             @endforeach
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
 
-                            <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
+                            <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
+                                    href=" {{route('berita')}} ">Berita</a></li>
                             <li><a href="{{url('ppdb')}}" target="_blank">BK</a></li>
 
                             <li><a href="#">RAPOT</a></li>
                             <li>
                                 @auth
-                                    <a href="">{{Auth::user()->name}}</a>
+                                <a href="">{{Auth::user()->name}}</a>
                                 @else
-                                    <a href=" {{route('login')}} ">Masuk</a>
+                                <a href=" {{route('login')}} ">Masuk</a>
                                 @endauth
                             </li>
                         </ul>
