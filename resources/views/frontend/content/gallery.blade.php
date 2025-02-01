@@ -15,25 +15,28 @@
     <!-- Gallery Grid -->
     <div class="row g-4 mt-4">
         @foreach ($galleries as $gallery)
-            <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $gallery->category }}">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="position-relative overflow-hidden">
-                        <img src="{{ asset('storage/' . $gallery->image) }}" class="card-img-top" alt="{{ $gallery->title }}">
-                        <div class="gallery-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
-                            <div class="text-white text-center p-3">
-                                <h5 class="mb-3">{{ $gallery->title }}</h5>
-                                <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#galleryModal">
-                                    <i class="bi bi-zoom-in"></i> Lihat Detail
-                                </button>
-                            </div>
+        <div class="col-lg-4 col-md-6 gallery-item" data-category="{{ $gallery->category }}">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="position-relative overflow-hidden">
+                    <img src="{{ asset('storage/' . $gallery->image) }}" class="card-img-top"
+                        alt="{{ $gallery->title }}">
+                    <div
+                        class="gallery-overlay position-absolute start-0 top-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                        <div class="text-white text-center p-3">
+                            <h5 class="mb-3">{{ $gallery->title }}</h5>
+                            <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#galleryModal">
+                                <i class="bi bi-zoom-in"></i> Lihat Detail
+                            </button>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $gallery->title }}</h5>
-                        <p class="card-text text-muted">{{ $gallery->description }}</p>
-                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ $gallery->title }}</h5>
+                    <p class="card-text text-muted">{{ $gallery->description }}</p>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
 </div>

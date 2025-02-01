@@ -131,8 +131,8 @@
                             <span class="menu-item text-truncate" data-i18n="Basic">About</span>
                         </a>
                     </li>
-                    <li class="nav-item {{ (request()->is('gallery')) }}">
-                        <a class="d-flex align-items-center" href=" {{route('gallery.index')}} "><i
+                    <li class="nav-item {{ (request()->is('backend-gallery')) }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-gallery.index')}} "><i
                                 data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Gallery</span>
                         </a>
