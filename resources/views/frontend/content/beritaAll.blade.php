@@ -6,11 +6,11 @@
 
 @section('content')
     @section('about')
-    <div class="news-page-area">
+    <div class="news-page-area ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
-                    <div class="row">
+                    <div class="row news-box-row">
                         @foreach ($berita as $beritas)
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="news-box">
@@ -29,6 +29,7 @@
 
                                 </div>
                             </div>
+
                         @endforeach
                         @if ($berita == NULL)
                             <img src="{{asset('Assets/Frontend/img/empty.svg')}}" class="img-responsive" style="object-fit:cover; margin-top:5% !important; display: block; margin: 0 auto;">

@@ -470,7 +470,6 @@
                 }
             }
         }
-
     });
 
     /* Rating selection*/
@@ -560,11 +559,7 @@
 
         google.maps.event.addDomListener(window, "load", initialize);
     }
-
 })(jQuery);
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.news-track');
