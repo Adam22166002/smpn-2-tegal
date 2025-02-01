@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="news-box">
-                <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex justify-content-between align-items-center" style="display: flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <h2 class="title-default-left">Berita Terbaru</h2>
+                        <h2><span class="text-primary"> Berita</span> Terbaru</h2>
                         <p class="mb-0">Kabar Terbaru Mengenai Sekolah Kami</p>
                     </div>
                     <div>
@@ -15,33 +15,26 @@
                 <div class="news-carousel position-relative">
                     <div class="row news-track">
                         @foreach ($berita as $beritas)
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-6 mb-4">
                             <div class="card news-card h-100">
-                                <div class="position-relative">
+                                <div class="position-relative" style="margin: 0;">
                                     <a href="{{ route('detail.berita', $beritas->slug) }}">
                                         <img src="{{ asset('storage/images/berita/' . $beritas->thumbnail) }}" 
                                              class="card-img-top" 
                                              alt="news"
-                                             style="object-fit: cover; height: 250px;">
+                                             style="object-fit: cover; height: 250px; margin:0px;">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <a href="{{ route('detail.berita', $beritas->slug) }}" class="text-dark text-decoration-none">
                                             {{ $beritas->title }}
-                                        </a>
+                                        </a><span class="small">{{ Carbon\Carbon::parse($beritas->created_at)->format('d F Y') }}</span>
                                     </h5>
                                     <p class="card-text">{{ Str::limit($beritas->content, 150) }}</p>
-                                </div>
-                                <div class="card-footer bg-transparent border-0">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="text-muted small mb-0">
-                                            {{ Carbon\Carbon::parse($beritas->created_at)->format('d F Y') }}
-                                        </p>
-                                        <a href="{{ route('detail.berita', $beritas->slug) }}" class="text-primary text-decoration-none">
+                                    <a href="{{ route('detail.berita', $beritas->slug) }}" class="text-primary text-decoration-none mt-0">
                                             Baca Detail →
                                         </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,13 +44,11 @@
                 </div>
             </div>
 
-            <!-- Modified Event Section for 2 columns -->
             <div class="col-xs-12 event-inner-area" style="margin-bottom: 5rem;">
-                <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-4" style="display: flex; justify-content:space-between; align-items:center;">
                     <div>
-                        <h2 class="title-default-left" style="font-size: 2.5rem; font-weight: 600; color: #333;">
-                            <span class="text-primary">Events</span> Terbaru
-                        </h2>
+                        <h2 class=""><span class="text-primary">Events</span> Terbaru</h2>
+                        <p class="mb-0">Event-event Terbaru Mengenai SMPN Tegal</p>
                     </div>
                     <div>
                         <a href="{{ route('event') }}" class="text-primary">Lihat Semua Event <i class="fas fa-arrow-right"></i></a>
