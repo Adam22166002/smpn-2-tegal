@@ -10142,84 +10142,139 @@ ul.course-feature2 li:before {
   color: red;
 }
 
+.flickr-title li{
+        margin-bottom: 10px;
+    }
 
-@keyframes autoScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-}
+    .flickr-title li a {
+        color: white;
+    }
+
+    .flickr-title li a:hover {
+        color: skyblue;
+    }
 
 
-.news-carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
 
-}
-.news-track {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-.news-card {
-    flex: 0 0 320px;
-    margin-right: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-.news-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-.news-card .card-img-top {
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-.news-card:hover .card-img-top {
-    transform: scale(1.1);
-}
-.news-card .card-body {
-    background-color: white;
-    padding: 20px;
-}
-.news-card .card-title {
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-.news-card .card-text {
-    color: #7f8c8d;
-    margin-bottom: 15px;
-}
-.news-card .btn-primary {
-    background-color: #3498db;
-    border: none;
-    border-radius: 25px;
-    padding: 8px 20px;
-    transition: background-color 0.3s ease;
-}
-.news-card .btn-primary:hover {
-    background-color: #2980b9;
-}
-.category-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-    background-color: #3498db;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8em;
-}
-
-.card {
-        background-color: white;
-        box-shadow: -1px -1px -1px black;
-        padding: 10px;
+    @keyframes autoScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+    .news-event-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #f8f9fa; /* Warna latar belakang parent */
     }
 
     .news-box {
-        margin-bottom: 100px
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Menyelaraskan elemen-elemen ke kiri */
+        width: 100%; /* Agar container mengikuti lebar */
+        max-width: 1200px; /* Membatasi lebar maksimum */
+        margin-bottom: 100px;
+    }
+
+    .title-default-left {
+        margin-bottom: 15px;
+        font-size: 24px; /* Memperbesar ukuran judul */
+    }
+
+    .news-carousel {
+        position: relative;
+        overflow: hidden;
+        width: calc(3 * 380px + 2 * 20px); /* Lebar 3 kartu dan 2 margin antar kartu */
+        margin-top: 20px;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+
+    .news-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        background-color: #ffffff;
+    }
+
+    .news-card {
+        flex: 0 0 375px; /* Lebar kartu yang lebih besar */
+        margin-right: 20px; /* Jarak antar kartu */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-card .card-img-top {
+        height: 250px; /* Membuat gambar lebih besar */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .news-card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    .news-card .card-body {
+        background-color: white;
+        padding: 20px;
+    }
+
+    .news-card .card-title {
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-size: 20px; /* Memperbesar ukuran judul dalam kartu */
+    }
+
+    .news-card .card-text {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+    }
+
+    .news-card .btn-primary {
+        background-color: #3498db;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .news-card .btn-primary:hover {
+        background-color: #2980b9;
+    }
+
+    .category-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        background-color: #3498db;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+    }
+
+    .card {
+        background-color: white;
+        box-shadow: -1px -1px -1px black;
+    }
+
+    .news-box {
+        margin-bottom: 100px;
+    }
+
+    .news-content-holder {
+        padding-left: 10px;
     }

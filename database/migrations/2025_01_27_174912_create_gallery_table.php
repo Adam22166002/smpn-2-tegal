@@ -17,8 +17,8 @@ class CreateGalleryTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('category'); 
-            $table->text('description')->nullable(); 
+            $table->enum('category', ['Akademik', 'Ekstrakurikuler', 'Fasilitas']);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
