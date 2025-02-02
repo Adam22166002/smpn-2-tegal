@@ -359,195 +359,195 @@ ul {
   position: relative;
 }
 .title-bar-footer:before {
-  content: "";
-  height: 3px;
-  width: 45px;
-  background: #002147;
-  position: absolute;
-  left: 0;
-  bottom: -20px;
-  z-index: 1;
+    content: "";
+    height: 3px;
+    width: 45px;
+    background: #002147;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    z-index: 1;
 }
 .title-bar-small-center {
-  position: relative;
+    position: relative;
 }
 .title-bar-small-center:before {
-  content: "";
-  height: 2px;
-  width: 40px;
-  background: #002147;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -12px;
-  margin: 0 auto;
-  z-index: 1;
+    content: "";
+    height: 2px;
+    width: 40px;
+    background: #002147;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    margin: 0 auto;
+    z-index: 1;
 }
 .title-bar-small-left {
-  position: relative;
+    position: relative;
 }
 .title-bar-small-left:before {
-  content: "";
-  height: 3px;
-  width: 45px;
-  background: #002147;
-  position: absolute;
-  left: 0;
-  bottom: -35px;
-  z-index: 1;
+    content: "";
+    height: 3px;
+    width: 45px;
+    background: #002147;
+    position: absolute;
+    left: 0;
+    bottom: -35px;
+    z-index: 1;
 }
 .title-bar-sidebar {
-  position: relative;
+    position: relative;
 }
 .title-bar-sidebar:before {
-  content: "";
-  height: 4px;
-  width: 45px;
-  background: #002147;
-  position: absolute;
-  left: 0;
-  bottom: -15px;
-  z-index: 1;
+    content: "";
+    height: 4px;
+    width: 45px;
+    background: #002147;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    z-index: 1;
 }
 .title-bar-full-width {
-  position: relative;
+    position: relative;
 }
 .title-bar-full-width:before {
-  content: "";
-  height: 2px;
-  width: 100%;
-  background: #002147;
-  position: absolute;
-  left: 0;
-  bottom: -12px;
-  z-index: 1;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #002147;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    z-index: 1;
 }
 .title-default-center {
-  text-transform: capitalize;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 45px;
-  color: #002147;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 45px;
+    color: #002147;
 }
 @media only screen and (max-width: 767px) {
-  .title-default-center {
-    font-size: 28px;
-  }
+    .title-default-center {
+        font-size: 28px;
+    }
 }
 @media only screen and (max-width: 480px) {
-  .title-default-center {
-    font-size: 26px;
-  }
+    .title-default-center {
+        font-size: 26px;
+    }
 }
 .title-default-left {
-  text-transform: capitalize;
-  text-align: left;
-  font-weight: 500;
-  margin-bottom: 45px;
-  color: #002147;
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 45px;
+    color: #002147;
 }
 @media only screen and (max-width: 767px) {
-  .title-default-left {
-    margin-bottom: 36px;
-    font-size: 28px;
-  }
+    .title-default-left {
+        margin-bottom: 36px;
+        font-size: 28px;
+    }
 }
 @media only screen and (max-width: 480px) {
-  .title-default-left {
-    margin-bottom: 30px;
-    font-size: 26px;
-  }
+    .title-default-left {
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
 }
 .title-default-left a {
-  color: #002147;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+    color: #002147;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .title-default-left a:hover {
-  color: #fdc800;
+    color: #fdc800;
 }
 .title-default-left-bold {
-  font-size: 30px;
-  text-transform: capitalize;
-  text-align: left;
-  font-weight: 500;
-  margin-bottom: 45px;
-  color: #002147;
+    font-size: 30px;
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 45px;
+    color: #002147;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .title-default-left-bold {
-    font-size: 28px;
-  }
+    .title-default-left-bold {
+        font-size: 28px;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .title-default-left-bold {
-    font-size: 26px;
-  }
+    .title-default-left-bold {
+        font-size: 26px;
+    }
 }
 @media (min-width: 480px) and (max-width: 767px) {
-  .title-default-left-bold {
-    font-size: 24px;
-  }
+    .title-default-left-bold {
+        font-size: 24px;
+    }
 }
 @media only screen and (max-width: 479px) {
-  .title-default-left-bold {
-    font-size: 22px;
-  }
+    .title-default-left-bold {
+        font-size: 22px;
+    }
 }
 .title-default-left-bold a {
-  color: #002147;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+    color: #002147;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .title-default-left-bold a:hover {
-  color: #fdc800;
+    color: #fdc800;
 }
 .title-default-left-bold-lowhight {
-  text-transform: capitalize;
-  text-align: left;
-  font-weight: 500;
-  margin-bottom: 20px;
-  color: #002147;
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #002147;
 }
 @media only screen and (max-width: 991px) {
-  .title-default-left-bold-lowhight {
-    font-size: 26px;
-  }
+    .title-default-left-bold-lowhight {
+        font-size: 26px;
+    }
 }
 @media only screen and (max-width: 767px) {
-  .title-default-left-bold-lowhight {
-    font-size: 24px;
-  }
+    .title-default-left-bold-lowhight {
+        font-size: 24px;
+    }
 }
 @media only screen and (max-width: 480px) {
-  .title-default-left-bold-lowhight {
-    font-size: 22px;
-  }
+    .title-default-left-bold-lowhight {
+        font-size: 22px;
+    }
 }
 .title-default-left-bold-lowhight a {
-  color: #002147;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+    color: #002147;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 .title-default-left-bold-lowhight a:hover {
-  color: #fdc800;
+    color: #fdc800;
 }
 .title-news-left-bold {
-  text-transform: capitalize;
-  text-align: left;
-  font-weight: 500;
-  margin-bottom: 15px;
-  color: #002147;
-  font-size: 22px;
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #002147;
+    font-size: 22px;
 }
 @media only screen and (max-width: 767px) {
   .title-news-left-bold {
@@ -10161,7 +10161,6 @@ ul.course-feature2 li:before {
         100% { transform: translateX(-100%); }
     }
     .news-event-area {
-        display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
@@ -10278,3 +10277,38 @@ ul.course-feature2 li:before {
     .news-content-holder {
         padding-left: 10px;
     }
+
+.row.news-box-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.row {
+        gap: 15px; /* Jarak antara img dan teks */
+    }
+    .event-terbaru {
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .single-item {
+    display: flex;
+    align-items: center; /* Posisikan vertikal di tengah */
+    gap: 15px; /* Jarak antara img dan teks */
+}
+
+.item-img img {
+    width: 150px; /* Sesuaikan ukuran gambar */
+    height: auto;
+}
+
+.item-content {
+    flex: 1; /* Biarkan konten mengambil sisa ruang */
+}
+
+.event-info-block {
+    display: flex;
+    justify-content: space-between;
+}

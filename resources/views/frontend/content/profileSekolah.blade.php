@@ -8,7 +8,7 @@
 @section('about')
 <div class="container">
     @if ($profile)
-        
+
         <div style="margin-top: 2%; margin-bottom:3%">
             <img src="{{asset('storage/images/profileSekolah/' .$profile->image)}}" class="img-responsive" style="max-height:500px; width:100%; object-fit:cover">
         </div>
@@ -40,21 +40,20 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="kepala-sekolah-image text-center">
-                        <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}" 
-                             class="img-fluid rounded shadow" 
+                        <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
+                             class="img-fluid rounded shadow"
                              alt="Kepala Sekolah"
                              style="max-height: 400px; object-fit: cover;">
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Profile Sekolah Section -->
 <div class="profile-detail-section bg-light py-5 mt-3">
     <div class="container">
         <h2 class="text-center mb-2 font-weight-bold">Profil SMP Negeri 2 Tegal</h2>
         <p class="text-center mb-5 text-muted">Berikut adalah Profil dari sekolah SMP Negeri 2 yang berlokasi di Kecamatan Tegal Timur, Kota Tegal</p>
-        
+
         <div class="row g-4">
             <!-- Informasi Umum -->
             <div class="col-lg-6">
@@ -101,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Kontak & Legalitas -->
             <div class="col-lg-6">
                 <div class="card border-0 rounded-3 shadow-sm h-100">
@@ -153,8 +152,8 @@
 
         @if (!$profile)
         <div class="text-center py-5">
-            <img src="{{asset('Assets/Frontend/img/empty.svg')}}" 
-                 class="img-fluid" 
+            <img src="{{asset('Assets/Frontend/img/empty.svg')}}"
+                 class="img-fluid"
                  alt="No Content"
                  style="max-width: 400px;">
             <h3 class="mt-4">Tidak ada konten tersedia</h3>
@@ -185,7 +184,7 @@
     .info-list .d-flex {
         flex-direction: column;
     }
-    
+
     .info-list .fw-bold {
         width: 100%;
         margin-bottom: 0.5rem;
