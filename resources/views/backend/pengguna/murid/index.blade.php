@@ -41,7 +41,7 @@ Murid
                                 <div class="card-header border-bottom">
                                     <h4 class="card-title">Murid
 
-                                        <form id="importForm" action="{{ url('importExcel') }}" method="POST"
+                                        <form id="importForm" action="{{ url('importExcelMurid') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
 

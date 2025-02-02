@@ -37,12 +37,12 @@ Dashboard
                         <div class="card">
                             <a href="#" class="card-header">
                                 <div>
-                                    <h2 class="font-weight-bolder mb-0">{{$guru}}</h2>
+                                    <h2 class="font-weight-bolder mb-0">{{$berita}}</h2>
                                     <p class="card-text">Total Berita</p>
                                 </div>
                                 <div class="avatar bg-light-primary p-50 m-0">
                                     <div class="avatar-content">
-                                        <i data-feather="users" class="font-medium-5"></i>
+                                        <i data-feather="book" class="font-medium-5"></i>
                                     </div>
                                 </div>
                             </a>
@@ -52,12 +52,12 @@ Dashboard
                         <div class="card">
                             <a href="#" class="card-header">
                                 <div>
-                                    <h2 class="font-weight-bolder mb-0">{{$acara}}</h2>
+                                    <h2 class="font-weight-bolder mb-0">{{ ($event == null ? '0' : $event) }}</h2>
                                     <p class="card-text">Total Events</p>
                                 </div>
                                 <div class="avatar bg-light-danger p-50 m-0">
                                     <div class="avatar-content">
-                                        <i data-feather="calendar" class="font-medium-5"></i>
+                                        <i data-feather="user" class="font-medium-5"></i>
                                     </div>
                                 </div>
                             </a>
@@ -86,7 +86,7 @@ Dashboard
                         <div class="card">
                             <a href="#" class="card-header">
                                 <div>
-                                    <h2 class="font-weight-bolder mb-0">{{$alumni}}</h2>
+                                    <h2 class="font-weight-bolder mb-0">{{$guru}}</h2>
                                     <p class="card-text">Total Pengajar</p>
                                 </div>
                                 <div class="avatar bg-light-success p-50 m-0">
@@ -151,12 +151,13 @@ Dashboard
                     <div class="col-12">
                         <div class="card card-statistics">
                             <div class="card-header">
-                                <h4 class="card-title">Statistik Perpustakaan</h4>
+                                <h4 class="card-title">Statistik Pengunjung</h4>
                                 <div class="d-flex align-items-center">
                                     <p class="card-text font-small-2 mr-25 mb-0">Updated 1 day ago</p>
                                 </div>
                             </div>
-                            <div class="card-body statistics-body">
+
+                            {{-- <div class="card-body statistics-body">
                                 <div class="row">
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
@@ -171,6 +172,7 @@ Dashboard
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
                                             <div class="avatar bg-light-info mr-2">
@@ -184,6 +186,7 @@ Dashboard
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
                                         <div class="media">
                                             <div class="avatar bg-light-danger mr-2">
@@ -197,6 +200,7 @@ Dashboard
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-xl-3 col-sm-6 col-12">
                                         <div class="media">
                                             <div class="avatar bg-light-success mr-2">
@@ -211,7 +215,9 @@ Dashboard
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
+
                         </div>
                     </div>
 
