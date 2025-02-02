@@ -48,7 +48,7 @@ Edit Murid
                                     <div class="form-group">
                                         <label for="basicInput">Nama</label> <span class="text-danger">*</span>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value=" {{$murid->name}} " placeholder="Nama" />
+                                            name="name" value="{{$murid->name}}" placeholder="Nama" />
                                         @error('name')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@ Edit Murid
                                     <div class="form-group">
                                         <label for="basicInput">Email</label> <span class="text-danger">*</span>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value=" {{$murid->email}} " placeholder="Email" />
+                                            name="email" value="{{$murid->email}}" placeholder="Email" />
                                         @error('email')
                                         <div class="invalid-feedback">
                                             <strong>{{ $message }}</strong>

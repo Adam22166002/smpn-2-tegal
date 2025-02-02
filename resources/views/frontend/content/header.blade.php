@@ -51,15 +51,15 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    {{-- <li class="has-child-menu"><a href="#">Program </a>
+                                    <li class="has-child-menu"><a href="#">Program </a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
                                             <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
                                                 </a></li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
-                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
+                                    </li>
+                                    <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
                                             <li><a
@@ -67,7 +67,7 @@
                                             </li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </li>
 
@@ -108,15 +108,15 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    {{-- <li class="has-child-menu"><a href="#">Program Studi</a>
+                                    <li class="has-child-menu"><a href="#">Program Studi</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
                                             <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
                                                 </a></li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
-                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan</a>
+                                    </li>
+                                    <li class="has-child-menu"><a href="#">Kegiatan</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
                                             <li><a
@@ -124,7 +124,7 @@
                                             </li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </li>
 
