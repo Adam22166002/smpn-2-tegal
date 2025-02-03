@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Program Studi
+Kelas
 @endsection
 
 @section('content')
@@ -26,11 +26,23 @@ Program Studi
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Program Jurusan</h2>
+                    <h2> Daftar Kelas</h2>
                 </div>
             </div>
         </div>
     </div>
+
+
+    {{-- <form id="importForm" action="{{ url('importExcel') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <label for="fileInput" class="btn btn-success mt-1">
+            <img src="{{asset('Assets/Backend/images/excel.png')}}" style="width:15px; margin-right:5px;">
+            Import
+            Excel</label>
+        <input type="file" name="file" id="fileInput" class="d-none" required>
+    </form> --}}
+
     <div class="content-body">
         <div class="row">
             <div class="col-12">
@@ -38,48 +50,67 @@ Program Studi
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header border-bottom">
-                                    <h4 class="card-title">Program Jurusan <a href=" {{route('program-studi.create')}} "
-                                            class="btn btn-primary">Tambah</a></h4>
+                                <div
+                                    class="card-header border-bottom d-flex justify-content-between align-items-center">
+                                    <h4 class="card-title mb-0">Kelas</h4>
+
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('backend-kelas.create') }}"
+                                            class="btn btn-primary mr-2">Tambah</a>
+
+                                        <form id="importForm" action="{{ url('importExcelKelas') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <label for="fileInput" class="btn btn-success d-inline">
+                                                <img src="{{ asset('Assets/Backend/images/excel.png') }}"
+                                                    style="width:15px; margin-right:5px;">
+                                                Import Excel
+                                            </label>
+                                            <input type="file" name="file" id="fileInput" class="d-none" required>
+                                        </form>
+                                    </div>
                                 </div>
+
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
                                         <thead>
                                             <tr>
                                                 <th></th>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Singkatan</th>
-                                                <th>Status</th>
+                                                <th>Kelas</th>
+                                                <th>Nama Kelas</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            @foreach ($jurusan as $key => $jurusans)
+
+                                            @php
+                                            $no = 1;
+                                            @endphp
+
+                                            @foreach($kelas as $item)
                                             <tr>
                                                 <td></td>
-                                                <td> {{$key+1}} </td>
-                                                <td> {{$jurusans->nama}} </td>
-                                                <td> {{$jurusans->singkatan}} </td>
-                                                <td> {{$jurusans->is_active == 0 ? 'Aktif' : 'Tidak Aktif'}} </td>
+                                                <td> {{ $no++ }}</td>
+                                                <td>{{ $item->kelas }}</td>
+                                                <td> {{ $item->nama_kelas}} </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('program-studi.edit', $jurusans->id) }}"
+                                                        <a href="{{ route('backend-kelas.edit', $item->id) }}"
                                                             class="btn btn-success btn-sm mr-2">Edit</a>
 
-                                                        <form
-                                                            action="{{ route('program-studi.destroy', $jurusans->id) }}"
+                                                        <form action="{{ route('backend-kelas.destroy', $item->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus jurusan ini?')">
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?')">
                                                                 <i class="bi bi-trash-fill"></i> Delete
                                                             </button>
                                                         </form>
                                                     </div>
                                                 </td>
-
                                             </tr>
                                             @endforeach
                                         </tbody>
