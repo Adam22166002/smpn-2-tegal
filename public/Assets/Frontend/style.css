@@ -10164,7 +10164,7 @@ ul.course-feature2 li:before {
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        padding: 20px;
+
         background-color: #f8f9fa; /* Warna latar belakang parent */
     }
 
@@ -10285,15 +10285,16 @@ ul.course-feature2 li:before {
 
 
 .row {
-        gap: 15px; /* Jarak antara img dan teks */
-    }
-    .event-terbaru {
-        background-color: white;
-        padding: 10px;
-        border-radius: 10px;
-    }
+    gap: 15px; /* Jarak antara img dan teks */
+}
 
-    .single-item {
+.event-terbaru {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.single-item {
     display: flex;
     align-items: center; /* Posisikan vertikal di tengah */
     gap: 15px; /* Jarak antara img dan teks */

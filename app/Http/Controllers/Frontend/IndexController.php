@@ -39,7 +39,6 @@ class IndexController extends Controller
         // Pengajar
         $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
 
-
         // Berita
         $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->get();
 

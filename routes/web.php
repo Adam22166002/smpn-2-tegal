@@ -49,7 +49,6 @@ Route::get('event', [App\Http\Controllers\Frontend\IndexController::class, 'even
 
 Auth::routes(['register' => false]);
 
-
 // ======= BACKEND ======= \\
 Route::middleware('guest')->group(function () {
     Route::get('/forgot-password', function () {
