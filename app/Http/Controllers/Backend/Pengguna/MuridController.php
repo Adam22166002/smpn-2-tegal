@@ -198,7 +198,7 @@ class MuridController extends Controller
         return redirect()->route('backend-pengguna-murid.index');
     }
 
-    public function importExcel(Request $request)
+    public function importExcelMurid(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

@@ -66,10 +66,10 @@
                     <span class="menu-title text-truncate" data-i18n="Data Sekolah">Data Sekolah</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="nav-item {{ (request()->is('program-studi')) ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href=" {{route('program-studi.index')}} "><i
+                    <li class="nav-item {{ (request()->is('backend-kelas')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-kelas.index')}} "><i
                                 data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Jurusan</span>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Kelas</span>
                         </a>
                     </li>
                     <li class="nav-item {{ (request()->is('backend-kegiatan')) ? 'active' : '' }}">

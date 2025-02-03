@@ -51,15 +51,15 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    {{-- <li class="has-child-menu"><a href="#">Program </a>
+                                   <li class="has-child-menu"><a href="#">Program</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
                                             <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
                                                 </a></li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
-                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
+                                    </li>
+                                     <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
                                             <li><a
@@ -67,7 +67,7 @@
                                             </li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </li>
 
@@ -77,11 +77,11 @@
                                             href=" {{route('berita')}} ">Berita Terkini</a></li>
                                     <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a
                                             href=" {{route('event')}} ">Event Terbaru</a></li>
-                                    <li><a href="#">Galeri Sekolah</a></li>
+                                    <li><a href="">Galeri Sekolah</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="{{url('ppdb')}}" target="_blank">BK</a></li>
+                            <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
                             <li><a href="#">Rapot</a></li>
                         </ul>
                     </nav>
@@ -108,15 +108,15 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    {{-- <li class="has-child-menu"><a href="#">Program Studi</a>
+                                     <li class="has-child-menu"><a href="#">Program Studi</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
                                             <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
                                                 </a></li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
-                                    {{-- <li class="has-child-menu"><a href="#">Kegiatan</a>
+                                    </li>
+                                    <li class="has-child-menu"><a href="#">Kegiatan</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)
                                             <li><a
@@ -124,15 +124,22 @@
                                             </li>
                                             @endforeach
                                         </ul>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </li>
 
-                            <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
-                                    href=" {{route('berita')}} ">Berita</a></li>
-                            <li><a href="{{url('ppdb')}}" target="_blank">BK</a></li>
+                            <li><a href="#">Informasi</a>
+                                <ul>
+                                    <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
+                                            href=" {{route('berita')}} ">Berita Terkini</a></li>
+                                    <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a
+                                            href=" {{route('event')}} ">Event Terbaru</a></li>
+                                    <li><a href="#">Galeri Sekolah</a></li>
+                                </ul>
+                            </li>
 
-                            <li><a href="#">RAPOT</a></li>
+                            <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
+                            <li><a href="#">Rapot</a></li>
                             <li>
                                 @auth
                                 <a href="">{{Auth::user()->name}}</a>
@@ -147,4 +154,4 @@
         </div>
     </div>
 </div>
-<!-- Mobile Menu Area End -->
+<!-- Mobile Menu Area End -->

@@ -158,5 +158,4 @@ class IndexController extends Controller
         $visimisi = Visimisi::first();
         return view('frontend.content.visimisi', compact('visimisi','jurusanM','kegiatanM','pengajar','footer'));
     }
-
 }

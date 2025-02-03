@@ -3,6 +3,9 @@
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\Pengguna\MuridController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Backend\Website\BKAppointmentController;
+use App\Http\Controllers\Backend\Website\BKController;
+use App\Http\Controllers\Backend\Website\KelasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -46,6 +49,7 @@ Route::get('berita/{slug}', [App\Http\Controllers\Frontend\IndexController::clas
 /// EVENT \\\
 Route::get('event/{slug}', [App\Http\Controllers\Frontend\IndexController::class, 'detailEvent'])->name('detail.event');
 Route::get('event', [App\Http\Controllers\Frontend\IndexController::class, 'events'])->name('event');
+
 
 Auth::routes(['register' => false]);
 
@@ -136,8 +140,8 @@ Route::middleware('auth')->group(function () {
             'backend-profile-sekolah'   => Backend\Website\ProfilSekolahController::class,
             /// VISI & MISI \\\
             'backend-visimisi'  => Backend\Website\VisidanMisiController::class,
-            //// PROGRAM STUDI \\\\
-            'program-studi' =>  Backend\Website\ProgramController::class,
+            //// PROGRAM KELAS \\\\
+            'backend-kelas' =>  Backend\Website\KelasController::class,
             /// KEGIATAN \\\
             'backend-kegiatan' => Backend\Website\KegiatanController::class,
             /// IMAGE SLIDER \\\
@@ -175,6 +179,18 @@ Route::middleware('auth')->group(function () {
 
         ]);
 
-        Route::post('/importExcel', [MuridController::class, 'importExcel']);
+        Route::post('/importExcelMurid', [MuridController::class, 'importExcelMurid']);
+        Route::post('/importExcelKelas', [KelasController::class, 'importExcelKelas']);
     });
+});
+
+Route::prefix('/')->group(function () {
+    // Halaman utama pengaduan BK
+    Route::get('/bk', [BKController::class, 'index'])->name('bk-complaint.index');
+
+    // Route untuk pengaduan notes
+    Route::post('/bk/store', [BKController::class, 'store'])->name('bk-complaint.store');
+
+    // Route untuk appointment (online & offline)
+    Route::post('/appointment/store', [BKAppointmentController::class, 'store'])->name('bk-appointment.store');
 });

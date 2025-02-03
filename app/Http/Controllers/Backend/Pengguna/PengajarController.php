@@ -83,7 +83,7 @@ class PengajarController extends Controller
                 'role'         => 'Guru',
                 'status'       => 'Aktif',
                 'foto_profile' => $nama_img,
-                'password'     => bcrypt('12345678'),
+                'password'     => bcrypt('Guru123'),
             ]);
 
             if ($user) {
@@ -168,7 +168,7 @@ class PengajarController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->status = $request->status;
-        $user->password = bcrypt('12345678');
+        $user->password = bcrypt('Guru123');
 
         // Cek apakah ada file baru diunggah
         if ($request->hasFile('foto_profile')) {

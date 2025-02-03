@@ -2,10 +2,16 @@
     <div class="container">
         <div class="row">
             <div class="news-box">
-                <h2 class="title-default-left">Berita Terbaru</h2>
-                <p>Kabar Terbaru Mengenai Sekolah Kami</p>
-                <a href="{{route('berita')}}">Selengkapnya</a>
-                    <div class="news-carousel">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2><span class="text-primary">Berita</span> Terbaru</h2>
+                        <p class="mb-0">Kabar Terbaru Mengenai Sekolah Kami</p>
+                    </div>
+                    <div>
+                        <a href="{{ route('berita') }}" class="text-primary">Lihat Selengkapnya --></a>
+                    </div>
+                </div>
+                    <div class="news-carousel shadow:none">
                         <div class="news-track">
                             @foreach ($berita as $beritas)
                             <div class="card news-card position-relative">
@@ -17,10 +23,13 @@
                                             style="max-height: 100%; max-width: 100%;">
                                     </a>
                                 </div>
-                                <div class="news-content-holder">
+                                <div class="news-content-holder" style="padding: 10px;">
                                     <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}</div>
-                                    <a href="{{route('detail.berita', $beritas->slug)}}">Detail Selengkapnya --></a>
+                                    <p><small>{{ \Str::limit($beritas->content, 150) }}</small></p>
+                                    <ul class="event-info-block">
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ Carbon\Carbon::parse($beritas->created_at)->format('d F Y') }}</li>
+                                        <li><a href="{{ route('detail.berita', $beritas->slug) }}">Detail Selengkapnya</a></li>
+                                    </ul>
                                 </div>
                             </div>
                             @endforeach
@@ -29,10 +38,6 @@
             </div>
             {{-- Event --}}
             <div class="col-xs-12 event-inner-area">
-                <h2 class="title-default-left">Events Terbaru</h2>
-                <p>Event Terbaru Di Sekolah Kami</p>
-                <div class="container">
-                    <div class="row">
                         @foreach ($event as $events)
                         <div class="event-terbaru col-lg-6 col-md-6 col-sm-12">
                             <div class="single-item">
@@ -44,9 +49,6 @@
                                 <div class="item-content">
                                     <h3 class="sidebar-title">
                                         <a href="{{route('detail.event',$events->slug)}}">{{$events->title}}</a>
-                                    </h3>
-                                    <p> {{$events->desc}} </p>
-                                    <p>{{ $events->content }}</p>
                                     <ul class="event-info-block">
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i> {{Carbon\Carbon::parse($events->acara)->format('d F, Y')}}</li>
                                         <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{$events->lokasi}}</li>
@@ -57,9 +59,6 @@
                             @endforeach
                     </div>
                 </div>
-                <div class="event-btn-holder">
-                    <a href="{{route('event')}}" class="view-all-primary-btn">View All</a>
-                </div>
         </div>
-    </div>
+ </div>
 </div>
