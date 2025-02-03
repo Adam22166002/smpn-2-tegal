@@ -32,3 +32,4 @@
 <script src="{{asset('Assets/Frontend/js/modernizr-2.8.3.min.js')}}"></script>
   <!-- Bootstrap Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
