@@ -3,6 +3,8 @@
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\Pengguna\MuridController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Backend\Website\BKAppointmentController;
+use App\Http\Controllers\Backend\Website\BKController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -178,4 +180,15 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/importExcel', [MuridController::class, 'importExcel']);
     });
+});
+
+Route::prefix('/')->group(function () {
+    // Halaman utama pengaduan BK
+    Route::get('/bk', [BKController::class, 'index'])->name('bk-complaint.index');
+    
+    // Route untuk pengaduan notes
+    Route::post('/bk/store', [BKController::class, 'store'])->name('bk-complaint.store');
+    
+    // Route untuk appointment (online & offline)
+    Route::post('/appointment/store', [BKAppointmentController::class, 'store'])->name('bk-appointment.store');
 });
