@@ -11,6 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     @include('layouts.Frontend.style')
+    @yield('styles')
 </head>
 
 <body>
@@ -58,6 +59,7 @@
     </div>
     <!-- Main Body Area End Here -->
     @include('layouts.Frontend.scripts')
+    @yield('scripts')
 </body>
 
 </html>
