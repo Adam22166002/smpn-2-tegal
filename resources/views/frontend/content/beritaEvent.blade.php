@@ -55,31 +55,13 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="event-terbaru col-lg-6 col-md-6 col-sm-12">
-                    <div class="single-item">
-                        <div class="item-img">
-                            <a href="{{route('detail.event',$events->slug)}}">
-                                <img src="{{asset('storage/images/event/' .$events->thumbnail)}}" alt="event" class="img-responsive">
-                            </a>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="sidebar-title">
-                                <a href="{{route('detail.event',$events->slug)}}">{{$events->title}}</a>
-                            <ul class="event-info-block">
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i> {{Carbon\Carbon::parse($events->acara)->format('d F, Y')}}</li>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i> {{$events->lokasi}}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                     @endforeach
             </div>
         </div>
                 <div class="event-btn-holder text-center">
                     <a href="{{route('event')}}" class="view-all-primary-btn">View All</a>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
 </div>
