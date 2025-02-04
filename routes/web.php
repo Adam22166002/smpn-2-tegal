@@ -50,8 +50,8 @@ Route::get('berita/{slug}', [App\Http\Controllers\Frontend\IndexController::clas
 Route::get('event/{slug}', [App\Http\Controllers\Frontend\IndexController::class, 'detailEvent'])->name('detail.event');
 Route::get('event', [App\Http\Controllers\Frontend\IndexController::class, 'events'])->name('event');
 
-Auth::routes(['register' => false]);
 
+Auth::routes(['register' => false]);
 
 // ======= BACKEND ======= \\
 Route::middleware('guest')->group(function () {
@@ -187,10 +187,10 @@ Route::middleware('auth')->group(function () {
 Route::prefix('/')->group(function () {
     // Halaman utama pengaduan BK
     Route::get('/bk', [BKController::class, 'index'])->name('bk-complaint.index');
-    
+
     // Route untuk pengaduan notes
     Route::post('/bk/store', [BKController::class, 'store'])->name('bk-complaint.store');
-    
+
     // Route untuk appointment (online & offline)
     Route::post('/appointment/store', [BKAppointmentController::class, 'store'])->name('bk-appointment.store');
 });
