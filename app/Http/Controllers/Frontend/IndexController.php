@@ -17,6 +17,7 @@ use App\Models\User;
 use App\Models\Video;
 use App\Models\Visimisi;
 use Carbon\Carbon;
+use App\Models\Gallery;
 
 class IndexController extends Controller
 {
@@ -158,4 +159,18 @@ class IndexController extends Controller
         $visimisi = Visimisi::first();
         return view('frontend.content.visimisi', compact('visimisi','jurusanM','kegiatanM','pengajar','footer'));
     }
+
+    // Galeri
+    public function gallery()
+{
+    // Menu
+    $jurusanM = Jurusan::all();
+    $kegiatanM = Kegiatan::all();
+    // Footer
+    $footer = Footer::first();
+    // Data Galeri
+    $galleries = Gallery::orderBy('created_at', 'desc')->paginate(12);
+
+    return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer'));
+}
 }
