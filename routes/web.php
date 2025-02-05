@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\Pengguna\MuridController;
+use App\Http\Controllers\Backend\Pengguna\PengajarController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Backend\Website\KelasController;
 use Illuminate\Support\Facades\Route;
@@ -130,6 +131,8 @@ Route::middleware('auth')->group(function () {
 
     /// CHANGE PASSWORD
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
+
+    Route::get('/murid-ajar', [PengajarController::class, 'murid_ajar']);
 
     Route::prefix('/')->middleware('role:Admin')->group(function () {
         ///// WEBSITE \\\\\

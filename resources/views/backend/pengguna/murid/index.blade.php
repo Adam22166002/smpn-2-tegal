@@ -64,6 +64,8 @@ Murid
                                                 <th>NISN</th>
                                                 <th>Email</th>
                                                 <th>Jenis Kelamin</th>
+                                                <th>Kelas Ke</th>
+                                                <th>Nama Kelas</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -83,6 +85,8 @@ Murid
                                                 <td> {{$userDetail->nisn}} </td>
                                                 <td> {{$user->email}} </td>
                                                 <td> {{$userDetail->jenis_kelamin}} </td>
+                                                <td> {{$userDetail->kelas}} </td>
+                                                <td> {{$userDetail->nama_kelas}} </td>
                                                 <td> {{$user->status}} </td>
                                                 <td>
                                                     <div class="d-flex">

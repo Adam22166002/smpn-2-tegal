@@ -16,8 +16,10 @@ class CreateDataMuridsTable extends Migration
         Schema::create('data_murids', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('nis')->nullable();
-            $table->bigInteger('nisn')->nullable();
+            $table->integer('kelas')->nullable();
+            $table->string('nama_kelas')->nullable();
+            $table->string('nis')->nullable();
+            $table->string('nisn')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->enum('agama', ['Islam', 'Kristen Katolik', 'Kristen Protestan', 'Hindu', 'Budha', 'Konghucu'])->nullable();

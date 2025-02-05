@@ -11,4 +11,9 @@ class UsersDetail extends Model
 
     protected $table = 'users_details';
     protected $guarded = [];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -208,22 +208,13 @@
             @elseif(Auth::user()->role == 'Guru')
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="credit-card"></i>
-                    <span class="menu-title text-truncate" data-i18n="Card">Data Murid</span>
+                    <span class="menu-title text-truncate" data-i18n="Card">Manajemen</span>
                 </a>
                 <ul class="menu-content">
                     <li>
-                        <a class="d-flex align-items-center" href=""><i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Kelas X</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href=""><i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Kelas XI</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href=""><i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Kelas XII</span>
+                        <a class="d-flex align-items-center" href="{{ url('murid-ajar') }}"><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Murid Ajar</span>
                         </a>
                     </li>
                 </ul>
