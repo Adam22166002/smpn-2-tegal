@@ -21,9 +21,11 @@ Dashboard
                             </div>
                         </div>
                         <div class="text-center">
-                            <h1 class="mb-1 text-white">Welcome {{Auth::user()->name}},</h1>
+                            <h3 class="mb-1 text-white">Selamat Datang {{Auth::user()->name}},</h3>
                             <p class="card-text m-auto w-75">
-                                Have fun your day :)
+                                {{ $mengajarKelas->nama_kelas ?? 'Have fun day' }}
+                                {{ $mengajarKelas->kelas ?? '' }}
+
                             </p>
                         </div>
                     </div>

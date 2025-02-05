@@ -6,6 +6,7 @@ use App\Models\dataMurid;
 use App\Models\Events;
 use App\Models\User;
 use App\Models\Berita;
+use App\Models\UsersDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,9 +85,17 @@ class HomeController extends Controller
         return view('murid::index', compact('event', 'lateness', 'pinjam'));
       } elseif ($role == 'Guru' || $role == 'Staf') {
 
+        $user_id = Auth::user()->id;
+
+        $mengajarKelas = UsersDetail::select(
+          'users_details.kelas',
+          'users_details.nama_kelas'
+        )
+          ->where('user_id', $user_id)->first();
+
         $event = Events::where('is_active', '0')->first();
 
-        return view('backend.website.home', compact('event'));
+        return view('backend.website.home', compact('event', 'mengajarKelas'));
       }
       // DASHBOARD PPDB & PENDAFTAR \\
       elseif ($role == 'Guest' || $role == 'PPDB') {

@@ -52,6 +52,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function detailGuru()
+    {
+        return $this->hasMany(UsersDetail::class);
+    }
+
     public function dataMurid()
     {
         return $this->hasMany(DataMurid::class);
