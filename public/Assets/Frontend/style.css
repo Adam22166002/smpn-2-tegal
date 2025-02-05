@@ -10532,13 +10532,11 @@ ul.course-feature2 li:before {
     color: skyblue;
 }
 
+
+
 @keyframes autoScroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 .news-event-area {
     justify-content: center;
@@ -10565,15 +10563,14 @@ ul.course-feature2 li:before {
 .news-carousel {
     position: relative;
     overflow: hidden;
-    width: calc(
-        3 * 380px + 2 * 20px
-    ); /* Lebar 3 kartu dan 2 margin antar kartu */
+    width: calc(3 * 380px + 2 * 20px); /* Lebar 3 kartu dan 2 margin antar kartu */
     margin-top: 20px;
     background-color: #ffffff;
     display: flex;
     justify-content: center;
     max-width: 100%;
 }
+
 
 .news-track {
     display: flex;
@@ -10660,35 +10657,22 @@ ul.course-feature2 li:before {
 }
 
 .row.news-box-row {
-    display: flex;
-    flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
 }
 
-.row {
-    gap: 15px; /* Jarak antara img dan teks */
-}
-.event-terbaru {
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
+.event-terbaru .single-item {
+display: flex;
+align-items: center; /* Menjadikan elemen sejajar secara vertikal */
+gap: 15px; /* Jarak antara gambar dan konten */
 }
 
-.single-item {
-    display: flex;
-    align-items: center; /* Posisikan vertikal di tengah */
-    gap: 15px; /* Jarak antara img dan teks */
+.event-terbaru .item-img img {
+width: 150px; /* Sesuaikan ukuran gambar */
+height: auto; /* Agar gambar tidak terdistorsi */
+object-fit: cover; /* Menyesuaikan gambar */
 }
 
-.item-img img {
-    width: 150px; /* Sesuaikan ukuran gambar */
-    height: auto;
-}
-
-.item-content {
-    flex: 1; /* Biarkan konten mengambil sisa ruang */
-}
-
-.event-info-block {
-    display: flex;
-    justify-content: space-between;
+.event-terbaru .item-content {
+flex: 1; /* Memberikan ruang agar teks bisa menyesuaikan */
 }

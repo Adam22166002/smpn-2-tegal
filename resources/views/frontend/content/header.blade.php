@@ -77,7 +77,7 @@
                                             href=" {{route('berita')}} ">Berita Terkini</a></li>
                                     <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a
                                             href=" {{route('event')}} ">Event Terbaru</a></li>
-                                    <li><a href="#">Galeri Sekolah</a></li>
+                                    <li><a href="">Galeri Sekolah</a></li>
                                 </ul>
                             </li>
 
@@ -115,7 +115,7 @@
                                                 </a></li>
                                             @endforeach
                                         </ul>
-                                    </li> 
+                                    </li>
                                     <li class="has-child-menu"><a href="#">Kegiatan</a>
                                         <ul class="thired-level">
                                             @foreach ($kegiatanM as $kegiatans)

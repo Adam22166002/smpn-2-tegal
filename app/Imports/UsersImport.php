@@ -39,7 +39,9 @@ class UsersImport implements ToModel, WithHeadingRow
         dataMurid::create([
             'user_id' => $user->id,
             'nisn' => $nisn,
-            'jenis_kelamin' => $row['jenis_kelamin'],
+            'kelas' => $row['kelas'],
+            'nama_kelas' => strtolower($row['nama_kelas']),
+            'jenis_kelamin' => strtolower($row['jenis_kelamin']),
             'proses' => 'Murid'
         ]);
 
