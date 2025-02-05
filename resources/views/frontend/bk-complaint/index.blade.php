@@ -9,9 +9,14 @@
         <div class="welcome-section py-5" style="margin-top: 8rem; margin-bottom: 8rem;">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <h1 class="display-4 font-weight-bold mb-4">Layanan Bimbingan Konseling</h1>
-                        <p class="lead mb-4">Kami hadir untuk mendukung pengembangan diri dan kesejahteraan mental Anda. Konsultasikan setiap masalah Anda dengan tim BK yang profesional dan terpercaya.</p>
+                    <div class="col-lg-7">
+                    <h1 class="display-4 font-weight-bold mb-4">
+                        Layanan <span style="color: #007bff;">BK</span><br>
+                        <span>Bimbingan Konseling</span>
+                    </h1>
+                    <p class="lead mb-4 border-left" style="padding-left: 5px; ;border-left: 4px solid #007bff;">
+                        Kami hadir untuk mendukung pengembangan diri dan kesejahteraan mental Anda. Konsultasikan setiap masalah Anda dengan Guru BK yang siap membantu kapanpun dan menjadi teman Anda.
+                    </p>
                         <div class="d-flex" style="margin-top: 6rem;">
                             <a href="#layanan" class="btn btn-primary btn-lg px-4 rounded-pill scroll-link">
                                 <li class="fas fa-comment-dots"></li> Mulai Konsultasi
@@ -21,14 +26,14 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-none d-lg-block">
+                    <div class="col-lg-5 d-none d-lg-block">
                         <img src="{{ asset('Assets/Frontend/img/konseling.jpg') }}" alt="Counseling" class="img-fluid">
                     </div>
                 </div>
             </div>
         
             <!-- status section -->
-            <div class="text-white py-5" style="margin-top: 8rem; margin-bottom: 4rem;">
+            <div id="info" class="text-white py-5" style="margin-top: 8rem; margin-bottom: 4rem;">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-6 col-md-3 mb-5">
@@ -53,7 +58,7 @@
         </div>
 
         <!-- informasi section -->
-    <section id="info" class="bg-light py-5" style="margin-bottom: 8rem; margin-top: 4rem;">
+    <section id="" class="bg-light py-5" style="margin-bottom: 8rem; margin-top: 4rem;">
         <div class="container" style="margin-bottom: 8rem;">
             <div class="text-center mb-5" style="margin-bottom: 3rem;">
                 <h2 class="section-title mb-3">Mengapa Memilih Layanan BK Kami?</h2>
@@ -62,7 +67,7 @@
 
                 <div class="row">
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0 text-center">
+                        <div class="card h-100 shadow-sm border-0 text-center border-bottom border-top" style="border-bottom: 4px solid #007bff; border-top: 4px solid #007bff;">
                             <div class="card-body">
                                 <div class="mb-4" style="margin-top: 3rem;">
                                     <i class="fas fa-shield-alt text-primary fa-3x"></i>
@@ -74,7 +79,7 @@
                     </div>
                     
                     <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0 text-center">
+                        <div class="card h-100 shadow-sm border-0 text-center border-bottom border-top" style="border-bottom: 4px solid #007bff; border-top: 4px solid #007bff;">
                             <div class="card-body">
                                 <div class="mb-4" style="margin-top: 3rem;">
                                     <i class="fas fa-user-tie text-primary fa-3x"></i>
@@ -86,7 +91,7 @@
                     </div>
                     
                     <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0 text-center">
+                        <div class="card h-100 shadow-sm border-0 text-center border-bottom border-top" style="border-bottom: 4px solid #007bff; border-top: 4px solid #007bff;">
                             <div class="card-body">
                                 <div class="mb-4" style="margin-top: 3rem;">
                                     <i class="fas fa-comments text-primary fa-3x"></i>
@@ -156,61 +161,63 @@
         </div>
     </section>
 
-        <!-- faq section -->
-    <section class="bg-light py-5" style="margin-top: 8rem; margin-bottom: 8rem;">
+    <!-- FAQ Section -->
+    <section class="py-5" style="margin-top: 8rem; margin-bottom: 8rem; background-color: #f8f9fa;">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Pertanyaan Yang Sering Diajukan</h2>
+                <h2 class="fw-bold">Pertanyaan yang Sering Diajukan</h2>
+                <p class="text-muted">Temukan jawaban dari pertanyaan umum terkait layanan kami.</p>
             </div>
-
+            
             <div class="accordion" id="faqAccordion">
+                
                 <div class="card">
                     <div class="card-header" id="faqHeading1">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faq1">
-                                Apakah layanan konseling ini berbayar?
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                <i class="bi bi-question-circle me-2"></i> Apakah layanan konseling ini berbayar?
                             </button>
                         </h2>
                     </div>
-
-                    <div id="faq1" class="collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                    <div id="faq1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
                         <div class="card-body">
                             Tidak, semua layanan konseling BK sekolah diberikan secara gratis untuk seluruh siswa.
                         </div>
                     </div>
                 </div>
+                
                 <div class="card">
-                        <div class="card-header" id="faqTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-                                    Berapa lama waktu konsultasi yang diberikan?
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="faqCollapseTwo" class="collapse" aria-labelledby="faqTwo" data-parent="#faqAccordion">
-                            <div class="card-body">
-                                Setiap sesi konsultasi berlangsung sekitar 45-60 menit.
-                            </div>
-                        </div>
-                </div>
-                <div class="card">
-                        <div class="card-header" id="faqThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link " type="button" data-toggle="collapse" data-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
-                                    Apakah saya bisa memilih konselor?
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="faqCollapseThree" class="collapse" aria-labelledby="faqThree" data-parent="#faqAccordion">
-                            <div class="card-body">
-                                Ya, Anda dapat memilih konselor yang Anda inginkan saat membuat janji konsultasi offline.
-                            </div>
+                    <div class="card-header" id="faqHeading2">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                <i class="bi bi-clock me-2"></i> Berapa lama waktu konsultasi yang diberikan?
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="faq2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Setiap sesi konsultasi berlangsung sekitar 45-60 menit.
                         </div>
                     </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header" id="faqHeading3">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                <i class="bi bi-person-check me-2"></i> Apakah saya bisa memilih konselor?
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="faq3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Ya, Anda dapat memilih konselor yang Anda inginkan saat membuat janji konsultasi offline.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- modal notes -->
     <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -556,6 +563,7 @@
             }
         </style>
         @endpush
+        
 
     @endsection
 @endsection

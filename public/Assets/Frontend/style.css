@@ -1104,11 +1104,11 @@ h2.sidebar-title:before {
     transition: background-color 0.3s ease;
     display: inline-block;
     font-weight: 400;
-    color: #337ab7; /* Warna teks biru */
+    color: #007bff; /* Warna teks biru */
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    border: 1px solid #337ab7; /* Warna border biru */
+    border: 1px solid #007bff; /* Warna border biru */
     background-color: transparent; /* Latar belakang transparan */
     font-size: 1.2rem;
     line-height: 1.5;
@@ -1120,15 +1120,15 @@ h2.sidebar-title:before {
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
     color: #fff; /* Warna teks putih saat hover */
-    background-color: #337ab7; /* Latar belakang biru saat hover */
-    border-color: #337ab7; /* Border biru saat hover */
+    background-color: #007bff; /* Latar belakang biru saat hover */
+    border-color: #007bff; /* Border biru saat hover */
     text-decoration: none;
 }
 
 .btn-outline-primary:active {
     color: #fff;
-    background-color: #337ab7; /* Latar belakang biru lebih gelap saat klik */
-    border-color: #337ab7;
+    background-color: #007bff; /* Latar belakang biru lebih gelap saat klik */
+    border-color: #007bff;
 }
 
 /* Gaya untuk disabled button */
@@ -10623,7 +10623,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary {
-    background-color: #3498db;
+    background-color: #007bff;
     border: none;
     border-radius: 25px;
     padding: 8px 20px;
@@ -10639,7 +10639,7 @@ ul.course-feature2 li:before {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background-color: #3498db;
+    background-color: #007bff;
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
