@@ -43,16 +43,16 @@ Pengajar
                                             href=" {{route('backend-pengguna-pengajar.create')}} "
                                             class="btn btn-primary">Tambah</a> </h4>
                                 </div>
-                                <div class="card-datatable">
-                                    <table class="dt-responsive table">
+                                <div class="card-datatable table-responsive mt-2 ">
+                                    <table class="table table-bordered" id="table">
                                         <thead>
                                             <tr>
-                                                <th></th>
                                                 <th>No</th>
-                                                <th>Nama Pengajar</th>
-                                                <th>Mata Pelajaran</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
                                                 <th>NIP</th>
-                                                <th>Email Pengajar</th>
+                                                <th>Mata Pelajaran</th>
+                                                <th>Mengajar Kelas</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -66,12 +66,13 @@ Pengajar
                                             @foreach ($pengajar as $guru)
                                             @if ($guru->userDetail)
                                             <tr>
-                                                <td></td>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $guru->name }}</td>
-                                                <td>{{ $guru->userDetail->mengajar }}</td>
-                                                <td>{{ $guru->userDetail->nip }}</td>
                                                 <td>{{ $guru->email }}</td>
+                                                <td>{{ $guru->userDetail->nip }}</td>
+                                                <td>{{ $guru->userDetail->mengajar }}</td>
+                                                <td>{{ $guru->userDetail->nama_kelas }}
+                                                </td>
                                                 <td>{{ $guru->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif' }}</td>
                                                 <td>
                                                     <div class="d-flex">

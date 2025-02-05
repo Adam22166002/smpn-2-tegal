@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend\Pengguna;
 
 use App\Http\Controllers\Controller;
+use App\Models\dataMurid;
 use App\Models\User;
 use App\Models\UsersDetail;
+use App\Models\Kelas;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +33,8 @@ class PengajarController extends Controller
      */
     public function create()
     {
-        return view('backend.pengguna.pengajar.create');
+        $kelas = Kelas::all();
+        return view('backend.pengguna.pengajar.create', compact('kelas'));
     }
 
     /**
@@ -91,6 +95,8 @@ class PengajarController extends Controller
                 $userDetail->user_id      = $user->id;
                 $userDetail->role         = $user->role;
                 $userDetail->mengajar     = $request->mengajar;
+                $userDetail->kelas        = $request->kelas;
+                $userDetail->nama_kelas   = $request->nama_kelas;
                 $userDetail->nip          = $request->nip;
                 $userDetail->is_active = 1;
                 $userDetail->save();
@@ -125,7 +131,8 @@ class PengajarController extends Controller
     public function edit($id)
     {
         $pengajar = User::with('userDetail')->where('role', 'Guru')->find($id);
-        return view('backend.pengguna.pengajar.edit', compact('pengajar'));
+        $kelas = Kelas::all();
+        return view('backend.pengguna.pengajar.edit', compact('pengajar', 'kelas'));
     }
 
     /**
@@ -168,7 +175,6 @@ class PengajarController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->status = $request->status;
-        $user->password = bcrypt('Guru123');
 
         // Cek apakah ada file baru diunggah
         if ($request->hasFile('foto_profile')) {
@@ -194,13 +200,9 @@ class PengajarController extends Controller
             $userDetail->is_active    = $user->status == 'Aktif' ? '0' : '1';
             $userDetail->mengajar     = $request->mengajar;
             $userDetail->nip          = $request->nip;
+            $userDetail->kelas        = $request->kelas;
+            $userDetail->nama_kelas   = $request->nama_kelas;
             $userDetail->email        = $request->email;
-            $userDetail->linkidln     = $request->linkidln;
-            $userDetail->instagram    = $request->instagram;
-            $userDetail->website      = $request->website;
-            $userDetail->facebook     = $request->facebook;
-            $userDetail->twitter      = $request->twitter;
-            $userDetail->youtube      = $request->youtube;
             $userDetail->save();
         }
 
@@ -224,5 +226,20 @@ class PengajarController extends Controller
 
         Session::flash('success', 'Data pengajar berhasil di hapus!');
         return redirect()->route('backend-pengguna-pengajar.index');
+    }
+
+    public function murid_ajar()
+    {
+        $guru_id = Auth::user()->id;
+        $guru = User::where('id', $guru_id)->first();
+        $guruMengajar = UsersDetail::where('user_id', $guru->id)->first();
+        $murid = User::whereHas('dataMurid', function ($query) use ($guruMengajar) {
+            $query->where('kelas', $guruMengajar->kelas)
+                ->where('nama_kelas', $guruMengajar->nama_kelas);
+        })
+            ->with('dataMurid')
+            ->get();
+
+        return view('backend.pengguna.pengajar.murid-ajar', compact('murid'));
     }
 }

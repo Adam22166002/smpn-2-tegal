@@ -16,9 +16,11 @@ class CreateUsersDetailsTable extends Migration
         Schema::create('users_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('role',['Admin','Guru','Staf','Murid','Orang Tua','Alumni','Guest']);
+            $table->enum('role', ['Admin', 'Guru', 'Staf', 'Murid', 'Orang Tua', 'Alumni', 'Guest']);
             $table->string('mengajar')->nullable();
-            $table->bigInteger('nip')->nullable();
+            $table->integer('kelas')->nullable();
+            $table->string('nama_kelas')->nullable();
+            $table->string('nip')->nullable();
             $table->string('email')->nullable();
             $table->string('linkidln')->nullable();
             $table->string('instagram')->nullable();
@@ -26,7 +28,7 @@ class CreateUsersDetailsTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
             $table->string('website')->nullable();
-            $table->enum('is_active',[0,1])->default(0);
+            $table->enum('is_active', [0, 1])->default(0);
             $table->timestamps();
         });
     }
