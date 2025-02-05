@@ -602,3 +602,21 @@ document.addEventListener('DOMContentLoaded', () => {
         autoScrollInterval = setInterval(autoScroll, 3000);
     });
 });
+
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Parallax effect for header
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    const scrolled = window.pageYOffset;
+    header.style.transform = `translateY(${scrolled * 0.5}px)`;
+});

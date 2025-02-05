@@ -50,6 +50,10 @@ Route::get('berita/{slug}', [App\Http\Controllers\Frontend\IndexController::clas
 Route::get('event/{slug}', [App\Http\Controllers\Frontend\IndexController::class, 'detailEvent'])->name('detail.event');
 Route::get('event', [App\Http\Controllers\Frontend\IndexController::class, 'events'])->name('event');
 
+/// GALERI \\\
+Route::get('gallery', [App\Http\Controllers\Frontend\IndexController::class, 'gallery'])->name('gallery');
+
+
 
 Auth::routes(['register' => false]);
 
