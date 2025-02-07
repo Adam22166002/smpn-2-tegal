@@ -30,3 +30,4 @@
 <script src="{{asset('Assets/Frontend/js/jquery.gridrotator.js')}}" type="text/javascript"></script>
 <!-- Custom Js -->
 <script src="{{asset('Assets/Frontend/js/main.js')}}" type="text/javascript"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">

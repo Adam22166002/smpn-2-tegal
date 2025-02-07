@@ -1336,32 +1336,32 @@ mark {
     color: #777
 }
 .text-primary {
-    color: #337ab7
+    color: #007bff
 }
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #286090
+    color: #007bff
 }
 .text-success {
-    color: #3c763d
+    color: #399e3b
 }
 a.text-success:focus,
 a.text-success:hover {
-    color: #2b542c
+    color: #348135
 }
 .text-info {
-    color: #31708f
+    color: #61caff
 }
 a.text-info:focus,
 a.text-info:hover {
-    color: #245269
+    color: #3aaae2
 }
 .text-warning {
-    color: #8a6d3b
+    color: #fffb04
 }
 a.text-warning:focus,
 a.text-warning:hover {
-    color: #66512c
+    color: #ddd903
 }
 .text-danger {
     color: #a94442
@@ -3207,19 +3207,19 @@ fieldset[disabled] .btn-default:hover {
 }
 .btn-primary {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4
+    background-color: #007bff;
+    border-color: #007bff
 }
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
-    background-color: #286090;
-    border-color: #122b40
+    background-color: #007bff;
+    border-color: #007bff
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: #286090;
-    border-color: #204d74
+    background-color: #007bff;
+    border-color: #007bff
 }
 .btn-primary.active,
 .btn-primary:active,
