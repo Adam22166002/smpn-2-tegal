@@ -180,13 +180,13 @@
                                     type="button" data-toggle="collapse" data-target="#faq1" 
                                     aria-expanded="true" aria-controls="faq1"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between;">
-                                    <span>Apakah layanan konseling ini berbayar?</span>
+                                    <span>Apa itu Layanan BK?</span>
                                     <i class="bi bi-chevron-down"></i>
                             
                         </h2>
                         <div id="faq1" class="collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
                             <div class="card-body" style="padding-left: 1rem;">
-                                Tidak, semua layanan konseling BK sekolah diberikan secara gratis untuk seluruh siswa
+                                Layanan pengaduan siswa ke guru BK untuk sarana bagi siswa untuk melaporkan masalah pribadi, akademik, maupun sosial yang mereka hadapi di lingkungan sekolah. Guru BK akan membantu mencari solusi terbaik sesuai dengan kebutuhan siswa.
                             </div>
                         </div>
                 </div>
@@ -196,12 +196,17 @@
                                     type="button" data-toggle="collapse" data-target="#faq2" 
                                     aria-expanded="false" aria-controls="faq2"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-                                    <span>Berapa lama waktu konsultasi yang diberikan?</span>
+                                    <span>Masalah apa saja yang bisa saya adukan melalui layanan ini?</span>
                                     <i class="bi bi-chevron-down"></i>
                         </h2>
                     <div id="faq2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
                         <div class="card-body" style="padding-left: 1rem;">
-                            Setiap sesi konsultasi berlangsung sekitar 45-60 menit
+                        Anda bisa mengadukan berbagai masalah, seperti:
+                        <div>> Perundungan (bullying) di sekolah</div>
+                        <div>> Masalah pertemanan atau keluarga</div>
+                        <div>> Kesulitan belajar atau akademik</div>
+                        <div>> Tekanan emosional atau stres</div>
+                        <div>> Masalah kepercayaan diri dan motivasi</div>
                         </div>
                     </div>
                 </div>
@@ -211,12 +216,120 @@
                                     type="button" data-toggle="collapse" data-target="#faq3" 
                                     aria-expanded="false" aria-controls="faq3"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-                                    <span>Apakah saya bisa memilih Guru konselor?</span>
+                                    <span>Apakah pengaduan saya akan dirahasiakan?</span>
                                     <i class="bi bi-chevron-down"></i>
                         </h2>
                     <div id="faq3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
                         <div class="card-body" style="padding-left: 1rem;">
-                            Ya, Anda dapat memilih Guur konselor yang Anda inginkan saat membuat janji konsultasi offline
+                        Ya, semua pengaduan yang Anda sampaikan bersifat rahasia. Guru BK memiliki kode etik untuk menjaga privasi siswa dan hanya akan membagikan informasi dengan pihak terkait jika diperlukan dan dengan izin siswa.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading4"
+                                    type="button" data-toggle="collapse" data-target="#faq4" 
+                                    aria-expanded="false" aria-controls="faq4"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Bagaimana cara saya mengajukan pengaduan?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq4" class="collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Anda dapat mengajukan pengaduan dengan beberapa cara:
+                        <div>1. Mengisi formulir pengaduan online di website ini</div>
+                        <div>2. Datang langsung ke ruang BK dan berbicara dengan guru BK</div>
+                        <div>3. Menghubungi guru BK melalui email atau nomor kontak yang tersedia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading5"
+                                    type="button" data-toggle="collapse" data-target="#faq5" 
+                                    aria-expanded="false" aria-controls="faq5"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Apakah saya bisa mengadukan masalah orang lain?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq5" class="collapse" aria-labelledby="faqHeading5" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Ya, jika Anda mengetahui ada teman yang mengalami kesulitan atau menjadi korban perundungan, Anda bisa melaporkannya kepada guru BK. Namun, kami tetap akan melakukan verifikasi terlebih dahulu untuk memastikan kebenaran laporan tersebut.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading6"
+                                    type="button" data-toggle="collapse" data-target="#faq6" 
+                                    aria-expanded="false" aria-controls="faq6"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Apakah saya bisa mendapatkan solusi langsung setelah mengadu?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq6" class="collapse" aria-labelledby="faqHeading6" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Tergantung pada kompleksitas masalahnya. Untuk masalah sederhana, guru BK bisa memberikan solusi atau saran langsung. Namun, jika masalahnya lebih mendalam, guru BK mungkin akan mengatur sesi konseling lebih lanjut untuk membantu menemukan solusi terbaik.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading7"
+                                    type="button" data-toggle="collapse" data-target="#faq7" 
+                                    aria-expanded="false" aria-controls="faq7"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Apakah ada biaya untuk menggunakan layanan ini?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq7" class="collapse" aria-labelledby="faqHeading7" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Tidak. Layanan pengaduan dan konseling dari guru BK ini sepenuhnya gratis untuk semua siswa.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading8"
+                                    type="button" data-toggle="collapse" data-target="#faq8" 
+                                    aria-expanded="false" aria-controls="faq8"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Bagaimana jika saya takut atau ragu untuk melapor?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq8" class="collapse" aria-labelledby="faqHeading8" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Kami memahami bahwa mengungkapkan masalah tidak selalu mudah. Namun, layanan ini ada untuk membantu Anda. Jika ragu, Anda bisa mencoba mengirim pengaduan secara anonim atau berbicara secara informal terlebih dahulu dengan guru BK.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading9"
+                                    type="button" data-toggle="collapse" data-target="#faq9" 
+                                    aria-expanded="false" aria-controls="faq9"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Apakah saya bisa konsultasi masalah saya ada di luar sekolah?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq9" class="collapse" aria-labelledby="faqHeading9" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Ya, guru BK dapat membantu memberikan arahan atau referensi kepada pihak yang lebih kompeten jika masalah Anda membutuhkan bantuan lebih lanjut, seperti psikolog profesional atau lembaga terkait lainnya.
+                        </div>
+                    </div>
+                </div>
+            
+                <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
+                        <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading10"
+                                    type="button" data-toggle="collapse" data-target="#faq10" 
+                                    aria-expanded="false" aria-controls="faq10"
+                                    style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>Berapa lama waktu untuk mendapatkan respons dari guru BK?</span>
+                                    <i class="bi bi-chevron-down"></i>
+                        </h2>
+                    <div id="faq10" class="collapse" aria-labelledby="faqHeading10" data-parent="#faqAccordion">
+                        <div class="card-body" style="padding-left: 1rem;">
+                        Kami berusaha untuk merespons setiap pengaduan secepat mungkin, biasanya dalam waktu 1-2 hari kerja. Jika kasusnya mendesak, kami akan menanganinya dengan prioritas lebih tinggi.
                         </div>
                     </div>
                 </div>
@@ -527,7 +640,6 @@
                 margin-bottom: 10px;
                 border-radius: 10px;
                 overflow: hidden;
-                text
             }
 
             .accordion .card-header {
