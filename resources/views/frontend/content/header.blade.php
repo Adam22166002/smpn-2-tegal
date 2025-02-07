@@ -83,7 +83,7 @@
                             </li>
 
                             <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
-                            <li><a href="#">Rapot</a></li>
+                            <li><a href="{{ route('rapot') }}">Rapot</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -54,6 +54,8 @@ Route::get('event', [App\Http\Controllers\Frontend\IndexController::class, 'even
 /// GALERI \\\
 Route::get('gallery', [App\Http\Controllers\Frontend\IndexController::class, 'gallery'])->name('gallery');
 
+/// RAPOT \\\
+Route::get('rapot', [App\Http\Controllers\Frontend\IndexController::class, 'rapot'])->name('rapot');
 
 
 Auth::routes(['register' => false]);
