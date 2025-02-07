@@ -187,5 +187,11 @@ public function gallery(Request $request)
     return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer', 'categories', 'category'));
 }
 
-
+    public function rapot()
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
+        return view('frontend.content.rapot', compact('jurusanM', 'kegiatanM', 'footer'));
+    }
 }
