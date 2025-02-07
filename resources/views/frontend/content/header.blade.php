@@ -77,12 +77,13 @@
                                             href=" {{route('berita')}} ">Berita Terkini</a></li>
                                     <li class="{{ (request()->is('event')) ? 'active' : '' }}"><a
                                             href=" {{route('event')}} ">Event Terbaru</a></li>
-                                    <li><a href="">Galeri Sekolah</a></li>
+                                    <li class="{{ (request()->is('gallery')) ? 'active' : '' }}"><a
+                                        href="{{ route('gallery') }}">Galeri Sekolah</a></li>
                                 </ul>
                             </li>
 
                             <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
-                            <li><a href="#">Rapot</a></li>
+                            <li><a href="{{ route('rapot') }}">Rapot</a></li>
                         </ul>
                     </nav>
                 </div>

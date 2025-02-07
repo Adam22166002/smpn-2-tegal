@@ -17,6 +17,8 @@ use App\Models\User;
 use App\Models\Video;
 use App\Models\Visimisi;
 use Carbon\Carbon;
+use App\Models\Gallery;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -157,5 +159,39 @@ class IndexController extends Controller
 
         $visimisi = Visimisi::first();
         return view('frontend.content.visimisi', compact('visimisi','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
+    // Galeri
+
+public function gallery(Request $request)
+{
+    $jurusanM = Jurusan::all();
+    $kegiatanM = Kegiatan::all();
+    $footer = Footer::first();
+
+    $category = $request->query('category');
+
+    $query = Gallery::orderBy('created_at', 'desc');
+
+    if ($category) {
+        $query->where('category', $category);
+    }
+
+    $galleries = $query->paginate(12);
+
+    $categoriesRaw = DB::select("SHOW COLUMNS FROM gallery WHERE Field = 'category'")[0]->Type;
+
+    preg_match_all("/'([^']+)'/", $categoriesRaw, $matches);
+    $categories = $matches[1];
+
+    return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer', 'categories', 'category'));
+}
+
+    public function rapot()
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
+        return view('frontend.content.rapot', compact('jurusanM', 'kegiatanM', 'footer'));
     }
 }

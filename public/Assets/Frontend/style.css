@@ -1104,11 +1104,11 @@ h2.sidebar-title:before {
     transition: background-color 0.3s ease;
     display: inline-block;
     font-weight: 400;
-    color: #337ab7; /* Warna teks biru */
+    color: #007bff; /* Warna teks biru */
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    border: 1px solid #337ab7; /* Warna border biru */
+    border: 1px solid #007bff; /* Warna border biru */
     background-color: transparent; /* Latar belakang transparan */
     font-size: 1.2rem;
     line-height: 1.5;
@@ -1120,15 +1120,15 @@ h2.sidebar-title:before {
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
     color: #fff; /* Warna teks putih saat hover */
-    background-color: #337ab7; /* Latar belakang biru saat hover */
-    border-color: #337ab7; /* Border biru saat hover */
+    background-color: #007bff; /* Latar belakang biru saat hover */
+    border-color: #007bff; /* Border biru saat hover */
     text-decoration: none;
 }
 
 .btn-outline-primary:active {
     color: #fff;
-    background-color: #337ab7; /* Latar belakang biru lebih gelap saat klik */
-    border-color: #337ab7;
+    background-color: #007bff; /* Latar belakang biru lebih gelap saat klik */
+    border-color: #007bff;
 }
 
 /* Gaya untuk disabled button */
@@ -10620,7 +10620,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary {
-    background-color: #3498db;
+    background-color: #007bff;
     border: none;
     border-radius: 25px;
     padding: 8px 20px;
@@ -10636,7 +10636,7 @@ ul.course-feature2 li:before {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background-color: #3498db;
+    background-color: #007bff;
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
@@ -10676,3 +10676,98 @@ object-fit: cover; /* Menyesuaikan gambar */
 .event-terbaru .item-content {
 flex: 1; /* Memberikan ruang agar teks bisa menyesuaikan */
 }
+
+.header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.header h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.gallery {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 33, 71, 0.8);
+    padding: 20px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+.overlay h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: white; /* Mengubah warna teks menjadi putih */
+}
+.overlay p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+}
+@media (max-width: 768px) {
+    .gallery {
+        padding: 10px;
+        gap: 10px;
+    }
+    .header h2 {
+        font-size: 2em;
+    }
+}
+
+
+.category-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #ddd;
+            color: #333;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .category-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .category-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
