@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Kelas
+Mata Pelajaran
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Kelas
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Daftar Kelas</h2>
+                    <h2> Daftar Mata Pelajaran</h2>
                 </div>
             </div>
         </div>
@@ -41,14 +41,12 @@ Kelas
                             <div class="card">
                                 <div
                                     class="card-header border-bottom d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title mb-0">Kelas</h4>
+                                    <h4 class="card-title mb-0">Mata Pelajaran</h4>
 
-                                    <div class="d-flex align-items-center">
-                                        <a href="{{ route('backend-kelas.create') }}"
-                                            class="btn btn-primary mr-2">Tambah</a>
+                                    <div class="d-flex align-items-center mt-1 mb-1">
 
-                                        <form id="importForm" action="{{ url('importExcelKelas') }}" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form id="importForm" action="{{ url('importExcelMataPelajaran') }}"
+                                            method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <label for="fileInput" class="btn btn-success d-inline">
                                                 <img src="{{ asset('Assets/Backend/images/excel.png') }}"
@@ -66,8 +64,8 @@ Kelas
                                             <tr>
                                                 <th></th>
                                                 <th>No</th>
-                                                <th>Kelas</th>
-                                                <th>Nama Kelas</th>
+                                                <th>Nama</th>
+                                                <th>Kode Mata Pelajaran</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -78,23 +76,24 @@ Kelas
                                             $no = 1;
                                             @endphp
 
-                                            @foreach($kelas as $item)
+                                            @foreach($mata_pelajaran as $item)
                                             <tr>
                                                 <td></td>
                                                 <td> {{ $no++ }}</td>
-                                                <td>{{ $item->kelas }}</td>
-                                                <td> {{ $item->nama_kelas}} </td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td> {{ $item->kode}} </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('backend-kelas.edit', $item->id) }}"
+                                                        <a href="{{ route('backend-mata-pelajaran.edit', $item->id) }}"
                                                             class="btn btn-success btn-sm mr-2">Edit</a>
 
-                                                        <form action="{{ route('backend-kelas.destroy', $item->id) }}"
+                                                        <form
+                                                            action="{{ route('backend-mata-pelajaran.destroy', $item->id) }}"
                                                             method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?')">
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus mata pelajaran ini?')">
                                                                 <i class="bi bi-trash-fill"></i> Delete
                                                             </button>
                                                         </form>

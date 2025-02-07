@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\dataMurid;
 use App\Models\User;
 use App\Models\UsersDetail;
+use App\Models\Absensi;
 use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -231,8 +233,13 @@ class PengajarController extends Controller
     public function murid_ajar()
     {
         $guru_id = Auth::user()->id;
-        $guru = User::where('id', $guru_id)->first();
-        $guruMengajar = UsersDetail::where('user_id', $guru->id)->first();
+        $guru = User::select('id')->where('id', $guru_id)->first();
+        $guruMengajar = UsersDetail::select(
+            'users_details.kelas',
+            'users_details.nama_kelas'
+        )
+            ->where('user_id', $guru->id)->first();
+
         $murid = User::whereHas('dataMurid', function ($query) use ($guruMengajar) {
             $query->where('kelas', $guruMengajar->kelas)
                 ->where('nama_kelas', $guruMengajar->nama_kelas);
@@ -241,5 +248,110 @@ class PengajarController extends Controller
             ->get();
 
         return view('backend.pengguna.pengajar.murid-ajar', compact('murid'));
+    }
+
+    public function absensi_murid()
+    {
+        $guru_id = Auth::user()->id;
+        $guru = User::select('id')->where('id', $guru_id)->first();
+        $guruMengajar = UsersDetail::select(
+            'users_details.kelas',
+            'users_details.nama_kelas'
+        )
+            ->where('user_id', $guru->id)->first();
+
+        $absensi = User::select('users.id', 'users.name', 'absensi.status', 'absensi.keterangan', 'absensi.tanggal')
+            ->join('data_murids', 'users.id', '=', 'data_murids.user_id')
+            ->leftJoin('absensi', 'users.id', '=', 'absensi.murid_id')
+            ->where('users.role', 'Murid')
+            ->where('data_murids.kelas', $guruMengajar->kelas)
+            ->where('data_murids.nama_kelas', $guruMengajar->nama_kelas)
+            ->get();
+
+        return view('backend.pengguna.pengajar.absensi', compact('absensi'));
+    }
+
+    public function proses_tambah_absensi(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'status' => 'required|max:10',
+                'keterangan' => 'max:255'
+            ],
+            [
+                'status.required' => 'Kehadiran tidak boleh kosong.',
+                'status.max' => 'Kehadiran tidak boleh lebih dari 10 karakter.',
+                'keterangan.max' => 'Keterangan tidak boleh lebih dari 255 karakter.'
+            ]
+        );
+
+        if ($validator->fails()) {
+            Session::flash('error', 'Pengisian kehadiran gagal di lakukan. Mohon coba lagi.');
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $user_id = Auth::user()->id;
+            $murid_id = trim($request->input('murid_id'));
+            $status = trim($request->input('status'));
+            $keterangan = trim($request->input('keterangan'));
+
+            $detail_guru = UsersDetail::select(
+                'users_details.user_id',
+                'users_details.mengajar'
+            )->where('user_id', $user_id)->first();
+
+            $mata_pelajaran_id = MataPelajaran::select('id')->where('nama', $detail_guru->mengajar)->first();
+
+            Absensi::create([
+                'status' => $status,
+                'keterangan' => ($keterangan != "" ? $keterangan : ""),
+                'murid_id' => $murid_id,
+                'guru_id' => $detail_guru->user_id,
+                'mata_pelajaran_id' => $mata_pelajaran_id->id,
+                'tanggal' => date('Y-m-d')
+            ]);
+
+            Session::flash('success', 'Berhasil menambahkan kehadiran.');
+            return redirect()->back();
+        }
+    }
+
+    public function proses_update_absensi(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'status' => 'required|max:10',
+                'keterangan' => 'max:255'
+            ],
+            [
+                'status.required' => 'Kehadiran tidak boleh kosong.',
+                'status.max' => 'Kehadiran tidak boleh lebih dari 10 karakter.',
+                'keterangan.max' => 'Keterangan tidak boleh lebih dari 255 karakter.'
+            ]
+        );
+
+        if ($validator->fails()) {
+            Session::flash('error', 'Update kehadiran gagal di lakukan. Mohon coba lagi.');
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $murid_id_old = $request->input('murid_id_old');
+            $status = trim($request->input('status'));
+            $keterangan = trim($request->input('keterangan'));
+
+            Absensi::where('murid_id', $murid_id_old)->update([
+                'status' => $status,
+                'keterangan' => $keterangan
+            ]);
+
+            Session::flash('success', 'Berhasil mengupdate kehadiran.');
+            return redirect()->back();
+        }
     }
 }

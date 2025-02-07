@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Backend\Website\BKAppointmentController;
 use App\Http\Controllers\Backend\Website\BKController;
 use App\Http\Controllers\Backend\Website\KelasController;
+use App\Http\Controllers\Backend\Website\MataPelajaranController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -141,8 +142,13 @@ Route::middleware('auth')->group(function () {
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
 
     Route::get('/murid-ajar', [PengajarController::class, 'murid_ajar']);
+    Route::get('/absensi', [PengajarController::class, 'absensi_murid']);
+    Route::post('/proses-tambah-absensi', [PengajarController::class, 'proses_tambah_absensi']);
+    Route::post('/proses-update-absensi', [PengajarController::class, 'proses_update_absensi']);
 
     Route::prefix('/')->middleware('role:Admin')->group(function () {
+
+
         ///// WEBSITE \\\\\
         Route::resources([
             /// PROFILE SEKOLAH \\
@@ -169,6 +175,8 @@ Route::middleware('auth')->group(function () {
             'backend-footer'    => Backend\Website\FooterController::class,
 
             'backend-gallery'    => Backend\Website\GalleryController::class,
+
+            'backend-mata-pelajaran' => Backend\Website\MataPelajaranController::class
         ]);
 
         ///// PENGGUNA \\\\\
@@ -190,6 +198,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/importExcelMurid', [MuridController::class, 'importExcelMurid']);
         Route::post('/importExcelKelas', [KelasController::class, 'importExcelKelas']);
+        Route::post('/importExcelMataPelajaran', [MataPelajaranController::class, 'importExcelMataPelajaran']);
     });
 });
 
