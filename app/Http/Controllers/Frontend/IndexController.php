@@ -18,6 +18,7 @@ use App\Models\Video;
 use App\Models\Visimisi;
 use Carbon\Carbon;
 use App\Models\Gallery;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -161,16 +162,30 @@ class IndexController extends Controller
     }
 
     // Galeri
-    public function gallery()
+
+public function gallery(Request $request)
 {
-    // Menu
     $jurusanM = Jurusan::all();
     $kegiatanM = Kegiatan::all();
-    // Footer
     $footer = Footer::first();
-    // Data Galeri
-    $galleries = Gallery::orderBy('created_at', 'desc')->paginate(12);
 
-    return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer'));
+    $category = $request->query('category');
+
+    $query = Gallery::orderBy('created_at', 'desc');
+
+    if ($category) {
+        $query->where('category', $category);
+    }
+
+    $galleries = $query->paginate(12);
+
+    $categoriesRaw = DB::select("SHOW COLUMNS FROM gallery WHERE Field = 'category'")[0]->Type;
+
+    preg_match_all("/'([^']+)'/", $categoriesRaw, $matches);
+    $categories = $matches[1];
+
+    return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer', 'categories', 'category'));
 }
+
+
 }
