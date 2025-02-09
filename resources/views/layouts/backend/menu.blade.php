@@ -229,6 +229,12 @@
                             <span class="menu-item text-truncate" data-i18n="Basic">Absensi</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('penilaian') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Penilaian</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

@@ -31,7 +31,7 @@ class MataPelajaranController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.website.mata-pelajaran.create');
     }
 
     /**
@@ -42,7 +42,43 @@ class MataPelajaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+            'kode' => 'required|max:10|unique:mata_pelajaran',
+            'waktu_masuk' => 'required|date_format:H:i',
+            'waktu_selesai' => 'required|date_format:H:i'
+        ], [
+            'nama.required' => 'Nama mata pelajaran tidak boleh kosong.',
+            'kode.required' => 'Kode mata pelajaran tidak boleh kosong.',
+            'kode.max' => 'Kode mata pelajaran tidak boleh lebih dari 10 karakter.',
+            'kode.unique' => 'Kode mata pelajaran sudah di gunakan.',
+            'waktu_masuk.required' => 'Waktu masuk tidak boleh kosong.',
+            'waktu_selesai.required' => 'Waktu selesai tidak boleh kosong.',
+            'waktu_masuk.date_format' => 'Jam waktu masuk tidak valid.',
+            'waktu_selesai.date_format' => 'Jam waktu selesai tidak valid.'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $request_nama_mata_pelajaran = trim($request->input('nama'));
+            $request_kode_mata_pelajaran = trim(ucwords($request->input('kode')));
+            $request_waktu_masuk = $request->input('waktu_masuk');
+            $request_waktu_selesai = $request->input('waktu_selesai');
+
+            MataPelajaran::create([
+                'nama' => $request_nama_mata_pelajaran,
+                'kode' => $request_kode_mata_pelajaran,
+                'waktu_masuk' => $request_waktu_masuk,
+                'waktu_selesai' => $request_waktu_selesai
+            ]);
+
+            Session::flash('success', 'Data mata pelajaran berhasil di tambahkan!');
+            return redirect()->route('backend-mata-pelajaran.index');
+        }
     }
 
     /**
@@ -80,11 +116,17 @@ class MataPelajaranController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'kode' => 'required|max:10'
+            'kode' => 'required|max:10',
+            'waktu_masuk' => 'required|date_format:H:i',
+            'waktu_selesai' => 'required|date_format:H:i'
         ], [
             'nama.required' => 'Nama mata pelajaran tidak boleh kosong.',
             'kode.required' => 'Kode mata pelajaran tidak boleh kosong.',
-            'kode.max' => 'Kode mata pelajaran tidak boleh lebih dari 10 karakter.'
+            'kode.max' => 'Kode mata pelajaran tidak boleh lebih dari 10 karakter.',
+            'waktu_masuk.required' => 'Waktu masuk tidak boleh kosong.',
+            'waktu_selesai.required' => 'Waktu selesai tidak boleh kosong.',
+            'waktu_masuk.date_format' => 'Jam waktu masuk tidak valid.',
+            'waktu_selesai.date_format' => 'Jam waktu selesai tidak valid.'
         ]);
 
         if ($validator->fails()) {
@@ -95,10 +137,14 @@ class MataPelajaranController extends Controller
 
             $request_nama_mata_pelajaran = trim($request->input('nama'));
             $request_kode_mata_pelajaran = trim(ucwords($request->input('kode')));
+            $request_waktu_masuk = $request->input('waktu_masuk');
+            $request_waktu_selesai = $request->input('waktu_selesai');
 
             $mata_pelajaran = MataPelajaran::find($id);
             $mata_pelajaran->nama = $request_nama_mata_pelajaran;
             $mata_pelajaran->kode = $request_kode_mata_pelajaran;
+            $mata_pelajaran->waktu_masuk = $request_waktu_masuk;
+            $mata_pelajaran->waktu_selesai = $request_waktu_selesai;
             $mata_pelajaran->save();
 
             Session::flash('success', 'Data mata pelajaran berhasil di update!');

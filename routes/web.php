@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Http\Middleware\EnsureRoleIsTeacher;
 
 
 /*
@@ -141,10 +142,24 @@ Route::middleware('auth')->group(function () {
     /// CHANGE PASSWORD
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
 
-    Route::get('/murid-ajar', [PengajarController::class, 'murid_ajar']);
-    Route::get('/absensi', [PengajarController::class, 'absensi_murid']);
-    Route::post('/proses-tambah-absensi', [PengajarController::class, 'proses_tambah_absensi']);
-    Route::post('/proses-update-absensi', [PengajarController::class, 'proses_update_absensi']);
+    // Guru
+    Route::middleware([EnsureRoleIsTeacher::class])->group(function () {
+
+        // GROUPS -> AKAN BENTROK -> SOLVED -> NON GROUPS
+        Route::get('/murid-ajar', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'murid_ajar']);
+        Route::get('/absensi', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'absensi_murid']);
+        Route::get('/penilaian', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'penilaian_murid']);
+        Route::post('/proses-tambah-absensi', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'proses_tambah_absensi']);
+        Route::post('/proses-update-absensi', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'proses_update_absensi']);
+        Route::post('/proses-tambah-penilaian', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'proses_tambah_penilaian']);
+        Route::post('/proses-update-penilaian', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'proses_update_penilaian']);
+
+        Route::get('/exportPenilaianPerHariIni', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportPenilaianPerHariIni']);
+        Route::get('/exportSemuaPenilaian', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportSemuaPenilaian']);
+
+        Route::get('/exportAbsenPerHariIni', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportAbsenPerHariIni']);
+        Route::get('/exportSemuaAbsen', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportSemuaAbsen']);
+    });
 
     Route::prefix('/')->middleware('role:Admin')->group(function () {
 
