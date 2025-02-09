@@ -17,7 +17,9 @@ class MataPelajaranImport implements ToModel, WithHeadingRow
     {
         return new MataPelajaran([
             'nama'     => $row['nama'],
-            'kode'  => $row['kode_mata_pelajaran']
+            'kode'  => $row['kode_mata_pelajaran'],
+            'waktu_masuk' => $row['waktu_masuk'],
+            'waktu_selesai' => $row['waktu_selesai']
         ]);
     }
 

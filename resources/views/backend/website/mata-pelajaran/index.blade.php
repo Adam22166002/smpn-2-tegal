@@ -44,6 +44,8 @@ Mata Pelajaran
                                     <h4 class="card-title mb-0">Mata Pelajaran</h4>
 
                                     <div class="d-flex align-items-center mt-1 mb-1">
+                                        <a href="{{ route('backend-mata-pelajaran.create') }}"
+                                            class="btn btn-primary mr-2">Tambah</a>
 
                                         <form id="importForm" action="{{ url('importExcelMataPelajaran') }}"
                                             method="POST" enctype="multipart/form-data">
@@ -66,6 +68,8 @@ Mata Pelajaran
                                                 <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Kode Mata Pelajaran</th>
+                                                <th>Waktu Masuk</th>
+                                                <th>Waktu Selesai</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -82,6 +86,10 @@ Mata Pelajaran
                                                 <td> {{ $no++ }}</td>
                                                 <td>{{ $item->nama }}</td>
                                                 <td> {{ $item->kode}} </td>
+                                                <td> {{ \Carbon\Carbon::parse($item->waktu_masuk)->format('H:i') }}
+                                                </td>
+                                                <td> {{ \Carbon\Carbon::parse($item->waktu_selesai)->format('H:i') }}
+                                                </td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('backend-mata-pelajaran.edit', $item->id) }}"

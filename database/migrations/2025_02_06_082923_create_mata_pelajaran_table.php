@@ -17,6 +17,8 @@ class CreateMataPelajaranTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('kode', 10)->unique();
+            $table->time('waktu_masuk', $precision = 0);
+            $table->time('waktu_selesai', $precision = 0);
         });
     }
 

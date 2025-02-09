@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Absensi
+Penilaian
 @endsection
 
 @section('content')
@@ -25,15 +25,15 @@ Absensi
 @php
 $no = 1;
 $tanggalSekarang = date('Y-m-d');
-$waktuSekarang = date('H:i');
 @endphp
+
 
 <div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Absensi Hari Ini</h2>
+                    <h2> Penilaian Mata Pelajaran</h2>
                 </div>
             </div>
         </div>
@@ -47,19 +47,19 @@ $waktuSekarang = date('H:i');
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Absensi
+                                    <h4 class="card-title">Penilaian {{ ucwords($guruMengajar->mengajar) }} Hari Ini
 
                                         <div class="d-flex justify-content-center">
 
                                             @if($tanggalExport == $tanggalSekarang)
                                             <div class="row mr-1">
                                                 <div class="col">
-                                                    <a href="{{ url('exportAbsenPerHariIni') }}">
+                                                    <a href="{{ url('exportPenilaianPerHariIni') }}">
                                                         <label for="fileInput" class="btn btn-success mt-1">
                                                             <img src="{{asset('Assets/Backend/images/excel.png')}}"
                                                                 style="width:15px; margin-right:5px;">
                                                             Export
-                                                            Absen Hari Ini</label>
+                                                            Data Hari Ini</label>
                                                     </a>
                                                 </div>
                                             </div>
@@ -68,20 +68,20 @@ $waktuSekarang = date('H:i');
                                             @if($tanggalExport)
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{ url('exportSemuaAbsen') }}">
+                                                    <a href="{{ url('exportSemuaPenilaian') }}">
                                                         <label for="fileInput" class="btn btn-success mt-1">
                                                             <img src="{{asset('Assets/Backend/images/excel.png')}}"
                                                                 style="width:15px; margin-right:5px;">
                                                             Export Semua
-                                                            Absen </label>
+                                                            Data </label>
                                                     </a>
                                                 </div>
                                             </div>
                                             @endif
 
                                         </div>
-
                                     </h4>
+
                                 </div>
                                 <div class="card-datatable table-responsive mt-2 ">
                                     <table class="table table-bordered" id="table">
@@ -89,51 +89,57 @@ $waktuSekarang = date('H:i');
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama</th>
-                                                <th>Status Kehadiran</th>
+                                                <th>Kategori Tugas</th>
+                                                <th>Nilai</th>
                                                 <th>Keterangan</th>
+                                                <th>Di Buat Pada</th>
+                                                <th>Di Update Pada</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
 
-                                            @foreach ($absensi as $item)
+                                            @foreach ($penilaian as $item)
 
+                                            @php
+                                            $tanggalDiBuat = date('Y-m-d', strtotime($item->created_at));
+                                            @endphp
                                             <tr class="text-center">
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ ucwords($item->name) }}</td>
 
-                                                @if($item->tanggal == $tanggalSekarang)
-                                                <td>{{ ($item->status != "" ? $item->status : '-') }}</td>
+                                                @if($tanggalDiBuat == $tanggalSekarang)
+                                                <td>{{ $item->kategori }}</td>
+                                                <td>{{ ($item->nilai != "" ? $item->nilai : '-') }}</td>
                                                 <td>{{ ($item->keterangan != "" ? $item->keterangan : '-') }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->updated_at }}</td>
 
                                                 @else
+                                                <td>-</td>
+                                                <td>-</td>
+                                                <td>-</td>
                                                 <td>-</td>
                                                 <td>-</td>
                                                 @endif
 
                                                 <td>
-                                                    @if($waktuSekarang >= $waktuMasuk && $waktuSekarang <=
-                                                        $waktuSelesai) @if($item->id_absensi != null && $item->tanggal
-                                                        == $tanggalSekarang)
-                                                        <button type="button" class="btn btn-warning"
-                                                            data-toggle="modal" data-target="#updateAbsenModal"
-                                                            onclick="btnUpdateAbsenModal('{{ $item->id }}', '{{ $item->status }}', '{{ $item->keterangan }}')">
-                                                            Update Absen
-                                                        </button>
 
-                                                        @else
-                                                        <button type="button" class="btn btn-primary"
-                                                            data-toggle="modal" data-target="#absenModal"
-                                                            onclick="btnAbsenModal('{{ $item->id }}')">
-                                                            Absen
-                                                        </button>
+                                                    @if($tanggalDiBuat == $tanggalSekarang)
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal"
+                                                        data-target="#updatePenilaianModal"
+                                                        onclick="btnUpdatePenilaianModal('{{ $item->id }}', '{{ $item->kategori }}', '{{ $item->nilai }}', '{{ $item->keterangan }}')">
+                                                        Update Nilai
+                                                    </button>
 
-                                                        @endif
-
-                                                        @else
-                                                        -
-                                                        @endif
+                                                    @else
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#penilaianModal"
+                                                        onclick="btnPenilaianModal('{{ $item->id }}')">
+                                                        Koreksi
+                                                    </button>
+                                                    @endif
 
                                                 </td>
                                             </tr>
@@ -150,37 +156,55 @@ $waktuSekarang = date('H:i');
         </div>
     </div>
 
+
     <!-- Modal Tambah -->
-    <div class="modal fade" id="absenModal" tabindex="-1" aria-labelledby="absenModalLabel" aria-hidden="true">
+    <div class="modal fade" id="penilaianModal" tabindex="-1" aria-labelledby="penilaianModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="absenModalLabel">Kehadiran</h5>
+                    <h5 class="modal-title" id="penilaianModalLabel">Penilaian</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form action="{{url('proses-tambah-absensi')}}" method="post">
+                    <form action="{{url('proses-tambah-penilaian')}}" method="post">
                         @csrf
 
                         <input type="hidden" name="murid_id" id="murid_id">
 
-                        <div class="row mb-1">
+                        <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="basicInput">Absensi Murid</label> <span class="text-danger">*</span>
-                                    <select name="status" class="form-control @error('status') is-invalid @enderror"
+                                    <label for="basicInput">Kategori Tugas</label> <span class="text-danger">*</span>
+                                    <select name="kategori"
+                                        class="form-control selectOption selectOption @error('kategori') is-invalid @enderror"
                                         required>
-                                        <option value="" selected>- Pilih Kehadiran -</option>
-                                        <option value="Hadir">Hadir</option>
-                                        <option value="Sakit">Sakit</option>
-                                        <option value="Izin">Izin</option>
-                                        <option value="Alpha">Alpha</option>
+                                        <option value="" selected>- Pilih Kategori Tugas -</option>
+                                        <option value="Tugas">Hadir</option>
+                                        <option value="Ulangan Harian">Ulangan Harian</option>
+                                        <option value="UTS">UTS</option>
+                                        <option value="UAS">UAS</option>
                                     </select>
 
                                     @error('status')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="basicInput">Masukkan Nilai</label> <span class="text-danger">*</span>
+                                    <input type="number" class="form-control mb-1 @error('nilai') is-invalid @enderror"
+                                        name="nilai" value="{{old('nilai')}}" placeholder="Masukkan nilai"
+                                        autocomplete="off" required />
+                                    @error('keterangan')
                                     <div class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </div>
@@ -218,37 +242,55 @@ $waktuSekarang = date('H:i');
     </div>
 
     <!-- Modal Update -->
-    <div class="modal fade" id="updateAbsenModal" tabindex="-1" aria-labelledby="updateAbsenModalLabel"
+    <div class="modal fade" id="updatePenilaianModal" tabindex="-1" aria-labelledby="updatePenilaianModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateAbsenModalLabel">Update Kehadiran</h5>
+                    <h5 class="modal-title" id="updatePenilaianModalLabel">Update Penilaian</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form action="{{url('proses-update-absensi')}}" method="post">
+                    <form action="{{url('proses-update-penilaian')}}" method="post">
                         @csrf
 
                         <input type="hidden" name="murid_id_old" id="murid_id_old">
 
-                        <div class="row mb-1">
+                        <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="basicInput">Absensi Murid</label> <span class="text-danger">*</span>
-                                    <select name="status"
-                                        class="form-control selectOption selectOption @error('status') is-invalid @enderror"
+                                    <label for="basicInput">Kategori Tugas</label> <span class="text-danger">*</span>
+                                    <select name="kategori"
+                                        class="form-control selectOption selectOption @error('kategori') is-invalid @enderror"
                                         required>
-                                        <option value="Hadir" class="statusOption">Hadir</option>
-                                        <option value="Sakit" class="statusOption">Sakit</option>
-                                        <option value="Izin" class="statusOption">Izin</option>
-                                        <option value="Alpha" class="statusOption">Alpha</option>
+
+                                        <option value="Tugas" class="kategoriOption">Tugas</option>
+                                        <option value="Ulangan Harian" class="kategoriOption">Ulangan Harian</option>
+                                        <option value="UTS" class="kategoriOption">UTS</option>
+                                        <option value="UAS" class="kategoriOption">UAS</option>
                                     </select>
 
                                     @error('status')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="basicInput">Masukkan Nilai</label> <span class="text-danger">*</span>
+                                    <input type="number"
+                                        class="form-control mb-1 nilai @error('nilai') is-invalid @enderror"
+                                        name="nilai" value="{{old('nilai')}}" placeholder="Masukkan nilai"
+                                        autocomplete="off" required />
+                                    @error('keterangan')
                                     <div class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </div>
