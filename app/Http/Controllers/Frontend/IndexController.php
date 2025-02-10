@@ -192,6 +192,28 @@ public function gallery(Request $request)
         $jurusanM = Jurusan::all();
         $kegiatanM = Kegiatan::all();
         $footer = Footer::first();
-        return view('frontend.content.rapot', compact('jurusanM', 'kegiatanM', 'footer'));
+
+        $pengajars = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // SEMENTARA \\
+        $sambutan_kepsek = 'Bismiillahirahmanirrahim..
+                    Assalamualaikum Wr.Wb.
+                    Puji syukur kehadirat Allah SWT yang telah memberikan nikmat dan karunianya kepada kita semua, dan kepadanyalah kelak kita nanti kan kembali. Shalawat serta salam semoga senantiasa tercurah kepada junjungan kita Nabi Muhammad SAW beserta keluarga dan para sahabatnya.
+                    Kami ucapkan selamat datang di website SMPN 2 Tegal. Website ini digunakan sebagai sarana informasi dan publikasi bagi masyarakat yang membutuhkan informasi seputar tentang SMPN 2 Tegal.
+                    Semoga informasi yang diberikan, bisa memberikan gambaran yang cukup untuk mengetahui rangkaian kegiatan yang telah dilaksanakan oleh SMPN 2 Tegal. Kami menyadari akan kekurangan yang kami miliki. Tidak terputus kami mohon Doa dan dukungan dari semua pihak, sangat kami harapkan agar generasi penerus bangsa dapat terus semangat dalam berkarya.
+                    Wassalamu alaikum wr.wb';
+        $nama_kepsek ='Dr. Kepsek S.Kom, M.Si';
+
+        return view('frontend.content.rapot', compact('jurusanM', 'kegiatanM', 'footer', 'pengajars', 'sambutan_kepsek', 'nama_kepsek'));
+    }
+
+    public function cetakRapot()
+    {
+        return view('frontend.content.cetakRapot');
+    }
+
+    public function cekRapot()
+    {
+        return view('frontend.content.cekRapot');
     }
 }
