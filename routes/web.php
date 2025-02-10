@@ -60,6 +60,11 @@ Route::get('gallery', [App\Http\Controllers\Frontend\IndexController::class, 'ga
 Route::get('rapot', [App\Http\Controllers\Frontend\IndexController::class, 'rapot'])->name('rapot');
 
 
+/// CETAK RAPOT \\\
+Route::get('cetakRapot', [App\Http\Controllers\Frontend\IndexController::class, 'cetakRapot'])->name('cetakRapot');
+
+Route::get('cekRapot', [App\Http\Controllers\Frontend\IndexController::class, 'cekRapot'])->name('cekRapot');
+
 Auth::routes(['register' => false]);
 
 // ======= BACKEND ======= \\

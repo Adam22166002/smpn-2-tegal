@@ -41,9 +41,9 @@
                 <div class="col-lg-4">
                     <div class="kepala-sekolah-image text-center">
                         <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
-                             class="img-fluid rounded shadow"
-                             alt="Kepala Sekolah"
-                             style="max-height: 400px; object-fit: cover;">
+                                class="img-fluid rounded shadow"
+                                alt="Kepala Sekolah"
+                                style="max-height: 400px; object-fit: cover;">
                     </div>
                 </div>
             </div>
