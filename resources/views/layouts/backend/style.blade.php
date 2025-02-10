@@ -39,6 +39,7 @@ $currentUrl = Request::url();
 @endphp
 
 @if(Request::path() == "backend-pengguna-pengajar/create" || Request::path() == "backend-pengguna-pengajar" ||
-strpos($currentUrl, 'backend-pengguna-pengajar') != false || Request::path() == "murid-ajar")
+strpos($currentUrl, 'backend-pengguna-pengajar') != false || Request::path() == "murid-ajar"
+|| Request::path() == "absensi" || Request::path() == "penilaian")
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap4.css">
 @endif

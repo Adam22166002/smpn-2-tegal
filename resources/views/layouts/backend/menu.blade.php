@@ -72,6 +72,12 @@
                             <span class="menu-item text-truncate" data-i18n="Basic">Kelas</span>
                         </a>
                     </li>
+                    <li class="nav-item {{ (request()->is('backend-mata-pelajaran')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-mata-pelajaran.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Mata Pelajaran</span>
+                        </a>
+                    </li>
                     <li class="nav-item {{ (request()->is('backend-kegiatan')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-kegiatan.index')}} "><i
                                 data-feather="circle"></i>
@@ -215,6 +221,18 @@
                         <a class="d-flex align-items-center" href="{{ url('murid-ajar') }}"><i
                                 data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Murid Ajar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('absensi') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Absensi</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('penilaian') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Penilaian</span>
                         </a>
                     </li>
                 </ul>

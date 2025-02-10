@@ -29,7 +29,59 @@
 <script src="{{asset('Assets/Backend/js/scripts/components/components-modals.js')}}"></script>
 <!-- END: Page JS-->
 
-@if(Request::path() == "backend-pengguna-murid" || Request::path() == "backend-kelas")
+@if(Request::path() == "absensi")
+<script>
+    function btnAbsenModal(id){
+        let murid_id = document.getElementById('murid_id');
+        murid_id.value = id;
+    }
+
+    function btnUpdateAbsenModal(id, status, keterangan) {
+        let statusOptions = document.querySelectorAll('.statusOption');
+        let keteranganValue = document.querySelector('.keterangan');
+        let murid_id_old = document.getElementById('murid_id_old');
+
+        statusOptions.forEach(option => {
+            if (option.value === status) {
+                option.selected = true;
+            }
+        });
+
+        keteranganValue.value = keterangan;
+        murid_id_old.value = id;
+    }
+   
+</script>
+
+@elseif(Request::path() == "penilaian")
+<script>
+    function btnPenilaianModal(id){
+        let murid_id = document.getElementById('murid_id');
+        murid_id.value = id;
+    }
+
+    function btnUpdatePenilaianModal(id, kategori, nilai, keterangan) {
+        let kategoriOptions = document.querySelectorAll('.kategoriOption');
+        let nilaiValue = document.querySelector('.nilai');
+        let keteranganValue = document.querySelector('.keterangan');
+        let murid_id_old = document.getElementById('murid_id_old');
+
+        kategoriOptions.forEach(option => {
+            if (option.value === kategori) {
+                option.selected = true;
+            }
+        });
+
+        nilaiValue.value = nilai;
+        keteranganValue.value = keterangan;
+        murid_id_old.value = id;
+    }
+   
+</script>
+@endif
+
+@if(Request::path() == "backend-pengguna-murid" || Request::path() == "backend-kelas" || Request::path() ==
+"backend-mata-pelajaran")
 <script>
     // Menangani perubahan pada input file dan otomatis submit form
     document.getElementById('fileInput').addEventListener('change', function() {
@@ -42,7 +94,7 @@
 $currentUrl = Request::url();
 @endphp
 
-@if(Request::path() == "murid-ajar")
+@if(Request::path() == "murid-ajar" || Request::path() == "absensi" || Request::path() == "penilaian")
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>

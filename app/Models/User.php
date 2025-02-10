@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasMany(DataMurid::class);
     }
 
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'murid_id', 'id');
+    }
+
     public function userDetail()
     {
         return $this->belongsTo(UsersDetail::class, 'id', 'user_id');
