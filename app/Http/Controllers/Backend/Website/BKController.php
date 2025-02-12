@@ -2,35 +2,46 @@
 namespace App\Http\Controllers\Backend\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\dataMurid;
 use App\Models\BKComplaint;
-use App\Models\Jurusan;
-use App\Models\Kegiatan;
+use App\Models\Kelas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BKController extends Controller
 {
     public function index()
     {
-        $jurusanM = Jurusan::all();
-        $kegiatanM = Kegiatan::all(); 
-        return view('frontend.bk-complaint.index', compact('jurusanM','kegiatanM'));
+        $complaints = BKComplaint::with('kelas')->latest()->get();
+        return view('backend.website.bk.bkComplaint', compact('complaints'));
     }
 
-    public function store(Request $request)
+    public function updateStatus(Request $request, BKComplaint $complaint)
     {
         $validated = $request->validate([
-            'name' => 'nullable|string|max:255',
-            'class' => 'required|string|max:10',
-            'problem_type' => 'required|string|max:50',
-            'description' => 'required|string',
-            'urgency' => 'required|in:low,medium,high'
+            'status' => 'required|in:pending,in_progress,resolved'
         ]);
 
-        $validated['status'] = 'pending';
-        
-        BKComplaint::create($validated);
+        $complaint->update(['status' => $validated['status']]);
+        return redirect()->back()->with('success', 'Status pengaduan berhasil diperbarui');
+    }
+    public function daftarKelas()
+    {
+        $kelas = Kelas::select(
+            'kelas.id',
+            'kelas.kelas',
+            'kelas.nama_kelas'
+        )
+            ->orderBy('kelas', 'asc')
+            ->get();
+        return view('backend.website.bk.daftar_kelas', compact('kelas'));
+    }
+    public function daftarMurid()
+    {
+        $murid = User::whereHas('dataMurid') // Hanya user yang punya data murid
+                ->with('dataMurid') // Ambil relasi dataMurid
+                ->get();
 
-        return redirect()->route('frontend.bk-complaint.index')
-            ->with('success', 'Pengaduan Anda telah berhasil dikirim');
+        return view('backend.website.bk.daftar_siswa', compact('murid'));
     }
 }

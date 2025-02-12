@@ -20,8 +20,8 @@ class StafController extends Controller
      */
     public function index()
     {
-        $staf = User::with('userDetail')->where('role','Staf')->get();
-        return view('backend.pengguna.staf.index', compact('staf'));
+        $staf = User::with('userDetail')->where('role','BK')->get();
+        return view('backend.pengguna.bk.index', compact('staf'));
     }
 
     /**
@@ -31,7 +31,7 @@ class StafController extends Controller
      */
     public function create()
     {
-        return view('backend.pengguna.staf.create');
+        return view('backend.pengguna.bk.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class StafController extends Controller
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->username         = strtolower($username).date("s");
-            $user->role             = 'Staf';
+            $user->role             = 'BK';
             $user->status           = 'Aktif';
             $user->foto_profile     = $nama_img;
             $user->password         = bcrypt('12345678');
@@ -82,8 +82,8 @@ class StafController extends Controller
 
             $user->assignRole($user->role);
             DB::commit();
-            Session::flash('success','Staf Berhasil ditambah !');
-            return redirect()->route('backend-pengguna-staf.index');
+            Session::flash('success','Guru BK Berhasil ditambah !');
+            return redirect()->route('backend-pengguna-bk.index');
 
         } catch (ErrorException $e) {
             DB::rollback();
@@ -110,8 +110,8 @@ class StafController extends Controller
      */
     public function edit($id)
     {
-        $staf = User::with('userDetail')->where('role','Staf')->find($id);
-        return view('backend.pengguna.staf.edit', compact('staf'));
+        $staf = User::with('userDetail')->where('role','BK')->find($id);
+        return view('backend.pengguna.bk.edit', compact('staf'));
     }
 
     /**
@@ -158,8 +158,8 @@ class StafController extends Controller
             }
 
             DB::commit();
-            Session::flash('success','Staf Berhasil diubah !');
-            return redirect()->route('backend-pengguna-staf.index');
+            Session::flash('success','Guru BK Berhasil diubah !');
+            return redirect()->route('backend-pengguna-bk.index');
 
         } catch (ErrorException $e) {
             DB::rollback();

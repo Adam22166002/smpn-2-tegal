@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Website\BKAppointmentController;
 use App\Http\Controllers\Backend\Website\BKController;
 use App\Http\Controllers\Backend\Website\KelasController;
 use App\Http\Controllers\Backend\Website\MataPelajaranController;
+use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Middleware\EnsureRoleIsTeacher;
-
+use App\Http\Middleware\LayananBK;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +147,20 @@ Route::middleware('auth')->group(function () {
 
     /// CHANGE PASSWORD
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
+    
+    
+
+    Route::middleware('layanan.bk')->group(function () {
+        Route::resources([
+            'complaints' => Backend\Website\BKController::class,
+            'appointments' => Backend\Website\BKAppointmentController::class,
+        ]);
+        Route::put('complaints/{complaint}/status', [BKController::class, 'updateStatus'])->name('complaints.update-status');
+        Route::put('appointments/{appointment}/status', [BKAppointmentController::class, 'updateStatus'])->name('appointments.update-status');
+        Route::get('daftar-kelas', [BKController::class, 'daftarKelas']);
+        Route::get('daftar-siswa', [BKController::class, 'daftarMurid']);
+    });
+    
 
     // Guru
     Route::middleware([EnsureRoleIsTeacher::class])->group(function () {
@@ -204,7 +219,7 @@ Route::middleware('auth')->group(function () {
             /// PENGAJAR \\\
             'backend-pengguna-pengajar' => Backend\Pengguna\PengajarController::class,
             /// STAF \\\
-            'backend-pengguna-staf' => Backend\Pengguna\StafController::class,
+            'backend-pengguna-bk' => Backend\Pengguna\StafController::class,
             /// MURID \\\
             'backend-pengguna-murid' => Backend\Pengguna\MuridController::class,
             /// PPDB \\\
@@ -224,11 +239,12 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/')->group(function () {
     // Halaman utama pengaduan BK
-    Route::get('/bk', [BKController::class, 'index'])->name('bk-complaint.index');
+    Route::get('/bk', [IndexController::class, 'bk'])->name('bk-complaint.index');
 
     // Route untuk pengaduan notes
-    Route::post('/bk/store', [BKController::class, 'store'])->name('bk-complaint.store');
+    Route::post('/bk/store', [IndexController::class, 'store'])->name('bk-complaint.store');
 
     // Route untuk appointment (online & offline)
-    Route::post('/appointment/store', [BKAppointmentController::class, 'store'])->name('bk-appointment.store');
+    Route::post('/appointment/store', [IndexController::class, 'storeAppointment'])->name('bk-appointment.store');
 });
+

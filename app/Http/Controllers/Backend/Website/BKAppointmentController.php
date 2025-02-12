@@ -6,36 +6,27 @@ use Illuminate\Http\Request;
 
 class BKAppointmentController extends Controller
 {
-    public function store(Request $request)
+    // Admin methods
+    public function index()
     {
-        $rules = [
-            'name' => 'required|string|max:255',
-            'class' => 'required|string|max:10',
-            'phone' => 'required|string|max:20',
-            'appointment_date' => 'required|date|after_or_equal:today',
-            'appointment_time' => 'required|string',
-            'consultation_topic' => 'required|string|max:50',
-            'description' => 'nullable|string',
-            'type' => 'required|in:online,offline',
-        ];
+        $appointments = BKAppointment::with(['kelas', 'counselor'])
+            ->latest()
+            ->get();
+        return view('backend.website.bk.bkAppointment', compact('appointments'));
+    }
 
-        // Tambahan validasi untuk appointment online
-        if ($request->type === 'online') {
-            $rules['email'] = 'required|email';
-            $rules['platform'] = 'required|in:google_meet,zoom,whatsapp';
-        }
+    public function updateStatus(Request $request, BKAppointment $appointment)
+    {
+        $validated = $request->validate([
+            'status' => 'required|in:pending,approved,completed,cancelled',
+            'meeting_link' => 'required_if:status,approved|nullable|url'
+        ]);
 
-        // Tambahan validasi untuk appointment offline
-        if ($request->type === 'offline') {
-            $rules['counselor_id'] = 'nullable|exists:counselors,id';
-        }
+        $appointment->update([
+            'status' => $validated['status'],
+            'meeting_link' => $validated['meeting_link']
+        ]);
 
-        $validated = $request->validate($rules);
-        $validated['status'] = 'pending';
-
-        BKAppointment::create($validated);
-
-        return redirect()->route('bk-complaint.index')
-            ->with('success', 'Janji konsultasi Anda telah berhasil dibuat');
+        return redirect()->back()->with('success', 'Status janji konsultasi berhasil diperbarui');
     }
 }

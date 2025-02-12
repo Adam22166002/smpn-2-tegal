@@ -7,13 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class BKComplaint extends Model
 {
     use HasFactory;
+    protected $table = 'bk_complaints';
 
     protected $fillable = [
-        'nama',
-        'kelas',
-        'tipe_masalah',
-        'deskripsi',
-        'tingkat_urgency',
+        'name',
+        'class_id',
+        'problem_type',
+        'description',
+        'urgency',
         'status'
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'class_id');
+    }
 }

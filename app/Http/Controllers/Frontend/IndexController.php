@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Berita;
+use App\Models\BKAppointment;
+use App\Models\BKComplaint;
 use App\Models\Events;
 use App\Models\Footer;
 use App\Models\ImageSlider;
@@ -18,6 +20,7 @@ use App\Models\Video;
 use App\Models\Visimisi;
 use Carbon\Carbon;
 use App\Models\Gallery;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -215,5 +218,116 @@ public function gallery(Request $request)
     public function cekRapot()
     {
         return view('frontend.content.cekRapot');
+    }
+    public function bk()
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
+        $kelas = Kelas::orderBy('kelas', 'asc')->get();
+        $problemTypes = ['bullying' => 'Bullying', 'academic' => 'Akademik', 'family' => 'Keluarga', 'career' => 'Karier', 'other' => 'Lainnya'];
+        $urgencyLevels = ['low' => 'Rendah', 'medium' => 'Sedang', 'high' => 'Tinggi'];
+        $konsultasi = ['academic' => 'Akademik', 'career' => 'Karir', 'personal' => 'Personal', 'social' => 'Sosial', 'other'=>'Lainnya'];
+        $appointments = BKAppointment::with(['kelas', 'counselor'])
+            ->latest()
+            ->get();
+        return view('frontend.bk-complaint.index', compact('jurusanM', 'kegiatanM', 'footer','kelas','appointments', 'problemTypes', 'urgencyLevels','konsultasi'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'class' => 'required|exists:kelas,id',
+            'problem_type' => 'required|in:bullying,academic,family,career,other',
+            'description' => 'required|string',
+            'urgency' => 'required|in:low,medium,high'
+        ],[
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'class.required' => 'Kelas harus diisi.',
+            'class.exists' => 'Kelas yang dipilih tidak valid.',
+            'problem_type.required' => 'Jenis masalah harus diisi.',
+            'problem_type.in' => 'Jenis masalah harus berupa bullying, akademik, keluarga, karier, atau lainnya.',
+            'description.required' => 'Deskripsi masalah harus diisi.',
+            'description.string' => 'Deskripsi harus berupa teks.',
+            'urgency.required' => 'Tingkat urgensi harus diisi.',
+            'urgency.in' => 'Tingkat urgensi harus berupa low, medium, atau high.',
+            'status.required' => 'Status harus diisi.',
+            'status.in' => 'Status harus berupa pending, dalam proses, atau selesai.'
+        ]);
+
+        BKComplaint::create([
+            'name' => $validated['name'],
+            'class_id' => $validated['class'],
+            'problem_type' => $validated['problem_type'],
+            'description' => $validated['description'],
+            'urgency' => $validated['urgency']
+        ]);
+
+        return redirect()->route('bk-complaint.index')->with('success', 'Pengaduan berhasil dikirim');
+    }
+    public function storeAppointment(Request $request)
+    {
+        $validated = $request->validate([
+            'type' => 'required|in:online,offline',
+            'name' => 'required|string|max:255',
+            'class' => 'required|exists:kelas,id',
+            'phone' => 'required|string|max:15',
+            'email' => 'required_if:type,online|nullable|email',
+            'appointment_date' => 'required|date|after_or_equal:today',
+            'appointment_time' => 'required',
+            'consultation_topic' => 'required|string',
+            'description' => 'nullable|string',
+            'counselor' => 'nullable|exists:users,id',
+            'platform' => $request->type === 'online' ? 'required|string|in:google_meet,zoom,whatsapp' : 'nullable'
+        ],[
+            'type.required' => 'Jenis konsultasi harus diisi.',
+            'type.in' => 'Jenis konsultasi harus berupa online atau offline.',
+            'name.required' => 'Nama harus diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'class.required' => 'Kelas harus diisi.',
+            'class.exists' => 'Kelas yang dipilih tidak valid.',
+            'phone.required' => 'Nomor telepon harus diisi.',
+            'phone.string' => 'Nomor telepon harus berupa teks.',
+            'phone.max' => 'Nomor telepon tidak boleh lebih dari 15 karakter.',
+            'email.required_if' => 'Email harus diisi jika jenis konsultasi online.',
+            'email.email' => 'Format email tidak valid.',
+            'appointment_date.required' => 'Tanggal konsultasi harus diisi.',
+            'appointment_date.date' => 'Tanggal konsultasi harus berupa tanggal yang valid.',
+            'appointment_date.after_or_equal' => 'Tanggal konsultasi tidak boleh sebelum hari ini.',
+            'appointment_time.required' => 'Waktu konsultasi harus diisi.',
+            'consultation_topic.required' => 'Topik konsultasi harus diisi.',
+            'consultation_topic.in' => 'Topik konsultasi tidak valid.',
+            'description.string' => 'Deskripsi harus berupa teks.',
+            'counselor.exists' => 'Konselor yang dipilih tidak valid.',
+            'platform.required_if' => 'Platform harus diisi jika jenis konsultasi online.',
+            'platform.in' => 'Platform harus berupa Google Meet, Zoom, atau WhatsApp.',
+            'status.required' => 'Status harus diisi.',
+            'status.in' => 'Status harus berupa pending, approved, completed, atau cancelled.',
+            'meeting_link.required_if' => 'Link meeting harus diisi jika status disetujui.',
+            'meeting_link.url' => 'Format link meeting tidak valid.'
+        ]);
+
+        $appointment = new BKAppointment();
+        $appointment->type = $validated['type'];
+        $appointment->name = $validated['name'];
+        $appointment->class_id = $validated['class'];
+        $appointment->phone = $validated['phone'];
+        $appointment->email = $validated['email'] ?? null;
+        $appointment->appointment_date = $validated['appointment_date'];
+        $appointment->appointment_time = $validated['appointment_time'];
+        $appointment->consultation_topic = $validated['consultation_topic'];
+        $appointment->description = $validated['description'] ?? null;
+        $appointment->counselor_id = $validated['counselor'] ?? null;
+
+        if ($request->type === 'online') {
+            $appointment->platform = $validated['platform'];
+        }
+
+        $appointment->save();
+
+        return redirect()->route('bk-complaint.index')->with('success', 'Janji konsultasi Anda berhasil dibuat');
     }
 }

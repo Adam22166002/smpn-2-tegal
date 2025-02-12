@@ -103,6 +103,78 @@ Dashboard
             </div>
             @endif
 
+
+            @if (Auth::user()->role == 'BK')
+            <div class="col-lg-3 col-sm-6 col-12">
+                <div class="row">    
+                    <div class="col-12">
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$pendingComplaints}}</h2>
+                                    <p class="card-text">Pending Pengaduan</p>
+                                </div>
+                                <div class="avatar bg-light-danger p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="alert-circle" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$pendingAppointments}}</h2>
+                                    <p class="card-text">Pending Konsultasi</p>
+                                </div>
+                                <div class="avatar bg-light-primary p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="calendar" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$murid}}</h2>
+                                    <p class="card-text">Total Murid</p>
+                                </div>
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="user-check" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <a href="#" class="card-header">
+                                <div>
+                                    <h2 class="font-weight-bolder mb-0">{{$totalKelas}}</h2>
+                                    <p class="card-text">Total Kelas</p>
+                                </div>
+                                <div class="avatar bg-light-success p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="user" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="card card-developer-meetup">
                     <div class="meetup-img-wrapper rounded-top text-center">

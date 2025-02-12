@@ -177,12 +177,12 @@
                             <span class="menu-item text-truncate" data-i18n="Basic">Pengajar</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item {{ (request()->is('backend-pengguna-staf')) ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href=" {{route('backend-pengguna-staf.index')}} "><i
+                     <li class="nav-item {{ (request()->is('backend-pengguna-bk')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-pengguna-bk.index')}} "><i
                                 data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Staf</span>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Guru BK</span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item {{ (request()->is('backend-pengguna-murid')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-pengguna-murid.index')}} "><i
                                 data-feather="circle"></i>
@@ -233,6 +233,38 @@
                     <li>
                         <a class="d-flex align-items-center" href="{{ url('penilaian') }}"><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Penilaian</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {{-- MENU GURU --}}
+            @elseif(Auth::user()->role == 'BK')
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="credit-card"></i>
+                    <span class="menu-title text-truncate" data-i18n="Card">Manajemen BK</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('daftar-siswa') }}"><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Total Murid</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('daftar-kelas') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Semua Kelas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('complaints') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Pengaduan Siswa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ url('appointments') }}"><i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Konsultasi Siswa</span>
                         </a>
                     </li>
                 </ul>

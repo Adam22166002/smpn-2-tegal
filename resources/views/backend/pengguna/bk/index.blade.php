@@ -26,7 +26,7 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2> Staf Sekolah</h2>
+                    <h2> Guru BK Sekolah</h2>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Staf Sekolah <a href=" {{route('backend-pengguna-staf.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Guru BK Sekolah <a href=" {{route('backend-pengguna-bk.create')}} " class="btn btn-primary">Tambah</a> </h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -63,7 +63,7 @@
                                                 <td> {{$stafs->userDetail->nip}} </td>
                                                 <td> {{$stafs->email}} </td>
                                                 <td> {{$stafs->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
-                                                <td><a href=" {{route('backend-pengguna-staf.edit', $stafs->id)}} " class="btn btn-success btn-sm">Edit</a></td>
+                                                <td><a href=" {{route('backend-pengguna-bk.edit', $stafs->id)}} " class="btn btn-success btn-sm">Edit</a></td>
                                             </tr>
                                        @endforeach
                                         </tbody>                                   

@@ -337,12 +337,13 @@
             </div>
         </div>
     </section>
+
     <!-- modal notes -->
     <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="notesModalLabel">Form Pengaduan</h5>
+                    <h3 class="modal-title" id="notesModalLabel">Form Pengaduan</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -361,11 +362,9 @@
                             <label>Kelas <span class="text-danger">*</span></label>
                             <select name="class" required class="form-control">
                                 <option value="">Pilih Kelas</option>
-                                @for($i = 10; $i <= 12; $i++)
-                                    @foreach(['A', 'B', 'C', 'D'] as $class)
-                                        <option value="{{ $i . $class }}">{{ $i . $class }}</option>
-                                    @endforeach
-                                @endfor
+                                @foreach($kelas as $k)
+                                    <option value="{{ $k->id }}">Kelas {{ $k->kelas }} {{ $k->nama_kelas }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -373,11 +372,9 @@
                             <label>Jenis Masalah <span class="text-danger">*</span></label>
                             <select name="problem_type" required class="form-control">
                                 <option value="">Pilih Jenis Masalah</option>
-                                <option value="bullying">Bullying</option>
-                                <option value="academic">Akademik</option>
-                                <option value="family">Masalah Keluarga</option>
-                                <option value="career">Karir</option>
-                                <option value="other">Lainnya</option>
+                                @foreach($problemTypes as $key => $label)
+                                    <option value="{{ $key }}">{{ $label }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -391,9 +388,9 @@
                         <div class="form-group">
                             <label>Tingkat Urgensi</label>
                             <select name="urgency" class="form-control">
-                                <option value="low">Rendah</option>
-                                <option value="medium">Sedang</option>
-                                <option value="high">Tinggi</option>
+                            @foreach($urgencyLevels as $key => $label)
+                                <option value="{{ $key }}">{{ $label }}</option>
+                            @endforeach
                             </select>
                         </div>
 
@@ -411,7 +408,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="offlineModalLabel">Form Appointment Offline</h5>
+                    <h3 class="modal-title" id="offlineModalLabel">Form Appointment Offline</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -430,12 +427,15 @@
                             <label>Kelas <span class="text-danger">*</span></label>
                             <select name="class" required class="form-control">
                                 <option value="">Pilih Kelas</option>
-                                @for($i = 10; $i <= 12; $i++)
-                                    @foreach(['A', 'B', 'C', 'D'] as $class)
-                                        <option value="{{ $i . $class }}">{{ $i . $class }}</option>
-                                    @endforeach
-                                @endfor
+                                @foreach($kelas as $k)
+                                    <option value="{{ $k->id }}">Kelas {{ $k->kelas }} {{ $k->nama_kelas }}</option>
+                                @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email <span class="text-danger">*</span></label>
+                            <input type="email" name="email" required class="form-control" placeholder="email@example.com">
                         </div>
 
                         <div class="form-group">
@@ -462,12 +462,10 @@
                         <div class="form-group">
                             <label>Topik Konsultasi <span class="text-danger">*</span></label>
                             <select name="consultation_topic" required class="form-control">
-                                <option value="">Pilih Topik</option>
-                                <option value="academic">Akademik</option>
-                                <option value="career">Karir</option>
-                                <option value="personal">Pribadi</option>
-                                <option value="social">Sosial</option>
-                                <option value="other">Lainnya</option>
+                                <option value="">Pilih Topik Konsultasi</option>
+                                @foreach($konsultasi as $topik => $label)
+                                <option value="{{ $topik }}">{{ $label }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -502,7 +500,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="onlineModalLabel">Form Appointment Online</h5>
+                    <h3 class="modal-title" id="onlineModalLabel">Form Appointment Online</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -521,11 +519,9 @@
                             <label>Kelas <span class="text-danger">*</span></label>
                             <select name="class" required class="form-control">
                                 <option value="">Pilih Kelas</option>
-                                @for($i = 10; $i <= 12; $i++)
-                                    @foreach(['A', 'B', 'C', 'D'] as $class)
-                                        <option value="{{ $i . $class }}">{{ $i . $class }}</option>
-                                    @endforeach
-                                @endfor
+                                @foreach($kelas as $k)
+                                    <option value="{{ $k->id }}">Kelas {{ $k->kelas }} {{ $k->nama_kelas }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -561,11 +557,9 @@
                             <label>Topik Konsultasi <span class="text-danger">*</span></label>
                             <select name="consultation_topic" required class="form-control">
                                 <option value="">Pilih Topik</option>
-                                <option value="academic">Akademik</option>
-                                <option value="career">Karir</option>
-                                <option value="personal">Pribadi</option>
-                                <option value="social">Sosial</option>
-                                <option value="other">Lainnya</option>
+                                @foreach($konsultasi as $topik => $label)
+                                <option value="{{ $topik }}">{{ $label }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -635,7 +629,6 @@
                 object-fit: cover;
             }
 
-            /* Accordion Styling */
             .accordion .card {
                 margin-bottom: 10px;
                 border-radius: 10px;
@@ -677,6 +670,16 @@
             }
         </style>
         @endpush
+        @if(session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: '{{ session("success") }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            </script>
+        @endif
         
 
     @endsection

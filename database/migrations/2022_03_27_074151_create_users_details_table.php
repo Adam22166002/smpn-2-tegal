@@ -16,7 +16,7 @@ class CreateUsersDetailsTable extends Migration
         Schema::create('users_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('role', ['Admin', 'Guru', 'Staf', 'Murid', 'Orang Tua', 'Alumni', 'Guest']);
+            $table->enum('role', ['Admin', 'Guru', 'Staf', 'Murid', 'Orang Tua', 'Alumni', 'Guest','BK']);
             $table->string('mengajar')->nullable();
             $table->integer('kelas')->nullable();
             $table->string('nama_kelas')->nullable();

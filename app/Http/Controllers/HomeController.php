@@ -6,10 +6,13 @@ use App\Models\dataMurid;
 use App\Models\Events;
 use App\Models\User;
 use App\Models\Berita;
+use App\Models\BKComplaint;
+use App\Models\Kelas;
 use App\Models\UsersDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Modules\Perpustakaan\Entities\Book;
 use Modules\Perpustakaan\Entities\Borrowing;
 use Modules\Perpustakaan\Entities\Member;
@@ -83,9 +86,13 @@ class HomeController extends Controller
           ->count();
 
         return view('murid::index', compact('event', 'lateness', 'pinjam'));
-      } elseif ($role == 'Guru' || $role == 'Staf') {
+      } elseif ($role == 'Guru' || $role == 'BK') {
 
         $user_id = Auth::user()->id;
+        $totalKelas = DB::table('kelas')->count();
+        $murid = User::where('role', 'Murid')->where('status', 'Aktif')->count();
+        $pendingComplaints = BKComplaint::where('status', 'pending')->count();
+        $pendingAppointments = BKComplaint::where('status', 'pending')->count();
 
         $mengajarKelas = UsersDetail::select(
           'users_details.kelas',
@@ -95,7 +102,7 @@ class HomeController extends Controller
 
         $event = Events::where('is_active', '0')->first();
 
-        return view('backend.website.home', compact('event', 'mengajarKelas'));
+        return view('backend.website.home', compact('event','murid','totalKelas', 'mengajarKelas','pendingComplaints', 'pendingAppointments'));
       }
       // DASHBOARD PPDB & PENDAFTAR \\
       elseif ($role == 'Guest' || $role == 'PPDB') {

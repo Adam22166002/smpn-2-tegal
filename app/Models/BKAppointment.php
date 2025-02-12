@@ -9,22 +9,31 @@ class BKAppointment extends Model
 {
     use HasFactory;
 
+    protected $table = 'bk_appointments';
+
     protected $fillable = [
-        'nama',
-        'kelas',
-        'email',
+        'type',
+        'name',
+        'class_id',
         'phone',
+        'email',
         'appointment_date',
         'appointment_time',
         'consultation_topic',
-        'deskripsi',
-        'type', // online/offline
-        'platform', // untuk online
-        'counselor_id', // untuk offline
-        'status'
+        'description',
+        'counselor_id',
+        'platform',
+        'status',
+        'meeting_link'
     ];
 
-    protected $casts = [
-        'appointment_date' => 'date',
-    ];
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'class_id');
+    }
+
+    public function counselor()
+    {
+        return $this->belongsTo(User::class, 'counselor_id');
+    }
 }
