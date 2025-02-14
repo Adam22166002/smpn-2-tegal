@@ -59,7 +59,7 @@
                                         <li><a href="{{ url('kegiatan', $kegiatans->slug) }}">{{ $kegiatans->nama }} </a></li>
                                     @endforeach
 
-                                    
+
                                     {{-- <li class="has-child-menu"><a href="#">Program</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
@@ -69,8 +69,7 @@
                                     </li> --}}
                                 </ul>
                             </li>
-
-                            <li><a href="#">Informasi</a>
+                            {{-- <li><a href="#">Informasi</a>
                                 <ul>
                                     <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
                                             href=" {{route('berita')}} ">Berita Terkini</a></li>
@@ -79,10 +78,24 @@
                                     <li class="{{ (request()->is('gallery')) ? 'active' : '' }}"><a
                                         href="{{ route('gallery') }}">Galeri Sekolah</a></li>
                                 </ul>
+                            </li> --}}
+
+                            {{-- <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
+                            <li><a href="{{ route('rapot') }}">Rapot</a></li> --}}
+
+                            <li><a href="#">KONSPERO</a>
+                                <ul>
+                                    <li class="{{ (request()->is('konspero')) ? 'active' : '' }}"><a
+                                            href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
+                                </ul>
                             </li>
 
-                            <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
-                            <li><a href="{{ route('rapot') }}">Rapot</a></li>
+                            <li><a href="#">PERPUS DIGITAL</a>
+                                <ul>
+                                    <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
+                                            href=" {{route('perpus')}} ">Majalah Online</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>

@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <!-- status section -->
             <div id="info" class="text-white py-5" style="margin-top: 8rem; margin-bottom: 8rem;">
                 <div class="container d-flex justify-content-center">
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 col-md-4 mb-4" style="margin-bottom: 2rem;">
                         <div class="card h-100 shadow-sm border-0 text-center border-bottom border-top" style="border-bottom: 4px solid #007bff; border-top: 4px solid #007bff;">
                             <div class="card-body">
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 col-md-4 mb-4" style="margin-bottom: 2rem;">
                         <div class="card h-100 shadow-sm border-0 text-center border-bottom border-top" style="border-bottom: 4px solid #007bff; border-top: 4px solid #007bff;">
                             <div class="card-body">
@@ -177,12 +177,12 @@
             <div class="accordion" id="faqAccordion">
                 <div style="border-bottom: 1px solid; border-color: #337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading1"
-                                    type="button" data-toggle="collapse" data-target="#faq1" 
+                                    type="button" data-toggle="collapse" data-target="#faq1"
                                     aria-expanded="true" aria-controls="faq1"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between;">
                                     <span>Apa itu Layanan BK?</span>
                                     <i class="bi bi-chevron-down"></i>
-                            
+
                         </h2>
                         <div id="faq1" class="collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
                             <div class="card-body" style="padding-left: 1rem;">
@@ -190,10 +190,10 @@
                             </div>
                         </div>
                 </div>
-                
+
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading2"
-                                    type="button" data-toggle="collapse" data-target="#faq2" 
+                                    type="button" data-toggle="collapse" data-target="#faq2"
                                     aria-expanded="false" aria-controls="faq2"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Masalah apa saja yang bisa saya adukan melalui layanan ini?</span>
@@ -210,10 +210,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading3"
-                                    type="button" data-toggle="collapse" data-target="#faq3" 
+                                    type="button" data-toggle="collapse" data-target="#faq3"
                                     aria-expanded="false" aria-controls="faq3"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Apakah pengaduan saya akan dirahasiakan?</span>
@@ -228,7 +228,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading4"
-                                    type="button" data-toggle="collapse" data-target="#faq4" 
+                                    type="button" data-toggle="collapse" data-target="#faq4"
                                     aria-expanded="false" aria-controls="faq4"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Bagaimana cara saya mengajukan pengaduan?</span>
@@ -246,7 +246,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading5"
-                                    type="button" data-toggle="collapse" data-target="#faq5" 
+                                    type="button" data-toggle="collapse" data-target="#faq5"
                                     aria-expanded="false" aria-controls="faq5"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Apakah saya bisa mengadukan masalah orang lain?</span>
@@ -261,7 +261,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading6"
-                                    type="button" data-toggle="collapse" data-target="#faq6" 
+                                    type="button" data-toggle="collapse" data-target="#faq6"
                                     aria-expanded="false" aria-controls="faq6"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Apakah saya bisa mendapatkan solusi langsung setelah mengadu?</span>
@@ -276,7 +276,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading7"
-                                    type="button" data-toggle="collapse" data-target="#faq7" 
+                                    type="button" data-toggle="collapse" data-target="#faq7"
                                     aria-expanded="false" aria-controls="faq7"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Apakah ada biaya untuk menggunakan layanan ini?</span>
@@ -291,7 +291,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading8"
-                                    type="button" data-toggle="collapse" data-target="#faq8" 
+                                    type="button" data-toggle="collapse" data-target="#faq8"
                                     aria-expanded="false" aria-controls="faq8"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Bagaimana jika saya takut atau ragu untuk melapor?</span>
@@ -306,7 +306,7 @@
 
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading9"
-                                    type="button" data-toggle="collapse" data-target="#faq9" 
+                                    type="button" data-toggle="collapse" data-target="#faq9"
                                     aria-expanded="false" aria-controls="faq9"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Apakah saya bisa konsultasi masalah saya ada di luar sekolah?</span>
@@ -318,10 +318,10 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div style="border-bottom: 1px solid; border-color:#337ab7; padding-bottom: 1rem; padding-top:1rem">
                         <h2 class="btn btn-link w-100 text-start collapsed" id="faqHeading10"
-                                    type="button" data-toggle="collapse" data-target="#faq10" 
+                                    type="button" data-toggle="collapse" data-target="#faq10"
                                     aria-expanded="false" aria-controls="faq10"
                                     style="text-decoration: none; font-size: large; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
                                     <span>Berapa lama waktu untuk mendapatkan respons dari guru BK?</span>
@@ -352,7 +352,7 @@
                     <form action="{{ route('bk-complaint.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="type" value="notes">
-                        
+
                         <div class="form-group">
                             <label>Nama (Opsional)</label>
                             <input type="text" name="name" class="form-control">
@@ -380,7 +380,7 @@
 
                         <div class="form-group">
                             <label>Deskripsi Pengaduan <span class="text-danger">*</span></label>
-                            <textarea name="description" required rows="4" 
+                            <textarea name="description" required rows="4"
                                     class="form-control"
                                     placeholder="Ceritakan masalahmu di sini..."></textarea>
                         </div>
@@ -417,7 +417,7 @@
                     <form action="{{ route('bk-appointment.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="type" value="offline">
-                        
+
                         <div class="form-group">
                             <label>Nama <span class="text-danger">*</span></label>
                             <input type="text" name="name" required class="form-control">
@@ -445,7 +445,7 @@
 
                         <div class="form-group">
                             <label>Tanggal Konsultasi <span class="text-danger">*</span></label>
-                            <input type="date" name="appointment_date" required 
+                            <input type="date" name="appointment_date" required
                                 min="{{ date('Y-m-d') }}" class="form-control">
                         </div>
 
@@ -471,7 +471,7 @@
 
                         <div class="form-group">
                             <label>Deskripsi Singkat</label>
-                            <textarea name="description" rows="3" 
+                            <textarea name="description" rows="3"
                                     class="form-control"
                                     placeholder="Jelaskan secara singkat apa yang ingin dikonsultasikan..."></textarea>
                         </div>
@@ -509,7 +509,7 @@
                     <form action="{{ route('bk-appointment.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="type" value="online">
-                        
+
                         <div class="form-group">
                             <label>Nama <span class="text-danger">*</span></label>
                             <input type="text" name="name" required class="form-control">
@@ -527,19 +527,19 @@
 
                         <div class="form-group">
                             <label>Email <span class="text-danger">*</span></label>
-                            <input type="email" name="email" required 
+                            <input type="email" name="email" required
                                 class="form-control" placeholder="email@example.com">
                         </div>
 
                         <div class="form-group">
                             <label>Nomor WhatsApp <span class="text-danger">*</span></label>
-                            <input type="tel" name="phone" required 
+                            <input type="tel" name="phone" required
                                 class="form-control" placeholder="628xxxxxxxxxx">
                         </div>
 
                         <div class="form-group">
                             <label>Tanggal Konsultasi <span class="text-danger">*</span></label>
-                            <input type="date" name="appointment_date" required 
+                            <input type="date" name="appointment_date" required
                                 min="{{ date('Y-m-d') }}" class="form-control">
                         </div>
 
@@ -565,7 +565,7 @@
 
                         <div class="form-group">
                             <label>Deskripsi Singkat</label>
-                            <textarea name="description" rows="3" 
+                            <textarea name="description" rows="3"
                                     class="form-control"
                                     placeholder="Jelaskan secara singkat apa yang ingin dikonsultasikan..."></textarea>
                         </div>
@@ -591,7 +591,7 @@
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-            
+
             body {
                 font-family: 'Inter', sans-serif;
             }
@@ -680,7 +680,7 @@
                 });
             </script>
         @endif
-        
+
 
     @endsection
 @endsection
