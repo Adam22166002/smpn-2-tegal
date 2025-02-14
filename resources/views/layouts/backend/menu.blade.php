@@ -111,6 +111,25 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i>
+                    <span class="menu-title text-truncate" data-i18n="Card">Kesiswaan</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="nav-item {{ (request()->is('backend-kegiatan-siswa')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-kegiatan-siswa.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Kegiatan siswa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (request()->is('backend-kategori-prestasi')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-prestasi.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Prestasi Siswa</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i>
                     <span class="menu-title text-truncate" data-i18n="Card">Berita</span>
                 </a>
                 <ul class="menu-content">

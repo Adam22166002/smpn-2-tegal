@@ -35,7 +35,7 @@ Sarana dan Prasarana
                     <td><img src="{{ asset('storage/images/sarpras/' . $item->image) }}" width="100" alt="Image"></td>
                     <td>
                         <!-- Edit Button to open Modal -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" 
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal" 
                                 data-id="{{ $item->id }}" data-nama="{{ $item->nama }}" data-deskripsi="{{ $item->deskripsi }}" 
                                 data-image="{{ asset('storage/images/sarpras/' . $item->image) }}">
                             Edit
@@ -81,7 +81,7 @@ Sarana dan Prasarana
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
@@ -119,7 +119,7 @@ Sarana dan Prasarana
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
             </form>

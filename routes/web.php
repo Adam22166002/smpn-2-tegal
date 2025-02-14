@@ -17,7 +17,6 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Middleware\EnsureRoleIsTeacher;
-use App\Http\Middleware\LayananBK;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +43,10 @@ Route::get('sejarah-singkat', [App\Http\Controllers\Frontend\IndexController::cl
 Route::get('sarana-prasarana', [App\Http\Controllers\Frontend\IndexController::class, 'saranaPrasarana'])->name('sarpras');
 Route::get('penghargaan', [App\Http\Controllers\Frontend\IndexController::class, 'penghargaan'])->name('penghargaan.sekolah');
 Route::get('guru-tenaga-kependidikan', [App\Http\Controllers\Frontend\IndexController::class, 'guruTendik'])->name('gtk.sekolah');
-
+// KEGIATASN SISWA
+Route::get('kegiatan-siswa', [App\Http\Controllers\Frontend\IndexController::class, 'kegiatanSiswa'])->name('kegiatanSiswa.sekolah');
+// PRESTASI SISWA
+Route::get('prestasi-siswa', [App\Http\Controllers\Frontend\IndexController::class, 'PrestasiSiswa'])->name('prestasi.sekolah');
 //// PROGRAM STUDI \\\\
 Route::get('program/{slug}', [App\Http\Controllers\Frontend\MenuController::class, 'programStudi']);
 //// PROGRAM STUDI \\\\
@@ -202,6 +204,10 @@ Route::middleware('auth')->group(function () {
             'backend-kelas' =>  Backend\Website\KelasController::class,
             /// KEGIATAN \\\
             'backend-kegiatan' => Backend\Website\KegiatanController::class,
+
+            'backend-kegiatan-siswa' => Backend\Website\KegiatanSiswaController::class,
+
+            'backend-prestasi' => Backend\Website\PrestasiController::class,
             /// IMAGE SLIDER \\\
             'backend-imageslider' => Backend\Website\ImageSliderController::class,
             /// ABOUT \\\

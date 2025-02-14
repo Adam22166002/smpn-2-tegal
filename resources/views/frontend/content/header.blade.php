@@ -80,6 +80,12 @@
                                         href="{{ route('gallery') }}">Galeri Sekolah</a></li>
                                 </ul>
                             </li>
+                            <li><a href="#">Kesiswaan</a>
+                                <ul>
+                                    <li><a href=" {{route('kegiatanSiswa.sekolah')}} ">Kegiatan Siswa</a></li>
+                                    <li><a href=" {{route('prestasi.sekolah')}} ">Prestasi Siswa</a></li>
+                                </ul>
+                            </li>
 
                             <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
                             <li><a href="{{ route('rapot') }}">Rapot</a></li>

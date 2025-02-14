@@ -21,9 +21,11 @@ use App\Models\Visimisi;
 use App\Models\Sarpras;
 use Carbon\Carbon;
 use App\Models\Gallery;
+use App\Models\KegiatanSiswa;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
 use App\Models\Penghargaan;
+use App\Models\Prestasi;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -236,6 +238,36 @@ class IndexController extends Controller
 
         // Return the view with the data
         return view('frontend.content.gtk', compact('pengajar','kelas','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
+    // kegiatan siswa
+    public function kegiatanSiswa()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $kegiatan = KegiatanSiswa::latest()->paginate(6);
+        return view('frontend.content.kegiatanSiswa', compact('kegiatan','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
+    //prestasi siswa
+    public function prestasiSiswa()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $prestasi = Prestasi::latest()->paginate(6);
+        return view('frontend.content.prestasi', compact('prestasi','jurusanM','kegiatanM','pengajar','footer'));
     }
 
     // Galeri
