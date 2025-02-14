@@ -70,6 +70,12 @@ Route::get('cetakRapot', [App\Http\Controllers\Frontend\IndexController::class, 
 
 Route::get('cekRapot', [App\Http\Controllers\Frontend\IndexController::class, 'cekRapot'])->name('cekRapot');
 
+/// KONSPERO \\\
+Route::get('konspero', [App\Http\Controllers\Frontend\IndexController::class, 'konspero'])->name('konspero');
+
+/// PERPUS DIGITAL \\\
+Route::get('perpus', [App\Http\Controllers\Frontend\IndexController::class, 'perpus'])->name('perpus');
+
 Auth::routes(['register' => false]);
 
 // ======= BACKEND ======= \\
@@ -151,8 +157,8 @@ Route::middleware('auth')->group(function () {
 
     /// CHANGE PASSWORD
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
-    
-    
+
+
 
     Route::middleware('layanan.bk')->group(function () {
         Route::resources([
@@ -164,7 +170,7 @@ Route::middleware('auth')->group(function () {
         Route::get('daftar-kelas', [BKController::class, 'daftarKelas']);
         Route::get('daftar-siswa', [BKController::class, 'daftarMurid']);
     });
-    
+
 
     // Guru
     Route::middleware([EnsureRoleIsTeacher::class])->group(function () {
