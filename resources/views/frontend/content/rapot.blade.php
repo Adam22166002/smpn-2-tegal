@@ -105,10 +105,10 @@ Raport Online SMPN 2 Tegal
                     @foreach($pengajars as $pengajar)
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{{ $pengajar->foto }}" class="card-img-top" alt="{{ $pengajar->nama }}">
+                            <img src="{{ asset('Assets/Frontend/img/' . $pengajar->foto_profile) }}" class="card-img-top" alt="{{ $pengajar->name }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $pengajar->nama }}</h5>
-                                <p class="card-text">{{ $pengajar->mata_pelajaran }}</p>
+                                <h5 class="card-title">{{ $pengajar->name }}</h5>
+                                <p class="card-text">{{ $pengajar->role }}</p>
                             </div>
                         </div>
                     </div>

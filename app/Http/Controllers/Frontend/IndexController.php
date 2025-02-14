@@ -435,4 +435,20 @@ public function gallery(Request $request)
 
         return redirect()->route('bk-complaint.index')->with('success', 'Janji konsultasi Anda berhasil dibuat');
     }
+
+    public function konspero()
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
+        return view('frontend.content.konspero',  compact('jurusanM', 'kegiatanM', 'footer'));
+    }
+
+    public function perpus()
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
+        return view('frontend.content.perpus',  compact('jurusanM', 'kegiatanM', 'footer'));
+    }
 }
