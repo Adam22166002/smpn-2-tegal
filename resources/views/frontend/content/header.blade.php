@@ -45,29 +45,28 @@
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
                                     <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
+                                    <li><a href=" {{route('sejarah.sekolah')}} ">Sejarah Singkat</a></li>
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
+                                    <li><a href=" {{ route('sarpras') }} ">Sarana dan Prasarana</a></li>
+                                    <li><a href=" {{route('penghargaan.sekolah')}} ">Penghargaan</a></li>
+                                    <li><a href=" {{route('gtk.sekolah')}} ">GTK</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="#">Program</a>
-                                <ul>
-                                   <li class="has-child-menu"><a href="#">Program</a>
+                            <li><a href="#">Ekstrakurikuler</a>
+                                <ul class="thired-level">
+                                    @foreach ($kegiatanM as $kegiatans)
+                                        <li><a href="{{ url('kegiatan', $kegiatans->slug) }}">{{ $kegiatans->nama }} </a></li>
+                                    @endforeach
+
+                                    
+                                    {{-- <li class="has-child-menu"><a href="#">Program</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
-                                            <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
-                                                </a></li>
+                                                <li><a href="{{ url('program', $jurusans->slug) }}">{{ $jurusans->nama }}</a></li>
                                             @endforeach
                                         </ul>
-                                    </li>
-                                     <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
-                                        <ul class="thired-level">
-                                            @foreach ($kegiatanM as $kegiatans)
-                                            <li><a
-                                                    href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
 

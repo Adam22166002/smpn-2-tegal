@@ -40,6 +40,10 @@ Route::get('profile-sekolah', [App\Http\Controllers\Frontend\IndexController::cl
 
 //// VISI dan MISI
 Route::get('visi-dan-misi', [App\Http\Controllers\Frontend\IndexController::class, 'visimisi'])->name('visimisi.sekolah');
+Route::get('sejarah-singkat', [App\Http\Controllers\Frontend\IndexController::class, 'sejarahSingkat'])->name('sejarah.sekolah');
+Route::get('sarana-prasarana', [App\Http\Controllers\Frontend\IndexController::class, 'saranaPrasarana'])->name('sarpras');
+Route::get('penghargaan', [App\Http\Controllers\Frontend\IndexController::class, 'penghargaan'])->name('penghargaan.sekolah');
+Route::get('guru-tenaga-kependidikan', [App\Http\Controllers\Frontend\IndexController::class, 'guruTendik'])->name('gtk.sekolah');
 
 //// PROGRAM STUDI \\\\
 Route::get('program/{slug}', [App\Http\Controllers\Frontend\MenuController::class, 'programStudi']);
@@ -190,6 +194,10 @@ Route::middleware('auth')->group(function () {
             'backend-profile-sekolah'   => Backend\Website\ProfilSekolahController::class,
             /// VISI & MISI \\\
             'backend-visimisi'  => Backend\Website\VisidanMisiController::class,
+            // SARPRAS
+            'backend-sarpras'   => Backend\Website\SarprasController::class,
+            // PENGHARGAAN
+            'backend-penghargaan'  => Backend\Website\PenghargaanController::class,
             //// PROGRAM KELAS \\\\
             'backend-kelas' =>  Backend\Website\KelasController::class,
             /// KEGIATAN \\\

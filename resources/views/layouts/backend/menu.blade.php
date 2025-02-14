@@ -97,6 +97,14 @@
                                 <a class="d-flex align-items-center" href="{{route('backend-visimisi.index')}}"><span
                                         class="menu-item text-truncate" data-i18n="Third Level">Visi dan Misi</span></a>
                             </li>
+                            <li class="nav-item {{ (request()->is('backend.sarpras')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-sarpras.index')}}"><span
+                                        class="menu-item text-truncate" data-i18n="Third Level">Sarana Prasarana</span></a>
+                            </li>
+                            <li class="nav-item {{ (request()->is('backend-penghargaan')) ? 'active' : '' }}">
+                                <a class="d-flex align-items-center" href="{{route('backend-penghargaan.index')}}"><span
+                                        class="menu-item text-truncate" data-i18n="Third Level">Penghargaan</span></a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -174,7 +182,7 @@
                     <li class="nav-item {{ (request()->is('backend-pengguna-pengajar')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-pengguna-pengajar.index')}} "><i
                                 data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Pengajar</span>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Pengajar/GTK</span>
                         </a>
                     </li>
                      <li class="nav-item {{ (request()->is('backend-pengguna-bk')) ? 'active' : '' }}">

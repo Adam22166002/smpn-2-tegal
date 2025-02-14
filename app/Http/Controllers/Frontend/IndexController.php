@@ -18,9 +18,12 @@ use App\Models\ProfileSekolah;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Visimisi;
+use App\Models\Sarpras;
 use Carbon\Carbon;
 use App\Models\Gallery;
 use App\Models\Kelas;
+use App\Models\MataPelajaran;
+use App\Models\Penghargaan;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -148,6 +151,49 @@ class IndexController extends Controller
         return view('frontend.content.profileSekolah', compact('profile','jurusanM','kegiatanM','pengajar','footer'));
     }
 
+    //sejarah sekolah
+    public function sejarahSingkat()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $sejarah = [
+            'Pendidikan merupakan pilar sebuah negara. Jika sebuah negara mempunyai sebuah sistem pendidikan yang tertata dengan rapi maka negara tersebut akan menapaki jalan yang mulus untuk mencapai kemajuan. Demikian pula sebaliknya jika pendidikan negara tersebut bermasalah maka negara tersebut akan menjadi bulan-bulanan negara maju.',
+            'Dengan dasar itulah pada tahun 1958 kota Tegal merasa sudah saatnya untuk menambah jumlah SMP baru untuk memenuhi kemajuan dan tuntutan akan adanya fasilitas pendidikan yang dapat menjadi warga kota Tegal merancang masa depannya. Dan sekolah yang didirikan tersebut sekarang dikenal dengan SMP Negeri 2 Tegal yang berada di jalan Menteri Supeno No. 3 Kota Tegal.',
+            'Semenjak didirikan hingga saat ini SMP Negeri 2 Tegal telah mengalami kemajuan yang signifikan. Berbagai prestasi akademik maupun non-akademik tingkat kota maupun tingkat provinsi telah dicapai. Bahkan semenjak diadakannya Evaluasi Belajar Tahap Akhir Nasional hingga sekarang ini (Tahun Pelajaran 2007/2008) SMP Negeri 2 Tegal menempati peringkat 1 SMP se-kota Tegal. Hasil rerata nilai ujian juga selalu mengalami peningkatan tiap tahunnya. Pada tahun Pelajaran 2006/2007 rerata ujian nasional adalah dengan klasifikasi A menempati peringkat 45 Tingkat Provinsi. Sedangkan pada tahun Pelajaran 2007/2008 rerata ujian nasional dengan klasifikasi A meningkat menjadi menempati peringkat 19 Tingkat Provinsi.',
+            'Usaha keras segenap guru dan karyawan serta masyarakatlah yang menyebabkan prestasi itu dapat tercapai.',
+            'SMP N 2 Tegal adalah Sekolah Standar Nasional yang beralamat di Jalan Menteri Supeno No. 3 Kota Tegal, Telp. (0283) 351532 Fax (0283) 324963 Kode Pos 52124. Dengan berbagai prestasi baik dalam bidang pendidikan (study); olah raga ataupun kesenian yang telah dicapai oleh SMP Negeri 2 Tegal berkat kerja sama yang baik seluruh warga sekolah dan menjadikan SMP Negeri 2 Tegal selalu menjadi peringkat nomor satu dalam meraih nilai rata-rata kelulusan (Ujian Nasional) di Kota Tegal.',
+            'SMP Negeri 2 Tegal: Sekolah Unggul Berakreditasi A di Kota Tegal. SMP Negeri 2 Tegal, yang beralamat di Jl. Menteri Supeno No 3 Tegal, merupakan sekolah menengah pertama negeri yang telah lama berdiri dan memiliki reputasi yang baik di Kota Tegal. Didirikan pada tahun 1958, sekolah ini memiliki sejarah panjang dalam mencetak generasi muda yang berkualitas dan berakhlak mulia.',
+            'Sebagai sekolah berakreditasi A, SMP Negeri 2 Tegal memiliki standar kualitas pendidikan yang tinggi. Hal ini dibuktikan dengan diraihnya sertifikat akreditasi A pada tahun 2019. Sekolah ini juga memiliki fasilitas yang memadai untuk menunjang proses belajar mengajar, termasuk akses internet Biznet (Serat Optik) dan jaringan listrik PLN.',
+            'SMP Negeri 2 Tegal menyelenggarakan kegiatan belajar mengajar selama enam hari dalam seminggu dengan sistem pagi. Sekolah ini berada di bawah naungan Kementerian Pendidikan dan Kebudayaan dan memiliki visi untuk menghasilkan lulusan yang berakhlak mulia, berprestasi, dan siap menghadapi tantangan masa depan.',
+            'Untuk informasi lebih lanjut, Anda dapat mengunjungi website sekolah di <a href="http://www.smpn2tegal.sch.id" target="_blank">www.smpn2tegal.sch.id</a> atau menghubungi sekolah melalui email <a href="mailto:smpn2tegal@yahoo.com">smpn2tegal@yahoo.com</a>.',
+            'SMP Negeri 2 Tegal, pilihan tepat untuk pendidikan berkualitas di Kota Tegal.',
+        ];
+
+        return view('frontend.content.sejarahSekolah', compact('sejarah','jurusanM','kegiatanM','pengajar','footer'));
+    }
+    // SARPRAS
+    public function saranaPrasarana()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $sarpras = Sarpras::all(); // Anda bisa sesuaikan ini dengan query sesuai kebutuhan
+
+        // Kirim data sarana dan prasarana ke view
+        return view('frontend.content.sarpras', compact('sarpras','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
     // Visi dan Misi
     public function visimisi()
     {
@@ -163,9 +209,36 @@ class IndexController extends Controller
         $visimisi = Visimisi::first();
         return view('frontend.content.visimisi', compact('visimisi','jurusanM','kegiatanM','pengajar','footer'));
     }
+    // Penghargaan
+    public function penghargaan()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $penghargaan = Penghargaan::all();
+
+        return view('frontend.content.penghargaan', compact('penghargaan','jurusanM','kegiatanM','pengajar','footer'));
+    }
+    // GURU
+    public function guruTendik()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $kelas = Kelas::all();
+        $footer = Footer::first();
+        $mataPelajaran = MataPelajaran::all();
+
+        // Return the view with the data
+        return view('frontend.content.gtk', compact('pengajar','kelas','jurusanM','kegiatanM','pengajar','footer'));
+    }
 
     // Galeri
-
 public function gallery(Request $request)
 {
     $jurusanM = Jurusan::all();
