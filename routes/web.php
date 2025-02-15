@@ -251,6 +251,8 @@ Route::middleware('auth')->group(function () {
 
         ]);
 
+        Route::get('/visitors', [App\Http\Controllers\HomeController::class, 'visitors']);
+
         Route::post('/importExcelMurid', [MuridController::class, 'importExcelMurid']);
         Route::post('/importExcelKelas', [KelasController::class, 'importExcelKelas']);
         Route::post('/importExcelMataPelajaran', [MataPelajaranController::class, 'importExcelMataPelajaran']);
@@ -267,4 +269,3 @@ Route::prefix('/')->group(function () {
     // Route untuk appointment (online & offline)
     Route::post('/appointment/store', [IndexController::class, 'storeAppointment'])->name('bk-appointment.store');
 });
-
