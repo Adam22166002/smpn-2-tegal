@@ -26,6 +26,7 @@ use App\Models\Kelas;
 use App\Models\MataPelajaran;
 use App\Models\Penghargaan;
 use App\Models\Prestasi;
+use App\Models\Consultation;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -444,6 +445,23 @@ public function gallery(Request $request)
         return view('frontend.content.konspero',  compact('jurusanM', 'kegiatanM', 'footer'));
     }
 
+    public function storeKonspero(Request $request)
+    {
+        $request->validate([
+            'name' => 'nullable|string|max:255',
+            'category' => 'required|string',
+            'message' => 'required|string'
+        ]);
+
+        Consultation::create([
+            'name' => $request->name,
+            'category' => $request->category,
+            'message' => $request->message
+        ]);
+
+        return redirect()->back()->with('success', 'Konsultasi berhasil dikirim.');
+    }
+
     public function perpus()
     {
         $jurusanM = Jurusan::all();
@@ -452,3 +470,4 @@ public function gallery(Request $request)
         return view('frontend.content.perpus',  compact('jurusanM', 'kegiatanM', 'footer'));
     }
 }
+
