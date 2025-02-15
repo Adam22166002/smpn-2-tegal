@@ -147,8 +147,8 @@ Route::middleware('auth')->group(function () {
 
     /// CHANGE PASSWORD
     Route::put('profile-settings/change-password/{id}', [App\Http\Controllers\Backend\ProfileController::class, 'changePassword'])->name('profile.change-password');
-    
-    
+
+
 
     Route::middleware('layanan.bk')->group(function () {
         Route::resources([
@@ -160,7 +160,7 @@ Route::middleware('auth')->group(function () {
         Route::get('daftar-kelas', [BKController::class, 'daftarKelas']);
         Route::get('daftar-siswa', [BKController::class, 'daftarMurid']);
     });
-    
+
 
     // Guru
     Route::middleware([EnsureRoleIsTeacher::class])->group(function () {
@@ -231,6 +231,8 @@ Route::middleware('auth')->group(function () {
 
         ]);
 
+        Route::get('/visitors', [App\Http\Controllers\HomeController::class, 'visitors']);
+
         Route::post('/importExcelMurid', [MuridController::class, 'importExcelMurid']);
         Route::post('/importExcelKelas', [KelasController::class, 'importExcelKelas']);
         Route::post('/importExcelMataPelajaran', [MataPelajaranController::class, 'importExcelMataPelajaran']);
@@ -247,4 +249,3 @@ Route::prefix('/')->group(function () {
     // Route untuk appointment (online & offline)
     Route::post('/appointment/store', [IndexController::class, 'storeAppointment'])->name('bk-appointment.store');
 });
-

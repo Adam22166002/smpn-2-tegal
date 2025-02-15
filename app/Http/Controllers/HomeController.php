@@ -10,6 +10,7 @@ use App\Models\BKComplaint;
 use App\Models\Kelas;
 use App\Models\UsersDetail;
 use Carbon\Carbon;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,12 +48,12 @@ class HomeController extends Controller
         $alumni = User::where('role', 'Alumni')->where('status', 'Aktif')->count();
         $berita = Berita::select('id')->count();
         $acara = Events::where('is_active', '0')->count();
-        $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->first();
+        // $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->first();
         $book = Book::sum('stock');
         $borrow = Borrowing::whereNull('lateness')->count();
         $member = Member::where('is_active', 0)->count();
 
-        return view('backend.website.home', compact('guru', 'murid', 'alumni', 'event', 'acara', 'book', 'borrow', 'member', 'berita'));
+        return view('backend.website.home', compact('guru', 'murid', 'alumni', 'acara', 'book', 'borrow', 'member', 'berita'));
       }
       // DASHBOARD MURID \\
       elseif ($role == 'Murid') {
@@ -102,7 +103,7 @@ class HomeController extends Controller
 
         $event = Events::where('is_active', '0')->first();
 
-        return view('backend.website.home', compact('event','murid','totalKelas', 'mengajarKelas','pendingComplaints', 'pendingAppointments'));
+        return view('backend.website.home', compact('event', 'murid', 'totalKelas', 'mengajarKelas', 'pendingComplaints', 'pendingAppointments'));
       }
       // DASHBOARD PPDB & PENDAFTAR \\
       elseif ($role == 'Guest' || $role == 'PPDB') {
@@ -126,5 +127,14 @@ class HomeController extends Controller
         return view('spp::index');
       }
     }
+  }
+
+  public function visitors()
+  {
+    $data = Visitor::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+      ->groupBy('date')
+      ->get();
+
+    return response()->json($data);
   }
 }
