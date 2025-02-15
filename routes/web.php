@@ -66,7 +66,6 @@ Route::get('gallery', [App\Http\Controllers\Frontend\IndexController::class, 'ga
 /// RAPOT \\\
 Route::get('rapot', [App\Http\Controllers\Frontend\IndexController::class, 'rapot'])->name('rapot');
 
-
 /// CETAK RAPOT \\\
 Route::get('cetakRapot', [App\Http\Controllers\Frontend\IndexController::class, 'cetakRapot'])->name('cetakRapot');
 
@@ -77,6 +76,7 @@ Route::get('konspero', [App\Http\Controllers\Frontend\IndexController::class, 'k
 
 /// PERPUS DIGITAL \\\
 Route::get('perpus', [App\Http\Controllers\Frontend\IndexController::class, 'perpus'])->name('perpus');
+Route::post('/konsultasi', [App\Http\Controllers\Frontend\IndexController::class, 'storeKonspero'])->name('storeKonspero');
 
 Auth::routes(['register' => false]);
 

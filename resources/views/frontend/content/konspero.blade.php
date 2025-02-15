@@ -238,25 +238,33 @@ Konspero
         <div class="container">
             <div class="form-container">
                 <h2 class="section-title">Form Konsultasi</h2>
-                <form>
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('storeKonspero') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label>Nama (Opsional)</label>
-                        <input type="text" class="form-control" placeholder="Masukkan nama Anda">
+                        <input type="text" name="name" class="form-control" placeholder="Masukkan nama Anda">
                     </div>
                     <div class="form-group">
                         <label>Kategori Konsultasi</label>
-                        <select class="form-control">
-                            <option>Akademik</option>
-                            <option>Sosial</option>
-                            <option>Pribadi</option>
-                            <option>Karier</option>
+                        <select name="category" class="form-control">
+                            <option value="akademik">Akademik</option>
+                            <option value="sosial">Sosial</option>
+                            <option value="pribadi">Pribadi</option>
+                            <option value="karier">Karier</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Pesan</label>
-                        <textarea class="form-control" placeholder="Tuliskan pesan Anda"></textarea>
+                        <textarea name="message" class="form-control" placeholder="Tuliskan pesan Anda"></textarea>
                     </div>
-                    <button type="submit" class="btn">Kirim Pesan</button>
+                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
                 </form>
             </div>
         </div>
