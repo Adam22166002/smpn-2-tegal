@@ -45,33 +45,31 @@
                             <li><a href="#">Tentang Kami</a>
                                 <ul>
                                     <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
+                                    <li><a href=" {{route('sejarah.sekolah')}} ">Sejarah Singkat</a></li>
                                     <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
+                                    <li><a href=" {{ route('sarpras') }} ">Sarana dan Prasarana</a></li>
+                                    <li><a href=" {{route('penghargaan.sekolah')}} ">Penghargaan</a></li>
+                                    <li><a href=" {{route('gtk.sekolah')}} ">GTK</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="#">Program</a>
-                                <ul>
-                                   <li class="has-child-menu"><a href="#">Program</a>
+                            <li><a href="#">Ekstrakurikuler</a>
+                                <ul class="thired-level">
+                                    @foreach ($kegiatanM as $kegiatans)
+                                        <li><a href="{{ url('kegiatan', $kegiatans->slug) }}">{{ $kegiatans->nama }} </a></li>
+                                    @endforeach
+
+
+                                    {{-- <li class="has-child-menu"><a href="#">Program</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
-                                            <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}}
-                                                </a></li>
+                                                <li><a href="{{ url('program', $jurusans->slug) }}">{{ $jurusans->nama }}</a></li>
                                             @endforeach
                                         </ul>
-                                    </li>
-                                     <li class="has-child-menu"><a href="#">Kegiatan Ekstrakulikuler</a>
-                                        <ul class="thired-level">
-                                            @foreach ($kegiatanM as $kegiatans)
-                                            <li><a
-                                                    href=" {{url('kegiatan', $kegiatans->slug)}} ">{{$kegiatans->nama}}</a>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
-
-                            <li><a href="#">Informasi</a>
+                            {{-- <li><a href="#">Informasi</a>
                                 <ul>
                                     <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
                                             href=" {{route('berita')}} ">Berita Terkini</a></li>
@@ -80,10 +78,30 @@
                                     <li class="{{ (request()->is('gallery')) ? 'active' : '' }}"><a
                                         href="{{ route('gallery') }}">Galeri Sekolah</a></li>
                                 </ul>
+                            </li> --}}
+
+                            {{-- <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
+                            <li><a href="{{ route('rapot') }}">Rapot</a></li> --}}
+
+                            <li><a href="#">KONSPERO</a>
+                                <ul>
+                                    <li class="{{ (request()->is('konspero')) ? 'active' : '' }}"><a
+                                            href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Kesiswaan</a>
+                                <ul>
+                                    <li><a href=" {{route('kegiatanSiswa.sekolah')}} ">Kegiatan Siswa</a></li>
+                                    <li><a href=" {{route('prestasi.sekolah')}} ">Prestasi Siswa</a></li>
+                                </ul>
                             </li>
 
-                            <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
-                            <li><a href="{{ route('rapot') }}">Rapot</a></li>
+                            <li><a href="#">PERPUS DIGITAL</a>
+                                <ul>
+                                    <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
+                                            href=" {{route('perpus')}} ">Majalah Online</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
