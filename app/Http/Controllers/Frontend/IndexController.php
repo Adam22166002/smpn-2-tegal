@@ -19,7 +19,6 @@ use App\Models\User;
 use App\Models\Video;
 use App\Models\Visimisi;
 use App\Models\Sarpras;
-use Carbon\Carbon;
 use App\Models\Gallery;
 use App\Models\KegiatanSiswa;
 use App\Models\Kelas;
@@ -78,7 +77,7 @@ class IndexController extends Controller
          // Berita
          $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->paginate(10);
 
-         return view('frontend.content.beritaAll', compact('berita','kategori','jurusanM','kegiatanM','footer'));
+        return view('frontend.content.beritaAll', compact('berita','kategori','jurusanM','kegiatanM','footer'));
     }
     // Show Detail Berita
     public function detailBerita($slug)
