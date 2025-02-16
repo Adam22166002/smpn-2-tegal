@@ -191,6 +191,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/exportAbsenPerHariIni', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportAbsenPerHariIni']);
         Route::get('/exportSemuaAbsen', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportSemuaAbsen']);
+
+        Route::get('/totalMuridAjar', [App\Http\Controllers\HomeController::class, 'totalMuridAjar']);
     });
 
     Route::prefix('/')->middleware('role:Admin')->group(function () {
