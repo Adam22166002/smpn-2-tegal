@@ -31,9 +31,11 @@
 
 @if(Request::path() == "home")
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+       let detectRole = document.getElementById('detectRole');
+
+       if(detectRole.value == "Admin"){
         fetch("/visitors")
             .then(response => response.json())
             .then(data => {
@@ -62,6 +64,47 @@
                     }
                 });
             });
+        }else if(detectRole.value == "Guru"){
+            fetch("/totalMuridAjar")
+            .then(response => response.json())
+            .then(data => {
+                let jumlahSemuaMurid = data.map(item => item.jumlah_semua_murid);
+                let jumlahLakiLaki = data.map(item => item.jumlah_laki_laki);
+                let jumlahPerempuan = data.map(item => item.jumlah_perempuan);
+
+                let ctx = document.getElementById("muridChart").getContext("2d");
+
+                new Chart(ctx, {
+                    type: "pie",
+                    data: {
+                        labels: ["Jumlah Semua Murid", "Jumlah Laki-Laki", "Jumlah Perempuan"],
+                        datasets: [{
+                            data: [jumlahSemuaMurid, jumlahLakiLaki, jumlahPerempuan],
+                            backgroundColor: ["#36A2EB", "#4CAF50", "#FF6384"],
+                            borderColor: ["#2980B9", "#388E3C", "#D32F2F"],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        let value = tooltipItem.raw;
+                                        return ` ${value} Murid`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+        }
 
             function updateClock() {
           

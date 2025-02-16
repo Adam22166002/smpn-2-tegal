@@ -131,10 +131,37 @@ class HomeController extends Controller
 
   public function visitors()
   {
+
     $data = Visitor::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+      ->whereMonth('created_at', Carbon::now()->month)
       ->groupBy('date')
       ->get();
 
     return response()->json($data);
+  }
+
+  public function totalMuridAjar()
+  {
+    $user_id = Auth::user()->id;
+    $kelasMengajar = UsersDetail::select(
+      'users_details.kelas',
+      'users_details.nama_kelas'
+    )
+      ->where('user_id', $user_id)
+      ->first();
+
+    $murid = User::whereHas('dataMurid', function ($query) use ($kelasMengajar) {
+      $query->where('kelas', $kelasMengajar->kelas)
+        ->where('nama_kelas', $kelasMengajar->nama_kelas);
+    })
+      ->join('data_murids', 'users.id', '=', 'data_murids.user_id')
+      ->selectRaw("
+      COUNT(data_murids.jenis_kelamin) AS jumlah_semua_murid, 
+      SUM(data_murids.jenis_kelamin = 'Laki-Laki') AS jumlah_laki_laki,
+      SUM(data_murids.jenis_kelamin = 'Perempuan') AS jumlah_perempuan
+          ")
+      ->get();
+
+    return response()->json($murid);
   }
 }
