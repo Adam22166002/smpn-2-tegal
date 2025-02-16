@@ -43,6 +43,10 @@ Route::get('sejarah-singkat', [App\Http\Controllers\Frontend\IndexController::cl
 Route::get('sarana-prasarana', [App\Http\Controllers\Frontend\IndexController::class, 'saranaPrasarana'])->name('sarpras');
 Route::get('penghargaan', [App\Http\Controllers\Frontend\IndexController::class, 'penghargaan'])->name('penghargaan.sekolah');
 Route::get('guru-tenaga-kependidikan', [App\Http\Controllers\Frontend\IndexController::class, 'guruTendik'])->name('gtk.sekolah');
+Route::get('kurikulum-sekolah', [App\Http\Controllers\Frontend\IndexController::class, 'kurikulum'])->name('kurikulum.sekolah');
+Route::get('pembiasaan-siswa', [App\Http\Controllers\Frontend\IndexController::class, 'pembiasaan'])->name('pembiasaan.sekolah');
+Route::get('kaldik', [App\Http\Controllers\Frontend\IndexController::class, 'kaldik'])->name('kaldik.sekolah');
+Route::get('info-ATS-AAS-ANBK', [App\Http\Controllers\Frontend\IndexController::class, 'info'])->name('info.sekolah');
 // KEGIATASN SISWA
 Route::get('kegiatan-siswa', [App\Http\Controllers\Frontend\IndexController::class, 'kegiatanSiswa'])->name('kegiatanSiswa.sekolah');
 // PRESTASI SISWA
@@ -191,6 +195,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/exportAbsenPerHariIni', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportAbsenPerHariIni']);
         Route::get('/exportSemuaAbsen', [App\Http\Controllers\Backend\Pengguna\PengajarController::class, 'exportSemuaAbsen']);
+
+        Route::get('/totalMuridAjar', [App\Http\Controllers\HomeController::class, 'totalMuridAjar']);
     });
 
     Route::prefix('/')->middleware('role:Admin')->group(function () {
@@ -210,10 +216,18 @@ Route::middleware('auth')->group(function () {
             'backend-kelas' =>  Backend\Website\KelasController::class,
             /// KEGIATAN \\\
             'backend-kegiatan' => Backend\Website\KegiatanController::class,
-
+            // kegiatan siswa
             'backend-kegiatan-siswa' => Backend\Website\KegiatanSiswaController::class,
-
+            // prestasi
             'backend-prestasi' => Backend\Website\PrestasiController::class,
+            // kurikulum
+            'backend-kurikulum' => Backend\Website\KurikulumController::class,
+            // pembiasaan siswa
+            'backend-pembiasaan' => Backend\Website\PembiasaanController::class,
+            // kaldik
+            'backend-kaldik' => Backend\Website\KaldikController::class,
+            // informasi ATS, AAS, ANBK
+            'backend-informasi' => Backend\Website\InformasiController::class,
             /// IMAGE SLIDER \\\
             'backend-imageslider' => Backend\Website\ImageSliderController::class,
             /// ABOUT \\\
@@ -251,6 +265,8 @@ Route::middleware('auth')->group(function () {
 
         ]);
 
+        Route::get('/visitors', [App\Http\Controllers\HomeController::class, 'visitors']);
+
         Route::post('/importExcelMurid', [MuridController::class, 'importExcelMurid']);
         Route::post('/importExcelKelas', [KelasController::class, 'importExcelKelas']);
         Route::post('/importExcelMataPelajaran', [MataPelajaranController::class, 'importExcelMataPelajaran']);
@@ -267,4 +283,3 @@ Route::prefix('/')->group(function () {
     // Route untuk appointment (online & offline)
     Route::post('/appointment/store', [IndexController::class, 'storeAppointment'])->name('bk-appointment.store');
 });
-

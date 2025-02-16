@@ -29,6 +29,102 @@
 <script src="{{asset('Assets/Backend/js/scripts/components/components-modals.js')}}"></script>
 <!-- END: Page JS-->
 
+@if(Request::path() == "home")
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+       let detectRole = document.getElementById('detectRole');
+
+       if(detectRole.value == "Admin"){
+        fetch("/visitors")
+            .then(response => response.json())
+            .then(data => {
+                let dates = data.map(item => item.date);
+                let counts = data.map(item => item.count);
+    
+                let ctx = document.getElementById("visitorChart").getContext("2d");
+                new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: "Jumlah Pengunjung",
+                            data: counts,
+                            borderColor: "blue",
+                            borderWidth: 2,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: { title: { display: true, text: "Tanggal" } },
+                            y: { title: { display: true, text: "Jumlah Pengunjung" }, beginAtZero: true }
+                        }
+                    }
+                });
+            });
+        }else if(detectRole.value == "Guru"){
+            fetch("/totalMuridAjar")
+            .then(response => response.json())
+            .then(data => {
+                let jumlahSemuaMurid = data.map(item => item.jumlah_semua_murid);
+                let jumlahLakiLaki = data.map(item => item.jumlah_laki_laki);
+                let jumlahPerempuan = data.map(item => item.jumlah_perempuan);
+
+                let ctx = document.getElementById("muridChart").getContext("2d");
+
+                new Chart(ctx, {
+                    type: "pie",
+                    data: {
+                        labels: ["Jumlah Semua Murid", "Jumlah Laki-Laki", "Jumlah Perempuan"],
+                        datasets: [{
+                            data: [jumlahSemuaMurid, jumlahLakiLaki, jumlahPerempuan],
+                            backgroundColor: ["#36A2EB", "#4CAF50", "#FF6384"],
+                            borderColor: ["#2980B9", "#388E3C", "#D32F2F"],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "top"
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        let value = tooltipItem.raw;
+                                        return ` ${value} Murid`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+        }
+
+            function updateClock() {
+          
+            let now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+
+            let fullSecs = `${hours}:${minutes}:${seconds}`;
+
+            document.getElementById('clock').textContent = fullSecs;
+        }
+
+        setInterval(updateClock, 1000); 
+        updateClock();
+    });
+</script>
+@endif
+
+
 @if(Request::path() == "absensi")
 <script>
     function btnAbsenModal(id){

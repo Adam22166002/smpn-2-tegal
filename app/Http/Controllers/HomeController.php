@@ -10,6 +10,7 @@ use App\Models\BKComplaint;
 use App\Models\Kelas;
 use App\Models\UsersDetail;
 use Carbon\Carbon;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,12 +48,12 @@ class HomeController extends Controller
         $alumni = User::where('role', 'Alumni')->where('status', 'Aktif')->count();
         $berita = Berita::select('id')->count();
         $acara = Events::where('is_active', '0')->count();
-        $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->first();
+        // $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->first();
         $book = Book::sum('stock');
         $borrow = Borrowing::whereNull('lateness')->count();
         $member = Member::where('is_active', 0)->count();
 
-        return view('backend.website.home', compact('guru', 'murid', 'alumni', 'event', 'acara', 'book', 'borrow', 'member', 'berita'));
+        return view('backend.website.home', compact('guru', 'murid', 'alumni', 'acara', 'book', 'borrow', 'member', 'berita'));
       }
       // DASHBOARD MURID \\
       elseif ($role == 'Murid') {
@@ -102,7 +103,7 @@ class HomeController extends Controller
 
         $event = Events::where('is_active', '0')->first();
 
-        return view('backend.website.home', compact('event','murid','totalKelas', 'mengajarKelas','pendingComplaints', 'pendingAppointments'));
+        return view('backend.website.home', compact('event', 'murid', 'totalKelas', 'mengajarKelas', 'pendingComplaints', 'pendingAppointments'));
       }
       // DASHBOARD PPDB & PENDAFTAR \\
       elseif ($role == 'Guest' || $role == 'PPDB') {
@@ -126,5 +127,41 @@ class HomeController extends Controller
         return view('spp::index');
       }
     }
+  }
+
+  public function visitors()
+  {
+
+    $data = Visitor::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+      ->whereMonth('created_at', Carbon::now()->month)
+      ->groupBy('date')
+      ->get();
+
+    return response()->json($data);
+  }
+
+  public function totalMuridAjar()
+  {
+    $user_id = Auth::user()->id;
+    $kelasMengajar = UsersDetail::select(
+      'users_details.kelas',
+      'users_details.nama_kelas'
+    )
+      ->where('user_id', $user_id)
+      ->first();
+
+    $murid = User::whereHas('dataMurid', function ($query) use ($kelasMengajar) {
+      $query->where('kelas', $kelasMengajar->kelas)
+        ->where('nama_kelas', $kelasMengajar->nama_kelas);
+    })
+      ->join('data_murids', 'users.id', '=', 'data_murids.user_id')
+      ->selectRaw("
+      COUNT(data_murids.jenis_kelamin) AS jumlah_semua_murid, 
+      SUM(data_murids.jenis_kelamin = 'Laki-Laki') AS jumlah_laki_laki,
+      SUM(data_murids.jenis_kelamin = 'Perempuan') AS jumlah_perempuan
+          ")
+      ->get();
+
+    return response()->json($murid);
   }
 }
