@@ -130,6 +130,37 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i>
+                    <span class="menu-title text-truncate" data-i18n="Card">Kurikulum</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="nav-item {{ (request()->is('backend-kurikulum')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-kurikulum.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Kurikulum Sekolah</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (request()->is('backend-pembiasaan')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-pembiasaan.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Pembiasaan Siswa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (request()->is('backend-kaldik')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-kaldik.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Kaldik</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ (request()->is('backend-informasi')) ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href=" {{route('backend-informasi.index')}} "><i
+                                data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Info ATS, AAS, ANBK</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i>
                     <span class="menu-title text-truncate" data-i18n="Card">Berita</span>
                 </a>
                 <ul class="menu-content">

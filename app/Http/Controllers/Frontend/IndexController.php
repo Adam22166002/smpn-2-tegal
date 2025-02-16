@@ -21,9 +21,13 @@ use App\Models\Visimisi;
 use App\Models\Sarpras;
 use Carbon\Carbon;
 use App\Models\Gallery;
+use App\Models\Informasi;
+use App\Models\Kaldik;
 use App\Models\KegiatanSiswa;
 use App\Models\Kelas;
+use App\Models\kurikulum;
 use App\Models\MataPelajaran;
+use App\Models\PembiasaanSiswa;
 use App\Models\Penghargaan;
 use App\Models\Prestasi;
 use Illuminate\Support\Facades\DB;
@@ -268,6 +272,65 @@ class IndexController extends Controller
         $footer = Footer::first();
         $prestasi = Prestasi::latest()->paginate(6);
         return view('frontend.content.prestasi', compact('prestasi','jurusanM','kegiatanM','pengajar','footer'));
+    }
+    // kurikulum
+    public function kurikulum()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $kurikulums = kurikulum::all();
+        return view('frontend.content.kurikulum', compact('kurikulums','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
+    //  Pembiasaan Siswa
+    public function pembiasaan()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $pembiasaanSiswa = PembiasaanSiswa::all();
+        return view('frontend.content.pembiasaan', compact('pembiasaanSiswa','jurusanM','kegiatanM','pengajar','footer'));
+    }
+
+    //  Kaldik
+    public function kaldik()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $kaldik = Kaldik::all();
+        return view('frontend.content.kaldik', compact('kaldik','jurusanM','kegiatanM','pengajar','footer')); 
+    }
+
+    // Info ATS, AAS, ANBK, dll
+    public function info()
+    {
+        $jurusanM = Jurusan::where('is_active','0')->get();
+        $kegiatanM = Kegiatan::where('is_active','0')->get();
+
+        // Pengajar
+        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+
+        // Footer
+        $footer = Footer::first();
+        $informasi = Informasi::all();
+        return view('frontend.content.info', compact('informasi','jurusanM','kegiatanM','pengajar','footer'));
     }
 
     // Galeri

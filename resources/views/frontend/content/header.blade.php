@@ -69,6 +69,21 @@
                                     </li> --}}
                                 </ul>
                             </li>
+                            <li><a href="#">Kesiswaan</a>
+                                <ul>
+                                    <li><a href=" {{route('kegiatanSiswa.sekolah')}} ">Kegiatan Siswa</a></li>
+                                    <li><a href=" {{route('prestasi.sekolah')}} ">Prestasi Siswa</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Kurikulum</a>
+                                <ul>
+                                    <li><a href=" {{route('kurikulum.sekolah')}} ">Kurikulum yang digunakan</a></li>
+                                    <li><a href=" {{route('pembiasaan.sekolah')}} ">Pembiasaan Siswa</a></li>
+                                    <li><a href=" {{route('kaldik.sekolah')}} ">Kaldik</a></li>
+                                    <li><a href="http://link-ke-aplikasi-dapodik" target="_blank">Dapodik</a></li>
+                                    <li><a href=" {{route('info.sekolah')}} ">Info ATS, AAS, ANBK, Dll</a></li>
+                                </ul>
+                            </li>
                             {{-- <li><a href="#">Informasi</a>
                                 <ul>
                                     <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a
@@ -89,12 +104,7 @@
                                             href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Kesiswaan</a>
-                                <ul>
-                                    <li><a href=" {{route('kegiatanSiswa.sekolah')}} ">Kegiatan Siswa</a></li>
-                                    <li><a href=" {{route('prestasi.sekolah')}} ">Prestasi Siswa</a></li>
-                                </ul>
-                            </li>
+                            
 
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
