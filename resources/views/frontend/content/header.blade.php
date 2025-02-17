@@ -78,7 +78,7 @@
                                     <li><a href=" {{route('kurikulum.sekolah')}} ">Kurikulum yang digunakan</a></li>
                                     <li><a href=" {{route('pembiasaan.sekolah')}} ">Pembiasaan Siswa</a></li>
                                     <li><a href=" {{route('kaldik.sekolah')}} ">Kaldik</a></li>
-                                    <li><a href="http://link-ke-aplikasi-dapodik" target="_blank">Dapodik</a></li>
+                                    <li><a href="#">Dapodik</a></li>
                                     <li><a href=" {{route('info.sekolah')}} ">Info ATS, AAS, ANBK, Dll</a></li>
                                 </ul>
                             </li>
