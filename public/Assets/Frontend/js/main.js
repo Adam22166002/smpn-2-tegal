@@ -487,11 +487,17 @@
                     s.addClass("stick");
                     h3.css("top", "-" + topBarH + "px");
                 }
+
+                // Tambahkan warna biru saat di-scroll
+                s.addClass("scrolled");
             } else {
                 s.removeClass("stick");
                 if (h2.length) {
                     topBar.css("margin-bottom", 0);
                 }
+
+                // Hapus warna biru jika kembali ke atas
+                s.removeClass("scrolled");
             }
         }
     });

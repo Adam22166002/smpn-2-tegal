@@ -1,6 +1,6 @@
 <div id="header2" class="header4-area">
     <div class="header-top-area">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="header-top-left">
@@ -104,12 +104,12 @@
                                             href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
                                 </ul>
                             </li>
-                            
+
 
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
                                     <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
-                                            href=" {{route('perpus')}} ">Majalah Online</a></li>
+                                            href="http://perpus.smp2tegal.sch.id/">Majalah Online</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -191,7 +191,7 @@
                                             href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
                                 </ul>
                             </li>
-                            
+
 
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>

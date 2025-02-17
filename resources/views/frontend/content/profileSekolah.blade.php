@@ -25,13 +25,12 @@ Profile Sekolah
         <div class="row align-items-center">
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="kepsek-image position-relative">
-                    <img src="{{asset('Assets/backend/images/user.png')}}" class="img-fluid rounded-3 shadow-lg"
-                        alt="Kepala Sekolah">
+                    <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
+                        class="img-fluid rounded-3 shadow-lg" alt="Kepala Sekolah">
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="sambutan-content bg-light p-4 rounded-3 shadow-sm">
-                    <h2 class="mb-4">Sambutan Kepala Sekolah</h2>
                     <p class="mb-3">Bismiillahirahmanirrahim..</p>
                     <p class="mb-3">Assalamualaikum Wr.Wb.</p>
                     <p class="mb-3">Puji syukur kehadirat Allah SWT yang telah memberikan nikmat dan karunianya kepada
@@ -50,6 +49,12 @@ Profile Sekolah
                         <p class="mb-1">Ttd.</p>
                         <strong>Ries Murdiani</strong>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="kepsek-image position-relative">
+                    <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
+                        class="img-fluid rounded-3 shadow-lg" alt="Kepala Sekolah">
                 </div>
             </div>
         </div>
@@ -71,35 +76,43 @@ Profile Sekolah
                             <table class="table table-hover mb-0">
                                 <tbody>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4" style="width: 40%;">NPSN</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;"
+                                            style="width: 40%;">NPSN</td>
                                         <td>20329833</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Tingkatan</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Tingkatan
+                                        </td>
                                         <td>Sekolah Menengah Pertama</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Kepala Sekolah</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Kepala
+                                            Sekolah</td>
                                         <td>Ries Murdiani</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Operator</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Operator
+                                        </td>
                                         <td>Efta Shufiyati</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Akreditasi</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">
+                                            Akreditasi</td>
                                         <td><span class="badge badge-success">A</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Kurikulum</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Kurikulum
+                                        </td>
                                         <td>SMP 2013</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Jam Belajar</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Jam
+                                            Belajar</td>
                                         <td>Pagi/6 hari</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Luas Tanah</td>
+                                        <td class="font-weight-bold text-black ps-4" style="font-weight:bold;">Luas
+                                            Tanah</td>
                                         <td>7,600 m²</td>
                                     </tr>
                                 </tbody>
@@ -117,35 +130,35 @@ Profile Sekolah
                             <table class="table table-hover mb-0">
                                 <tbody>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4" style="width: 40%;">Telepon</td>
+                                        <td class="ps-4" style="font-weight: bold;" style="width: 40%;">Telepon</td>
                                         <td><i class="bi bi-telephone-fill me-2"></i>0283351532</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Fax</td>
+                                        <td class="ps-4" style="font-weight: bold;">Fax</td>
                                         <td><i class="bi bi-printer-fill me-2"></i>0283324963</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Email</td>
+                                        <td class="ps-4" style="font-weight: bold;">Email</td>
                                         <td><i class="bi bi-envelope-fill me-2"></i>smpn2tegal@yahoo.com</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Website</td>
+                                        <td class="ps-4" style="font-weight: bold;">Website</td>
                                         <td><i class="bi bi-globe me-2"></i>www.smpn2tegal.sch.id</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">SK Pendirian</td>
+                                        <td class="ps-4" style="font-weight: bold;">SK Pendirian</td>
                                         <td>131100100008035577</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Tanggal SK</td>
+                                        <td class="ps-4" style="font-weight: bold;">Tanggal SK</td>
                                         <td>01 August 1958</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">SK Operasional</td>
+                                        <td class="ps-4" style="font-weight: bold;">SK Operasional</td>
                                         <td>39 SK B 111</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold text-primary ps-4">Tgl Operasional</td>
+                                        <td class="ps-4" style="font-weight: bold;">Tgl Operasional</td>
                                         <td>01 August 1958</td>
                                     </tr>
                                 </tbody>

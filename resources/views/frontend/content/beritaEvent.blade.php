@@ -23,9 +23,12 @@
                             </div>
                             <div class="news-content-holder">
                                 <h3><a href="{{route('detail.berita', $beritas->slug)}}">{{$beritas->title}}</a></h3>
-                                <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}
+                                <p>{{ Str::words($beritas->content, 20, '...') }}</p>
+                                <div style="justify-content: space-between; display: flex;">
+                                    <div class="post-date">{{Carbon\Carbon::parse($beritas->created_at)->format('d F Y')}}
+                                    </div>
+                                    <a href="{{route('detail.berita', $beritas->slug)}}">Detail Selengkapnya --></a>
                                 </div>
-                                <a href="{{route('detail.berita', $beritas->slug)}}">Detail Selengkapnya --></a>
                             </div>
                         </div>
                         @endforeach
