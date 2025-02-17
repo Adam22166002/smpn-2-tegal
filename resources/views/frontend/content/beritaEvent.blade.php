@@ -50,7 +50,7 @@
                             </div>
                             <div class="item-content">
                                 <h3 class="sidebar-title">
-                                    <a href="{{route('detail.event',$events->slug)}}">{{$events->title}}</a>
+                                    <a style="color: #002147;" href="{{route('detail.event',$events->slug)}}">{{$events->title}}</a>
                                     <ul class="event-info-block">
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>
                                             {{Carbon\Carbon::parse($events->acara)->format('d F, Y')}}</li>
