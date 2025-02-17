@@ -9608,6 +9608,18 @@ ul.course-feature2 li:before {
     font-size: 18px;
     margin-bottom: 40px;
 }
+.badge-success {
+    background-color: #28a745;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.poppins-semibold {
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+}
 /*=======================================================================
 [26] Contact Page Area
 =========================================================================*/
