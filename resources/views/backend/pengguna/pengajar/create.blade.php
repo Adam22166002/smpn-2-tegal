@@ -70,9 +70,9 @@ Tambah Pengajar
                                         <select name="mengajar"
                                             class="form-control @error('mengajar') is-invalid @enderror" required>
                                             <option value="">-- Pilih --</option>
-                                            <option value="Matematika">Matematika</option>
-                                            <option value="Bahasa Inggris">Bahasa Inggris</option>
-                                            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                                            @foreach($mata_pelajaran as $item)
+                                            <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                            @endforeach
                                         </select>
                                         @error('mengajar')
                                         <div class="invalid-feedback">

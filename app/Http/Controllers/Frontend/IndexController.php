@@ -38,87 +38,87 @@ class IndexController extends Controller
     public function index()
     {
         // Menu
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Gambar Slider
-        $slider = ImageSlider::where('is_Active','0')->get();
+        $slider = ImageSlider::where('is_Active', '0')->get();
 
         // About
-        $about = About::where('is_Active','0')->first();
+        $about = About::where('is_Active', '0')->first();
 
         // Video
-        $video = Video::where('is_active','0')->first();
+        $video = Video::where('is_active', '0')->first();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Berita
-        $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->get();
+        $berita = Berita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
         // Event
-        $event = Events::where('is_active','0')->orderBy('created_at','desc')->get();
+        $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
         // Footer
         $footer = Footer::first();
 
-        return view('frontend.welcome', compact('jurusanM','kegiatanM','slider','about','video','pengajar','berita','event','footer'));
+        return view('frontend.welcome', compact('jurusanM', 'kegiatanM', 'slider', 'about', 'video', 'pengajar', 'berita', 'event', 'footer'));
     }
 
     // Berita
     public function berita()
     {
-         // Menu
-         $jurusanM = Jurusan::where('is_active','0')->get();
-         $kegiatanM = Kegiatan::where('is_active','0')->get();
-
-         // Footer
-        $footer = Footer::first();
-
-         // Kategori
-         $kategori = KategoriBerita::where('is_active','0')->orderBy('created_at','desc')->get();
-
-         // Berita
-         $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->paginate(10);
-
-        return view('frontend.content.beritaAll', compact('berita','kategori','jurusanM','kegiatanM','footer'));
-    }
-    // Show Detail Berita
-    public function detailBerita($slug)
-    {
         // Menu
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Footer
         $footer = Footer::first();
 
         // Kategori
-        $kategori = KategoriBerita::where('is_active','0')->orderBy('created_at','desc')->get();
+        $kategori = KategoriBerita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
         // Berita
-        $beritaOther = Berita::where('is_active','0')->orderBy('created_at','desc')->get();
+        $berita = Berita::where('is_active', '0')->orderBy('created_at', 'desc')->paginate(10);
 
-        $berita = Berita::where('slug',$slug)->first();
-        return view('frontend.content.showBerita', compact('berita','kategori','beritaOther','jurusanM','kegiatanM','footer'));
+        return view('frontend.content.beritaAll', compact('berita', 'kategori', 'jurusanM', 'kegiatanM', 'footer'));
+    }
+    // Show Detail Berita
+    public function detailBerita($slug)
+    {
+        // Menu
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
+
+        // Footer
+        $footer = Footer::first();
+
+        // Kategori
+        $kategori = KategoriBerita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
+
+        // Berita
+        $beritaOther = Berita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
+
+        $berita = Berita::where('slug', $slug)->first();
+        return view('frontend.content.showBerita', compact('berita', 'kategori', 'beritaOther', 'jurusanM', 'kegiatanM', 'footer'));
     }
 
 
     // Events
     public function events()
     {
-         // Menu
-         $jurusanM = Jurusan::where('is_active','0')->get();
-         $kegiatanM = Kegiatan::where('is_active','0')->get();
+        // Menu
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
-         // Footer
+        // Footer
         $footer = Footer::first();
 
-         // Berita
-         $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->get();
+        // Berita
+        $berita = Berita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
-         $event = Events::where('is_active','0')->orderBy('created_at','desc')->get();
-         return view('frontend.content.event.eventAll', compact('event','berita','jurusanM','kegiatanM','footer'));
+        $event = Events::where('is_active', '0')->orderBy('created_at', 'desc')->get();
+        return view('frontend.content.event.eventAll', compact('event', 'berita', 'jurusanM', 'kegiatanM', 'footer'));
     }
 
 
@@ -126,45 +126,45 @@ class IndexController extends Controller
     public function detailEvent($slug)
     {
         // Menu
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
-         // Footer
+        // Footer
         $footer = Footer::first();
 
-         // Berita
-         $berita = Berita::where('is_active','0')->orderBy('created_at','desc')->get();
+        // Berita
+        $berita = Berita::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
-         $event = Events::where('slug',$slug)->first();
-         $eventOther = Events::where('is_active','0')->orderBy('created_at','desc')->get();
+        $event = Events::where('slug', $slug)->first();
+        $eventOther = Events::where('is_active', '0')->orderBy('created_at', 'desc')->get();
 
-         return view('frontend.content.event.detailEvent', compact('event','eventOther','berita','jurusanM','kegiatanM','footer'));
+        return view('frontend.content.event.detailEvent', compact('event', 'eventOther', 'berita', 'jurusanM', 'kegiatanM', 'footer'));
     }
 
     // Profile Sekolah
     public function profileSekolah()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
 
         $profile = ProfileSekolah::first();
-        return view('frontend.content.profileSekolah', compact('profile','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.profileSekolah', compact('profile', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     //sejarah sekolah
     public function sejarahSingkat()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
@@ -181,54 +181,54 @@ class IndexController extends Controller
             'SMP Negeri 2 Tegal, pilihan tepat untuk pendidikan berkualitas di Kota Tegal.',
         ];
 
-        return view('frontend.content.sejarahSekolah', compact('sejarah','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.sejarahSekolah', compact('sejarah', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
     // SARPRAS
     public function saranaPrasarana()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $sarpras = Sarpras::all(); // Anda bisa sesuaikan ini dengan query sesuai kebutuhan
 
         // Kirim data sarana dan prasarana ke view
-        return view('frontend.content.sarpras', compact('sarpras','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.sarpras', compact('sarpras', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     // Visi dan Misi
     public function visimisi()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
 
         $visimisi = Visimisi::first();
-        return view('frontend.content.visimisi', compact('visimisi','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.visimisi', compact('visimisi', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
     // Penghargaan
     public function penghargaan()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $penghargaan = Penghargaan::all();
 
-        return view('frontend.content.penghargaan', compact('penghargaan','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.penghargaan', compact('penghargaan', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
     // GURU
     public function guruTendik()
@@ -247,116 +247,116 @@ class IndexController extends Controller
     // kegiatan siswa
     public function kegiatanSiswa()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $kegiatan = KegiatanSiswa::latest()->paginate(6);
-        return view('frontend.content.kegiatanSiswa', compact('kegiatan','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.kegiatanSiswa', compact('kegiatan', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     //prestasi siswa
     public function prestasiSiswa()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $prestasi = Prestasi::latest()->paginate(6);
-        return view('frontend.content.prestasi', compact('prestasi','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.prestasi', compact('prestasi', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
     // kurikulum
     public function kurikulum()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $kurikulums = kurikulum::all();
-        return view('frontend.content.kurikulum', compact('kurikulums','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.kurikulum', compact('kurikulums', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     //  Pembiasaan Siswa
     public function pembiasaan()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $pembiasaanSiswa = PembiasaanSiswa::all();
-        return view('frontend.content.pembiasaan', compact('pembiasaanSiswa','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.pembiasaan', compact('pembiasaanSiswa', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     //  Kaldik
     public function kaldik()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $kaldik = Kaldik::all();
-        return view('frontend.content.kaldik', compact('kaldik','jurusanM','kegiatanM','pengajar','footer')); 
+        return view('frontend.content.kaldik', compact('kaldik', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     // Info ATS, AAS, ANBK, dll
     public function info()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
 
         // Pengajar
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajar = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // Footer
         $footer = Footer::first();
         $informasi = Informasi::all();
-        return view('frontend.content.info', compact('informasi','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.info', compact('informasi', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     // Galeri
-public function gallery(Request $request)
-{
-    $jurusanM = Jurusan::all();
-    $kegiatanM = Kegiatan::all();
-    $footer = Footer::first();
+    public function gallery(Request $request)
+    {
+        $jurusanM = Jurusan::all();
+        $kegiatanM = Kegiatan::all();
+        $footer = Footer::first();
 
-    $category = $request->query('category');
+        $category = $request->query('category');
 
-    $query = Gallery::orderBy('created_at', 'desc');
+        $query = Gallery::orderBy('created_at', 'desc');
 
-    if ($category) {
-        $query->where('category', $category);
+        if ($category) {
+            $query->where('category', $category);
+        }
+
+        $galleries = $query->paginate(12);
+
+        $categoriesRaw = DB::select("SHOW COLUMNS FROM gallery WHERE Field = 'category'")[0]->Type;
+
+        preg_match_all("/'([^']+)'/", $categoriesRaw, $matches);
+        $categories = $matches[1];
+
+        return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer', 'categories', 'category'));
     }
-
-    $galleries = $query->paginate(12);
-
-    $categoriesRaw = DB::select("SHOW COLUMNS FROM gallery WHERE Field = 'category'")[0]->Type;
-
-    preg_match_all("/'([^']+)'/", $categoriesRaw, $matches);
-    $categories = $matches[1];
-
-    return view('frontend.content.gallery', compact('galleries', 'jurusanM', 'kegiatanM', 'footer', 'categories', 'category'));
-}
 
     public function rapot()
     {
@@ -364,7 +364,7 @@ public function gallery(Request $request)
         $kegiatanM = Kegiatan::all();
         $footer = Footer::first();
 
-        $pengajars = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $pengajars = User::with('userDetail')->where('status', 'Aktif')->where('role', 'Guru')->get();
 
         // SEMENTARA \\
         $sambutan_kepsek = 'Bismiillahirahmanirrahim..
@@ -373,7 +373,7 @@ public function gallery(Request $request)
                     Kami ucapkan selamat datang di website SMPN 2 Tegal. Website ini digunakan sebagai sarana informasi dan publikasi bagi masyarakat yang membutuhkan informasi seputar tentang SMPN 2 Tegal.
                     Semoga informasi yang diberikan, bisa memberikan gambaran yang cukup untuk mengetahui rangkaian kegiatan yang telah dilaksanakan oleh SMPN 2 Tegal. Kami menyadari akan kekurangan yang kami miliki. Tidak terputus kami mohon Doa dan dukungan dari semua pihak, sangat kami harapkan agar generasi penerus bangsa dapat terus semangat dalam berkarya.
                     Wassalamu alaikum wr.wb';
-        $nama_kepsek ='Dr. Kepsek S.Kom, M.Si';
+        $nama_kepsek = 'Dr. Kepsek S.Kom, M.Si';
 
         return view('frontend.content.rapot', compact('jurusanM', 'kegiatanM', 'footer', 'pengajars', 'sambutan_kepsek', 'nama_kepsek'));
     }
@@ -395,11 +395,11 @@ public function gallery(Request $request)
         $kelas = Kelas::orderBy('kelas', 'asc')->get();
         $problemTypes = ['bullying' => 'Bullying', 'academic' => 'Akademik', 'family' => 'Keluarga', 'career' => 'Karier', 'other' => 'Lainnya'];
         $urgencyLevels = ['low' => 'Rendah', 'medium' => 'Sedang', 'high' => 'Tinggi'];
-        $konsultasi = ['academic' => 'Akademik', 'career' => 'Karir', 'personal' => 'Personal', 'social' => 'Sosial', 'other'=>'Lainnya'];
+        $konsultasi = ['academic' => 'Akademik', 'career' => 'Karir', 'personal' => 'Personal', 'social' => 'Sosial', 'other' => 'Lainnya'];
         $appointments = BKAppointment::with(['kelas', 'counselor'])
             ->latest()
             ->get();
-        return view('frontend.bk-complaint.index', compact('jurusanM', 'kegiatanM', 'footer','kelas','appointments', 'problemTypes', 'urgencyLevels','konsultasi'));
+        return view('frontend.bk-complaint.index', compact('jurusanM', 'kegiatanM', 'footer', 'kelas', 'appointments', 'problemTypes', 'urgencyLevels', 'konsultasi'));
     }
 
     public function store(Request $request)
@@ -410,7 +410,7 @@ public function gallery(Request $request)
             'problem_type' => 'required|in:bullying,academic,family,career,other',
             'description' => 'required|string',
             'urgency' => 'required|in:low,medium,high'
-        ],[
+        ], [
             'name.string' => 'Nama harus berupa teks.',
             'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
             'class.required' => 'Kelas harus diisi.',
@@ -449,7 +449,7 @@ public function gallery(Request $request)
             'description' => 'nullable|string',
             'counselor' => 'nullable|exists:users,id',
             'platform' => $request->type === 'online' ? 'required|string|in:google_meet,zoom,whatsapp' : 'nullable'
-        ],[
+        ], [
             'type.required' => 'Jenis konsultasi harus diisi.',
             'type.in' => 'Jenis konsultasi harus berupa online atau offline.',
             'name.required' => 'Nama harus diisi.',
@@ -532,4 +532,3 @@ public function gallery(Request $request)
         return view('frontend.content.perpus',  compact('jurusanM', 'kegiatanM', 'footer'));
     }
 }
-
