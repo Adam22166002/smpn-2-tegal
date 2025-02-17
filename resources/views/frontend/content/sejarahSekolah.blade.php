@@ -1,83 +1,206 @@
 @extends('layouts.Frontend.app')
 
 @section('title')
-    Sejarah Singkat SMPN 2 Tegal
+    Sejarah Singkat SMPN 2 Tegal 
 @endsection
 
 @section('content')
 @section('about')
-    <div class="container py-5" style="margin-bottom: 3rem;">
-        <h2 class="text-center mb-4 font-weight-bold text-primary">Sejarah Singkat SMP Negeri 2 Tegal</h2>
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="border-0 rounded-3 mb-4">
-                    <div class="">
-                        <div class="sejarah-content">
+    <div class="hero-sejarah position-relative d-flex align-items-center justify-content-center" 
+         style="background-image: linear-gradient(rgb(0,191,255, 0.6), rgb(0,191,255, 0.6)), url('{{ asset('Assets/Frontend/img/sejarah-bg.jpg') }}');">
+        <div class="container text-center text-white">
+            <h1 class="display-4 text-white font-weight-bold mb-3"style="margin-top: 2rem;">Sejarah SMP Negeri 2 Tegal</h1>
+            <p class="lead mb-0">Perjalanan Menuju Keunggulan Sejak 1958</p>
+        </div>
+        <div class="wave-shape position-absolute bottom-0 left-0 w-100">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container py-5" style="margin-top: -99px;">
+        <div class="row">
+            <div class="col-lg-8 order-lg-1 order-2">
+                <div class="sejarah-content pe-lg-4">
+                    <div class="timeline">
                             @foreach ($sejarah as $paragraf)
                                 <p class="text-muted">
                                     {!! $paragraf !!}
                                 </p>
                             @endforeach
-                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <!-- Gambar Sejarah (Jika Diperlukan) -->
-                <div class="text-center">
-                    <img src="{{asset('Assets/Frontend/img/sejarah-logo.png')}}" class="img-fluid rounded-circle shadow-lg" alt="Logo Sejarah SMPN 2 Tegal" style="max-height: 200px;">
+            <div class="col-lg-4 order-lg-2 order-1 mb-lg-0 mb-5">
+                <div class="sticky-top" style="top: 2rem;">
+                    <div class="card border-0 shadow-sm text-center p-4 mb-4">
+                        <img src="{{asset('Assets/Frontend/img/sejarah-logo.png')}}" 
+                             class="img-fluid rounded-circle shadow mx-auto mb-4" 
+                             alt="Logo Sejarah SMPN 2 Tegal" 
+                             style="max-width: 200px;">
+                        <h4 class="mb-3">SMPN 2 Tegal</h4>
+                        <p class="text-muted mb-0">Mendidik Generasi Unggul Sejak 1958</p>
+                    </div>
+                    
+                    <!-- Quick Facts -->
+                    <div class="card border-0 shadow-sm p-4">
+                        <div class="fact-item mb-3">
+                            <i class="fas fa-calendar-alt text-primary mb-2"></i>
+                            <h6 class="mb-1">Tahun Berdiri</h6>
+                            <p class="small text-muted mb-0">1958</p>
+                        </div>
+                        <div class="fact-item mb-3">
+                            <i class="fas fa-map-marker-alt text-primary mb-2"></i>
+                            <h6 class="mb-1">Lokasi Pertama</h6>
+                            <p class="small text-muted mb-0">Kota Tegal</p>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-users text-primary mb-2"></i>
+                            <h6 class="mb-1">Alumni</h6>
+                            <p class="small text-muted mb-0">Ribuan lulusan berkualitas</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Styling untuk konten sejarah -->
-    <style>
-        .sejarah-content {
-            text-align: justify;
-            line-height: 1.8;
-            font-size: 1.5rem;
-        }
+<style>
+    .wave-shape {
+    position: relative;
+    bottom: -1px;
+}
 
-        h2 {
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-        }
+/* Hero Section */
+.hero-sejarah {
+    min-height: 60vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-        /* Gambar/logo sejarah */
-        img {
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
+/* Timeline Styling */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
 
-        .text-primary {
-            color: #0066cc !important;
-        }
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+}
 
-        .sejarah-content p {
-            margin-bottom: 1.5rem;
-        }
+.timeline-item {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+}
 
-        .sejarah-content p:last-child {
-            margin-bottom: 0;
-        }
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    border: 4px solid white;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+}
 
-        .text-center {
-            margin-top: 2rem;
-        }
+.timeline-content {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
 
-        /* Styling Link */
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+/* Fact Items */
+.fact-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.fact-item:hover {
+    background-color: rgba(0,123,255,0.1);
+}
+
+.fact-item i {
+    font-size: 1.5rem;
+    display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+        padding-left: 0;
+        padding-top: 3rem;
+    }
+    
+    .timeline-item::before {
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+}
+
+/* Text Styling */
+.sejarah-content {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Animation */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+// Animate on scroll initialization
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', function() {
+    const hero = document.querySelector('.hero-sejarah');
+    const scrolled = window.pageYOffset;
+    hero.style.backgroundPositionY = (scrolled * 0.5) + 'px';
+});
+</script>
 @endsection
 @endsection
-

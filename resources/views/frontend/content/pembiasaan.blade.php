@@ -4,10 +4,14 @@
 
 @section('content')
 @section('about')
-
+<!-- Hero Section -->
+<div class="jumbotron jumbotron-fluid bg-primary text-white mb-0">
+    <div class="container py-5">
+        <h1 class="display-4">Pembiasaan Siswa</h1>
+        <p class="lead">Membentuk Karakter Unggul Melalui Kebiasaan Positif</p>
+    </div>
+</div>
 <div class="container">
-    <h2 class="mb-4">Daftar Pembiasaan Siswa</h2>
-
     <table class="table">
         <thead>
             <tr>

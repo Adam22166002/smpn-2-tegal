@@ -6,8 +6,13 @@
 
 @section('content')
 @section('about')
-    <div class="container py-5" style="margin-bottom: 3rem;">
-        <h2 class="mb-4 text-center fw-bold text-primary">Kegiatan Siswa</h2>
+<div class="hero-kegiatan position-relative">
+        <div class="container text-center py-5">
+            <h1 class="display-4 mb-3">Kegiatan Siswa SMPN 2 Tegal</h1>
+            <p class="lead">...</p>
+        </div>
+    </div>
+    <div class="container py-5" style="margin-bottom: 5rem; margin-top: 5rem;">
         <div class="row g-4">
             @foreach($kegiatan as $item)
                 <div class="col-md-4 d-flex justify-content-center">
@@ -30,6 +35,10 @@
     </div>
 
 <style>
+    .hero-kegiatan {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 4rem 0;
+}
     .kegiatan-card {
         width: 300px;
         border-radius: 12px;

@@ -13,7 +13,7 @@
             <div class="col-lg-6 col-md-8 col-sm-12">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
-                        <h2 class="h3 text-primary mb-4">Tentang Kegiatan</h2>
+                        <h2 class="h2 text-primary mb-4 ">Ekstrakurikuler {{$kegiatan->nama}}</h2>
                         <p class="lh-lg">{{$kegiatan->content}}</p>
                     </div>
                 </div>

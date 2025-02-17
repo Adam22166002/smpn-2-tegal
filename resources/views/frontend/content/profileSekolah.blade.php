@@ -18,14 +18,19 @@
         <img src="{{asset('Assets/Frontend/img/empty.svg')}}" class="img-responsive" style="object-fit:cover; margin-top:5% !important; display: block; margin: 0 auto;">
     @endif
 </div>
-
-<div class="profile-section bg-white py-5">
+<div class="sambutan-section py-5" style="margin-bottom: 7rem;">
     <div class="container">
-        <!-- Sambutan Kepala Sekolah Section -->
-        <div class="sambutan-section mb-5">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-8">
-                    <div class="sambutan-content">
+        <div class="row align-items-center">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="kepsek-image position-relative">
+                    <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
+                         class="img-fluid rounded-3 shadow-lg"
+                         alt="Kepala Sekolah">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="sambutan-content bg-light p-4 rounded-3 shadow-sm">
+                    <h2 class="mb-4">Sambutan Kepala Sekolah</h2>
                     <p class="mb-3">Bismiillahirahmanirrahim..</p>
                     <p class="mb-3">Assalamualaikum Wr.Wb.</p>
                     <p class="mb-3">Puji syukur kehadirat Allah SWT yang telah memberikan nikmat dan karunianya kepada kita semua, dan kepadanyalah kelak kita nanti kan kembali. Shalawat serta salam semoga senantiasa tercurah kepada junjungan kita Nabi Muhammad SAW beserta keluarga dan para sahabatnya.</p>
@@ -36,18 +41,11 @@
                         <p class="mb-1">Ttd.</p>
                         <strong>Ries Murdiani</strong>
                     </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="kepala-sekolah-image text-center">
-                        <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
-                                class="img-fluid rounded shadow"
-                                alt="Kepala Sekolah"
-                                style="max-height: 400px; object-fit: cover;">
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
         <!-- Profile Sekolah Section -->
 <div class="profile-detail-section bg-light py-5 mt-3">
     <div class="container">
