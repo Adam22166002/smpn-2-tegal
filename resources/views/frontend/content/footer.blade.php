@@ -40,7 +40,7 @@
                     <h3>Informasi</h3>
                     <ul class="corporate-address">
                         <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}"> {{@$footer->telp}}</a></li>
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i>{{@$footer->email}}</li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i>{{@$footer->email}}</li>
                     </ul>
                     <div class="newsletter-area">
                         <h3>Ingin mendapat berita terupdate ?</h3>

@@ -20,7 +20,6 @@ class SarprasController extends Controller
         'image.max'          => 'Ukuran file gambar hanya bisa 1MB.'
     ];
 
-    // Menampilkan daftar sarana dan prasarana
     public function index()
     {
         $sarpras = Sarpras::all();
@@ -33,7 +32,6 @@ class SarprasController extends Controller
         return view('backend.website.tentang.sarpras.create');
     }
 
-    // Menyimpan sarana dan prasarana baru ke database
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -61,15 +59,12 @@ class SarprasController extends Controller
             return redirect()->route('backend-sarpras.index');
         }
     }
-
-    // Menampilkan form untuk mengedit sarana dan prasarana
     public function edit($id)
     {
         $sarpras = Sarpras::findOrFail($id);
         return view('backend.website.tentang.sarpras.edit', compact('sarpras'));
     }
 
-    // Mengupdate data sarana dan prasarana
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -87,7 +82,6 @@ class SarprasController extends Controller
             $sarpras->nama = $request->input('nama');
             $sarpras->deskripsi = $request->input('deskripsi');
 
-            // Jika ada file gambar yang diunggah
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time() . "_" . $image->getClientOriginalName();

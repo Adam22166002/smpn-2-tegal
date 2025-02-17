@@ -17,10 +17,8 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     <div class="header-top-right">
                         <ul>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}">
-                                    {{@$footer->telp}} </a></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{@$footer->email}}</a>
-                            </li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ @$footer->telp }}">{{ @$footer->telp }}</a></li>
+<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:{{ @$footer->email }}">{{ @$footer->email }}</a></li>
                             <li>
                                 @auth
                                 <a href="/home" class="apply-now-btn2">Home</a>
@@ -36,7 +34,7 @@
     </div>
 
     <div class="main-menu-area bg-primary" id="sticker">
-        <div class="container-fluid" style="align-items: center; justify-content:center;">
+        <div class="container-fluid" style="align-items: center; justify-content:center; margin-left:3rem;">
             <div class="row" style="align-items: center; justify-content:center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-items: center; justify-content:center;">
                     <nav id="desktop-nav" style="align-items: center; justify-content:center;">
