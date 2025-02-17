@@ -17,10 +17,8 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     <div class="header-top-right">
                         <ul>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{@$footer->telp}}">
-                                    {{@$footer->telp}} </a></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">{{@$footer->email}}</a>
-                            </li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ @$footer->telp }}">{{ @$footer->telp }}</a></li>
+<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:{{ @$footer->email }}">{{ @$footer->email }}</a></li>
                             <li>
                                 @auth
                                 <a href="/home" class="apply-now-btn2">Home</a>
@@ -36,7 +34,7 @@
     </div>
 
     <div class="main-menu-area bg-primary" id="sticker">
-        <div class="container-fluid" style="align-items: center; justify-content:center;">
+        <div class="container-fluid" style="align-items: center; justify-content:center; margin-left:3rem;">
             <div class="row" style="align-items: center; justify-content:center;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-items: center; justify-content:center;">
                     <nav id="desktop-nav" style="align-items: center; justify-content:center;">
@@ -80,7 +78,7 @@
                                     <li><a href=" {{route('kurikulum.sekolah')}} ">Kurikulum yang digunakan</a></li>
                                     <li><a href=" {{route('pembiasaan.sekolah')}} ">Pembiasaan Siswa</a></li>
                                     <li><a href=" {{route('kaldik.sekolah')}} ">Kaldik</a></li>
-                                    <li><a href="http://link-ke-aplikasi-dapodik" target="_blank">Dapodik</a></li>
+                                    <li><a href="#">Dapodik</a></li>
                                     <li><a href=" {{route('info.sekolah')}} ">Info ATS, AAS, ANBK, Dll</a></li>
                                 </ul>
                             </li>
@@ -105,12 +103,13 @@
                                 </ul>
                             </li>
 
-
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
                                     <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
                                             href="http://perpus.smp2tegal.sch.id/">Majalah Online</a></li>
                                 </ul>
+                            </li>
+                            <li><a href="#">Raport</a>
                             </li>
                         </ul>
                     </nav>
