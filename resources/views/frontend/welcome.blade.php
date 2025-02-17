@@ -21,12 +21,6 @@
     @endsection
 
 
-    {{-- Video --}}
-    @section('video')
-        @include('frontend.content.video')
-    @endsection
-
-
      {{-- Berita & Event --}}
      @section('beritaEvent')
         @include('frontend.content.beritaEvent')
