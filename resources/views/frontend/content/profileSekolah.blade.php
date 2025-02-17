@@ -23,8 +23,8 @@ Profile Sekolah
         <div class="row align-items-center">
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="kepsek-image position-relative">
-                    <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
-                        class="img-fluid rounded-3 shadow-lg" alt="Kepala Sekolah">
+                    <img src="{{asset('Assets/Backend/images/user.png')}}" class="img-fluid rounded-3 shadow-lg"
+                        alt="Kepala Sekolah">
                 </div>
             </div>
             <div class="col-lg-8">
@@ -51,8 +51,8 @@ Profile Sekolah
             </div>
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="kepsek-image position-relative">
-                    <img src="{{asset('storage/images/kepsek/' .$profile->kepsek_image)}}"
-                        class="img-fluid rounded-3 shadow-lg" alt="Kepala Sekolah">
+                    <img src="{{asset('Assets/Backend/images/user.png')}}" class="img-fluid rounded-3 shadow-lg"
+                        alt="Kepala Sekolah">
                 </div>
             </div>
         </div>
