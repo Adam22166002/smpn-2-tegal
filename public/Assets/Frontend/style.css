@@ -784,10 +784,10 @@ h2.sidebar-title:before {
 }
 .apply-now-btn2 {
     text-align: center;
-    color: #00bfff;
     padding: 10px 0;
     width: 104px;
-    background: #fdc800;
+    background-color: #00bfff;
+    color: white !important;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
@@ -799,7 +799,7 @@ h2.sidebar-title:before {
     transition: all 0.3s ease-out;
 }
 .apply-now-btn2:hover {
-    background: #00bfff;
+    background: #002147;
     color: #ffffff !important;
 }
 .apply-now-btn3 {
@@ -1078,8 +1078,8 @@ h2.sidebar-title:before {
     transition: all 0.5s ease-out;
 }
 .view-all-primary-btn:hover {
-    background: #fdc800;
-    color: #030507;
+    background: #002147;
+    color: #ffffff;
 }
 .ghost-btn {
     border: 2px solid #fdc800;
@@ -1709,7 +1709,7 @@ h2.sidebar-title:before {
     color: #00bfff;
 }
 #preloader {
-    background: #00bfff url("img/preloader.gif") no-repeat scroll center center;
+    background: white url("img/logo.gif") no-repeat scroll center center;
     height: 100%;
     left: 0;
     overflow: visible;
@@ -1906,24 +1906,15 @@ h2.sidebar-title:before {
     margin: 0 auto;
     top: 0;
     z-index: 10;
+    transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
-.main-menu-area .logo-area {
-    margin: 21px 0;
+
+.main-menu-area.scrolled {
+    background-color: #00bfff9f !important; /* Warna biru terang */
+    backdrop-filter: blur(5px); /* Efek blur */
+    -webkit-backdrop-filter: blur(10px);
 }
-@media (min-width: 992px) and (max-width: 1199px) {
-    .main-menu-area .logo-area {
-        margin: 25px 0;
-    }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-    .main-menu-area .logo-area {
-        margin: 22px 0;
-    }
-}
-.main-menu-area .apply-btn-area {
-    margin: 22px 0;
-    text-align: right;
-}
+
 .login-form {
     position: absolute;
     z-index: 999;
@@ -1985,7 +1976,7 @@ nav#desktop-nav ul {
     text-align: right;
 }
 nav#desktop-nav ul .active > a {
-    color: #fdc800;
+    color: white;
 }
 nav#desktop-nav ul li {
     display: inline-block;
@@ -2023,13 +2014,13 @@ nav#desktop-nav ul li a {
     }
 }
 nav#desktop-nav ul li a:hover {
-    color: #fdc800;
+    color: white;
 }
 nav#desktop-nav ul li .active {
     background-color: #1a3b61;
 }
 nav#desktop-nav ul li .active a {
-    color: #fdc800;
+    color: white;
 }
 nav#desktop-nav ul li > ul {
     position: relative;
@@ -2062,10 +2053,10 @@ nav#desktop-nav ul li > ul {
 nav#desktop-nav ul li > ul:before {
     position: absolute;
     content: "";
-    background-color: #fdc800;
+    background-color: #00bfff;
     margin: 0 auto;
     z-index: 12;
-    height: 1px;
+    height: 5px;
     top: 0;
     left: 0;
     width: 0%;
@@ -2100,7 +2091,7 @@ nav#desktop-nav ul li > ul > li .active {
 }
 nav#desktop-nav ul li > ul > li:hover a,
 nav#desktop-nav ul li > ul > li .active a {
-    color: #fdc800;
+    color: white;
 }
 nav#desktop-nav ul li > ul > li:hover a:before,
 nav#desktop-nav ul li > ul > li .active a:before {
@@ -9964,7 +9955,7 @@ ul.course-feature2 li:before {
 =========================================================================*/
 .footer-area-top {
     padding: 92px 0 50px;
-    background: #002147;
+    background-color: #002147;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .footer-area-top {

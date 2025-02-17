@@ -104,12 +104,12 @@
                                             href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
                                 </ul>
                             </li>
-                            
+
 
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
                                     <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
-                                            href=" {{route('perpus')}} ">Majalah Online</a></li>
+                                            href="http://perpus.smp2tegal.sch.id/">Majalah Online</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -191,7 +191,7 @@
                                             href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
                                 </ul>
                             </li>
-                            
+
 
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
