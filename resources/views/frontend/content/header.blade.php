@@ -103,12 +103,13 @@
                                 </ul>
                             </li>
 
-
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
                                     <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
                                             href="http://perpus.smp2tegal.sch.id/">Majalah Online</a></li>
                                 </ul>
+                            </li>
+                            <li><a href="#">Raport</a>
                             </li>
                         </ul>
                     </nav>

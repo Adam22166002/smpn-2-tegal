@@ -787,7 +787,7 @@ h2.sidebar-title:before {
     text-align: center;
     padding: 10px 0;
     width: 104px;
-    background-color: #00bfff;
+    background-color: #002147;
     color: white !important;
     text-transform: uppercase;
     font-size: 12px;
@@ -800,7 +800,7 @@ h2.sidebar-title:before {
     transition: all 0.3s ease-out;
 }
 .apply-now-btn2:hover {
-    background: #002147;
+    background: #00bfff;
     color: #ffffff !important;
 }
 .apply-now-btn3 {
@@ -865,7 +865,7 @@ h2.sidebar-title:before {
 .default-big-btn {
     color: #ffffff;
     padding: 15px 0;
-    background: #00bfff;
+    background: #002147;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
@@ -880,8 +880,8 @@ h2.sidebar-title:before {
     transition: all 0.5s ease-out;
 }
 .default-big-btn:hover {
-    background: #fdc800;
-    color: #212121;
+    background: #00bfff;
+    color: #ffffff;
 }
 .default-full-width-btn {
     color: #ffffff;
@@ -1066,7 +1066,7 @@ h2.sidebar-title:before {
     text-align: center;
     color: #ffffff;
     padding: 12px 0;
-    background: #00bfff;
+    background: #002147;
     text-transform: uppercase;
     font-size: 14px;
     display: inline-block;
@@ -1079,7 +1079,7 @@ h2.sidebar-title:before {
     transition: all 0.5s ease-out;
 }
 .view-all-primary-btn:hover {
-    background: #002147;
+    background: #00bfff;
     color: #ffffff;
 }
 .ghost-btn {
@@ -1975,7 +1975,7 @@ h2.sidebar-title:before {
     padding: 30px;
 }
 nav#desktop-nav ul {
-    text-align: right;
+    text-align: right;           
 }
 nav#desktop-nav ul .active > a {
     color: white;
