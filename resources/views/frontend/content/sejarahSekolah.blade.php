@@ -7,16 +7,10 @@
 @section('content')
 @section('about')
     <div class="hero-sejarah position-relative d-flex align-items-center justify-content-center" 
-         style="background-image: linear-gradient(rgb(0,191,255, 0.6), rgb(0,191,255, 0.6)), url('{{ asset('Assets/Frontend/img/sejarah-bg.jpg') }}');">
-        <div class="container text-center text-white">
-            <h1 class="display-4 text-white font-weight-bold mb-3"style="margin-top: 2rem;">Sejarah SMP Negeri 2 Tegal</h1>
-            <p class="lead mb-0">Perjalanan Menuju Keunggulan Sejak 1958</p>
-        </div>
-        <div class="wave-shape position-absolute bottom-0 left-0 w-100">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
+        style="background-image: url('data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%239C92AC%27 fill-opacity=%270.1%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+        <div class="container text-start text-black">
+            <h1 class="display-4 text-primary poppins-semibold font-weight-bold mb-3" style="margin-top: 5rem;">Sejarah SMP Negeri 2 Tegal</h1>
+            <p class="h5 lead mb-0">Perjalanan Menuju Keunggulan Sejak 1958</p>
         </div>
     </div>
 

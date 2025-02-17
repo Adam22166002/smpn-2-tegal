@@ -233,15 +233,15 @@ class IndexController extends Controller
     // GURU
     public function guruTendik()
     {
-        $jurusanM = Jurusan::where('is_active','0')->get();
-        $kegiatanM = Kegiatan::where('is_active','0')->get();
-        $pengajar = User::with('userDetail')->where('status','Aktif')->where('role','Guru')->get();
+        $jurusanM = Jurusan::where('is_active', '0')->get();
+        $kegiatanM = Kegiatan::where('is_active', '0')->get();
+        $pengajar = User::with('detailGuru')->where('status', 'Aktif')->where('role', 'Guru')->get();
         $kelas = Kelas::all();
         $footer = Footer::first();
         $mataPelajaran = MataPelajaran::all();
 
         // Return the view with the data
-        return view('frontend.content.gtk', compact('pengajar','kelas','jurusanM','kegiatanM','pengajar','footer'));
+        return view('frontend.content.gtk', compact('pengajar', 'kelas', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     // kegiatan siswa
