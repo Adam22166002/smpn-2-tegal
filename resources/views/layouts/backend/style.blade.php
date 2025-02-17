@@ -34,6 +34,14 @@
 <link rel="stylesheet" type="text/css" href="{{asset('Assets/Backend/css/style.css')}}">
 <!-- END: Custom CSS-->
 
+<style>
+    #muridChart {
+        width: 500px !important;
+        height: 300px !important;
+
+    }
+</style>
+
 @php
 $currentUrl = Request::url();
 @endphp

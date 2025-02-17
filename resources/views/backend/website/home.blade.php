@@ -8,6 +8,8 @@ Dashboard
 <div class="content-wrapper container-xxl p-0">
     <div class="content-body">
         <div class="row">
+
+            @if (Auth::user()->role == 'Admin')
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="card card-congratulations">
                     <div class="card-body text-center">
@@ -31,6 +33,32 @@ Dashboard
                     </div>
                 </div>
             </div>
+
+            @elseif(Auth::user()->role == 'Guru')
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-congratulations">
+                    <div class="card-body text-center">
+                        <img src="{{asset('Assets/Backend/images/pages/decore-left.png')}}"
+                            class="congratulations-img-left" alt="card-img-left" />
+                        <img src="{{asset('Assets/Backend/images/pages/decore-right.png')}}"
+                            class="congratulations-img-right" alt="card-img-right" />
+                        <div class="avatar avatar-xl bg-primary shadow">
+                            <div class="avatar-content">
+                                <i data-feather="award" class="font-large-1"></i>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="mb-1 text-white">Selamat Datang {{Auth::user()->name}},</h3>
+                            <p class="card-text m-auto w-75">
+                                {{ $mengajarKelas->nama_kelas ?? 'Have fun day' }}
+                                {{ $mengajarKelas->kelas ?? '' }}
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
 
             @if (Auth::user()->role == 'Admin')
             <div class="col-lg-3 col-sm-6 col-12">
@@ -235,18 +263,26 @@ Dashboard
                 </div>
             </div>
 
-            @if (Auth::user()->role == 'Admin')
+            @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Guru')
+
+            <input type="hidden" name="detectRole" id="detectRole"
+                value="{{ Auth::user()->role == 'Admin' ? 'Admin' : 'Guru' }}">
             <div class="col-xl-8 col-md-6 col-12">
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-statistics">
                             <div class="card-header">
-                                <h4 class="card-title">Statistik Pengunjung</h4>
+                                <h5>{{ (Auth::user()->role == "Admin" ? "Statistik Pengunjung Bulan Ini" : "Jumlah Murid
+                                    Ajar" ) }}</h5>
                                 <div class="d-flex align-items-center">
-                                    {{-- <p class="card-text font-small-2 mr-25 mb-0">Updated 1 day ago</p> --}}
                                 </div>
 
+                                @if (Auth::user()->role == 'Admin')
                                 <canvas id="visitorChart"></canvas>
+
+                                @elseif (Auth::user()->role == 'Guru')
+                                <canvas id="muridChart"></canvas>
+                                @endif
                             </div>
                         </div>
                     </div>
