@@ -27,7 +27,11 @@ class InformasiController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'kategori' => 'required',
-        ]);
+        ], [
+    'judul.required' => 'Judul harus diisi.',
+    'deskripsi.required' => 'Deskripsi harus diisi.',
+    'kategori.required' => 'Kategori harus diisi.',
+]);
 
         Informasi::create($validated);
 
@@ -48,18 +52,16 @@ class InformasiController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'kategori' => 'required',
-        ]);
+        ], [
+    'judul.required' => 'Judul harus diisi.',
+    'deskripsi.required' => 'Deskripsi harus diisi.',
+    'kategori.required' => 'Kategori harus diisi.',
+]);
 
         Informasi::whereId($id)->update($validated);
 
         return redirect()->route('backend-informasi.index');
     }
-//     public function show($id)
-// {
-//     $informasi = Informasi::findOrFail($id);
-//     return view('frontend.informasi.show', compact('informasi'));
-// }
-
 
     // Menghapus pengumuman
     public function destroy($id)

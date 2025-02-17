@@ -8,7 +8,6 @@
 @section('about')
 <div class="container">
     @if ($profile)
-
         <div style="margin-top: 2%; margin-bottom:3%">
             <img src="{{asset('storage/images/profileSekolah/' .$profile->image)}}" class="img-responsive" style="max-height:500px; width:100%; object-fit:cover">
         </div>

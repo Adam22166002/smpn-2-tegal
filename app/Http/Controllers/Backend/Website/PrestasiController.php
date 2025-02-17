@@ -22,6 +22,7 @@ class PrestasiController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'nama_siswa' => 'required|string|max:255',
             'prestasi' => 'required|string|max:255',
@@ -29,7 +30,23 @@ class PrestasiController extends Controller
             'tingkat' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tanggal' => 'required|date',
+        ], [
+            'nama_siswa.required' => 'Nama siswa harus diisi.',
+            'nama_siswa.string' => 'Nama siswa harus berupa teks.',
+            'nama_siswa.max' => 'Nama siswa maksimal 255 karakter.',
+            'prestasi.required' => 'Prestasi harus diisi.',
+            'prestasi.string' => 'Prestasi harus berupa teks.',
+            'prestasi.max' => 'Prestasi maksimal 255 karakter.',
+            'deskripsi.string' => 'Deskripsi harus berupa teks.',
+            'tingkat.required' => 'Tingkat harus diisi.',
+            'tingkat.string' => 'Tingkat harus berupa teks.',
+            'gambar.image' => 'Gambar harus berupa file gambar.',
+            'gambar.mimes' => 'Gambar harus memiliki format jpeg, png, jpg, gif, atau svg.',
+            'gambar.max' => 'Ukuran gambar maksimal 2MB.',
+            'tanggal.required' => 'Tanggal harus diisi.',
+            'tanggal.date' => 'Tanggal harus berupa format tanggal yang valid.',
         ]);
+        
 
         $path = $request->file('gambar')->store('public/images/prestasi');
         $imageName = str_replace('public/', '', $path);
@@ -64,6 +81,21 @@ class PrestasiController extends Controller
         'tingkat' => 'required|string',
         'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'tanggal' => 'required|date',
+    ], [
+        'nama_siswa.required' => 'Nama siswa harus diisi.',
+        'nama_siswa.string' => 'Nama siswa harus berupa teks.',
+        'nama_siswa.max' => 'Nama siswa maksimal 255 karakter.',
+        'prestasi.required' => 'Prestasi harus diisi.',
+        'prestasi.string' => 'Prestasi harus berupa teks.',
+        'prestasi.max' => 'Prestasi maksimal 255 karakter.',
+        'deskripsi.string' => 'Deskripsi harus berupa teks.',
+        'tingkat.required' => 'Tingkat harus diisi.',
+        'tingkat.string' => 'Tingkat harus berupa teks.',
+        'gambar.image' => 'Gambar harus berupa file gambar.',
+        'gambar.mimes' => 'Gambar harus memiliki format jpeg, png, jpg, gif, atau svg.',
+        'gambar.max' => 'Ukuran gambar maksimal 2MB.',
+        'tanggal.required' => 'Tanggal harus diisi.',
+        'tanggal.date' => 'Tanggal harus berupa format tanggal yang valid.',
     ]);
 
     if ($request->hasFile('gambar')) {

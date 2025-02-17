@@ -10638,7 +10638,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary {
-    background-color: #007bff;
+    background-color: #00bfff;
     border: none;
     border-radius: 25px;
     padding: 8px 20px;
@@ -10646,7 +10646,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary:hover {
-    background-color: #2980b9;
+    background-color: #00bfff;
 }
 
 .category-badge {
@@ -10654,7 +10654,7 @@ ul.course-feature2 li:before {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background-color: #007bff;
+    background-color: #00bfff;
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
@@ -10703,7 +10703,7 @@ ul.course-feature2 li:before {
 .header h2 {
     font-size: 2.5em;
     margin-bottom: 15px;
-    color: #007bff;
+    color: #00bfff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 .gallery {
@@ -10766,6 +10766,13 @@ ul.course-feature2 li:before {
     .header h2 {
         font-size: 2em;
     }
+    .header-mobile {
+        font-size: 5rem;
+        margin-top: 2rem;
+    }
+    .text-header{
+        text-align: center;
+    }
 }
 
 .category-btn {
@@ -10780,11 +10787,11 @@ ul.course-feature2 li:before {
 }
 
 .category-btn:hover {
-    background-color: #007bff;
+    background-color: #00bfff;
     color: white;
 }
 
 .category-btn.active {
-    background-color: #007bff;
+    background-color: #00bfff;
     color: white;
 }

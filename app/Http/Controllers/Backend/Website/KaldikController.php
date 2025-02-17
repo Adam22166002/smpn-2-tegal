@@ -27,7 +27,12 @@ class KaldikController extends Controller
         $validated = $request->validate([
             'nama_kegiatan' => 'required',
             'tanggal' => 'required|date',
-            'deskripsi' => 'nullable',
+            'deskripsi' => 'required',
+        ], [
+        'nama_kegiatan.required' => 'Nama kegiatan harus diisi.',
+        'tanggal.required' => 'Tanggal harus diisi.',
+        'tanggal.date' => 'Tanggal harus dalam format yang valid.',
+        'deskripsi.required' => 'Deskripsi harus diisi.',
         ]);
 
         Kaldik::create($validated);
@@ -45,7 +50,12 @@ class KaldikController extends Controller
         $validated = $request->validate([
             'nama_kegiatan' => 'required',
             'tanggal' => 'required|date',
-            'deskripsi' => 'nullable',
+            'deskripsi' => 'required',
+        ], [
+        'nama_kegiatan.required' => 'Nama kegiatan harus diisi.',
+        'tanggal.required' => 'Tanggal harus diisi.',
+        'tanggal.date' => 'Tanggal harus dalam format yang valid.',
+        'deskripsi.required' => 'Deskripsi harus diisi.',
         ]);
 
         Kaldik::whereId($id)->update($validated);
