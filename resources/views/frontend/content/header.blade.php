@@ -34,9 +34,9 @@
     </div>
 
     <div class="main-menu-area bg-primary" id="sticker">
-        <div class="container-fluid" style="align-items: center; justify-content:center; margin-left:3rem;">
+        <div class="container-fluid" style="align-items: center; justify-content:center;">
             <div class="row" style="align-items: center; justify-content:center;">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="align-items: center; justify-content:center;">
+                <div style="align-items: center; justify-content:center;">
                     <nav id="desktop-nav" style="align-items: center; justify-content:center;">
                         <ul>
                             <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Beranda</a></li>
