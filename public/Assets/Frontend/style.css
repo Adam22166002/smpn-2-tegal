@@ -48,11 +48,12 @@ Version: 1.5
 [01] Typography
 =========================================================================*/
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap);
 html,
 body {
     scroll-behavior: smooth;
     height: 100%;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.5;
     font-weight: 400;
     vertical-align: baseline;
@@ -1975,7 +1976,7 @@ h2.sidebar-title:before {
     padding: 30px;
 }
 nav#desktop-nav ul {
-    text-align: right;           
+    text-align: right;
 }
 nav#desktop-nav ul .active > a {
     color: white;
@@ -10591,7 +10592,7 @@ ul.course-feature2 li:before {
 
 .news-card {
     flex: 0 0 375px; /* Lebar kartu yang lebih besar */
-    margin-right: 20px; /* Jarak antar kartu */
+    margin-left: 15px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -10631,7 +10632,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary {
-    background-color: #00bfff;
+    background-color: #007bff;
     border: none;
     border-radius: 25px;
     padding: 8px 20px;
@@ -10639,7 +10640,7 @@ ul.course-feature2 li:before {
 }
 
 .news-card .btn-primary:hover {
-    background-color: #00bfff;
+    background-color: #2980b9;
 }
 
 .category-badge {
@@ -10647,7 +10648,7 @@ ul.course-feature2 li:before {
     top: 10px;
     right: 10px;
     z-index: 10;
-    background-color: #00bfff;
+    background-color: #007bff;
     color: white;
     padding: 5px 10px;
     border-radius: 15px;
