@@ -4,7 +4,7 @@
             <div class="news-box">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h2><span class="text-primary">Berita</span> Terbaru</h2>
+                        <h2 class="poppins-semibold font-weight-bold"><span class="text-primary">Berita</span> Terbaru</h2>
                         <p class="mb-0">Kabar Terbaru Mengenai Sekolah Kami</p>
                     </div>
                     <div>
@@ -36,8 +36,11 @@
                 </div>
             </div>
             {{-- Event --}}
+
+
             <div class="col-xs-12 event-inner-area">
-                <h2><span class="text-primary">Event</span> Terbaru</h2>
+                <h2 class="poppins-semibold font-weight-bold"><span class="text-primary">Event</span> Terbaru</h2>
+                <p>Event terbaru tentang sekolah kami</p>
                 <div class="col-xs-12 event-inner-area">
                     @foreach ($event as $events)
                     <div class="event-terbaru col-lg-6 col-md-6 col-sm-12">

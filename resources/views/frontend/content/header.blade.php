@@ -95,14 +95,13 @@
 
                             {{-- <li><a href="{{route('bk-complaint.index')}}">BK</a></li>
                             <li><a href="{{ route('rapot') }}">Rapot</a></li> --}}
-
                             <li><a href="#">KONSPERO</a>
                                 <ul>
                                     <li class="{{ (request()->is('konspero')) ? 'active' : '' }}"><a
-                                            href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a></li>
+                                            href=" {{route('konspero')}} ">Konsultasi Bimbingan dan Penyuluhan</a>
+                                    </li>
                                 </ul>
                             </li>
-
                             <li><a href="#">PERPUS DIGITAL</a>
                                 <ul>
                                     <li class="{{ (request()->is('perpus')) ? 'active' : '' }}"><a
