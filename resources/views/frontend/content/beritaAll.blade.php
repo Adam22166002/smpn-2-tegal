@@ -6,7 +6,7 @@ Berita
 
 @section('content')
     @section('about')
-    <div class="news-page-area ">
+    <div class="news-page-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
@@ -26,7 +26,6 @@ Berita
                                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>By</span> {{$beritas->user->name}}</a></li>
                                         <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>{{$beritas->kategori->nama}}</a></li>
                                     </ul>
-
                                 </div>
                             </div>
 
