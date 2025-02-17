@@ -1906,7 +1906,8 @@ h2.sidebar-title:before {
     margin: 0 auto;
     top: 0;
     z-index: 10;
-    transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out,
+        backdrop-filter 0.3s ease-in-out;
 }
 
 .main-menu-area.scrolled {
@@ -2327,7 +2328,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 .header2-area .header-top-area .header-top-right ul li .login-btn-area i {
     padding-right: 10px;
     font-size: 14px;
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2335,7 +2336,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     transition: all 0.3s ease-out;
 }
 .header2-area .header-top-area .header-top-right ul li .login-btn-area:hover {
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2497,7 +2498,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 .header3-area .header-top-area .header-top-right ul li a i {
     padding-right: 10px;
     font-size: 14px;
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2505,7 +2506,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     transition: all 0.3s ease-out;
 }
 .header3-area .header-top-area .header-top-right ul li a:hover {
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2585,7 +2586,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
 .header4-area .header-top-area .header-top-right ul li i {
     padding-right: 10px;
     font-size: 18px;
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2593,7 +2594,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     transition: all 0.3s ease-out;
 }
 .header4-area .header-top-area .header-top-right ul li a {
-    color: #00bfff;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -2601,7 +2602,7 @@ nav#desktop-nav li.has-child-menu:hover ul.thired-level {
     transition: all 0.3s ease-out;
 }
 .header4-area .header-top-area .header-top-right ul li a:hover {
-    color: #fdc800;
+    color: #002147;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -10054,7 +10055,7 @@ ul.course-feature2 li:before {
     font-size: 16px;
 }
 .footer-area-top .corporate-address li i {
-    color: #fdc800;
+    color: #00bfff;
     padding-right: 15px;
     position: absolute;
     left: 0;
@@ -10113,7 +10114,7 @@ ul.course-feature2 li:before {
     .input-group-addon
     button
     i {
-    color: #fdc800;
+    color: #00bfff;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -10125,7 +10126,7 @@ ul.course-feature2 li:before {
     .stylish-input-group
     .input-group-addon
     button:hover {
-    background: #fdc800;
+    background: #00bfff;
 }
 .footer-area-top
     .newsletter-area
@@ -10133,7 +10134,7 @@ ul.course-feature2 li:before {
     .input-group-addon
     button:hover
     i {
-    color: #00bfff;
+    color: #ffffff;
 }
 .footer-area-top .footer-social li {
     display: inline-block;
@@ -10167,8 +10168,8 @@ ul.course-feature2 li:before {
     transition: all 0.3s ease-out;
 }
 .footer-area-top .footer-social li a:hover {
-    border: 1px solid #fdc800;
-    background: #fdc800;
+    border: 1px solid #00bfff;
+    background: #00bfff;
 }
 .footer-area-top .footer-social li a:hover i {
     color: #002147;
@@ -10761,7 +10762,7 @@ ul.course-feature2 li:before {
         font-size: 5rem;
         margin-top: 2rem;
     }
-    .text-header{
+    .text-header {
         text-align: center;
     }
 }
