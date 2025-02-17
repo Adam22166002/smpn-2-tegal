@@ -241,7 +241,7 @@ class IndexController extends Controller
         $mataPelajaran = MataPelajaran::all();
 
         // Return the view with the data
-        return view('frontend.content.gtk', compact('pengajar', 'kelas', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
+        return view('frontend.content.gtk', compact('pengajar', 'mataPelajaran', 'kelas', 'jurusanM', 'kegiatanM', 'pengajar', 'footer'));
     }
 
     // kegiatan siswa

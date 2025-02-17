@@ -90,15 +90,9 @@
 .award-card {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin-bottom: 30px;
     transition: all 0.3s ease;
     overflow: hidden;
-}
-
-.award-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .award-content {
@@ -119,7 +113,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background: #007bff;
+    background: #00BFFF;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;

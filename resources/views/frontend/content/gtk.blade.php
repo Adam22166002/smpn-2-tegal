@@ -16,7 +16,7 @@ Guru dan Tenaga Pendidikan SMPN 2 Tegal
     </div>
 
 <!-- Main Content -->
-<div class="container py-5">
+<div class="container py-5" style="margin-top: 5rem;">
     <!-- Search & Filter -->
     <div class="row mb-4" style="margin-bottom: 4rem;">
         <div class="col-md-6">
@@ -31,6 +31,9 @@ Guru dan Tenaga Pendidikan SMPN 2 Tegal
             <select class="form-control" id="filterMapel">
                 <option value="">Semua Mata Pelajaran</option>
                 <!-- Data -->
+                 @foreach($mataPelajaran as $item)
+                 <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                 @endforeach
             </select>
         </div>
     </div>
@@ -136,7 +139,7 @@ Guru dan Tenaga Pendidikan SMPN 2 Tegal
     }
 
     .overlay-info {
-        background: rgba(0, 123, 255, 0.9);
+        background: #00BFFF;
     }
 
     .card-img-top {
