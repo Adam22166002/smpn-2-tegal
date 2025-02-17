@@ -79,14 +79,12 @@ Edit Pengajar
                                         <label for="basicInput">Mengajar</label> <span class="text-danger">*</span>
                                         <select name="mengajar"
                                             class="form-control @error('mengajar') is-invalid @enderror">
-                                            <option value="Matematika" {{ $pengajar->userDetail->mengajar ==
-                                                'Matematika' ? 'selected' : '' }}>
-                                                Matematika
+                                            @foreach ($mata_pelajaran as $pelajaran)
+                                            <option value="{{ $pelajaran->nama }}" {{ $pengajar->userDetail->mengajar ==
+                                                $pelajaran->nama ? 'selected' : '' }}>
+                                                {{ $pelajaran->nama }}
                                             </option>
-                                            <option value="Bahasa Inggris" {{ $pengajar->userDetail->mengajar == 'Bahasa
-                                                Inggris' ? 'selected' : '' }}>
-                                                Bahasa Inggris
-                                            </option>
+                                            @endforeach
                                         </select>
                                         @error('mengajar')
                                         <div class="invalid-feedback">

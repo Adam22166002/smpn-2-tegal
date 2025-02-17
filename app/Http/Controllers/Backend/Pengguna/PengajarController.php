@@ -43,7 +43,8 @@ class PengajarController extends Controller
     public function create()
     {
         $kelas = Kelas::all();
-        return view('backend.pengguna.pengajar.create', compact('kelas'));
+        $mata_pelajaran = MataPelajaran::select('nama')->get();
+        return view('backend.pengguna.pengajar.create', compact('kelas', 'mata_pelajaran'));
     }
 
     /**
@@ -141,7 +142,9 @@ class PengajarController extends Controller
     {
         $pengajar = User::with('userDetail')->where('role', 'Guru')->find($id);
         $kelas = Kelas::all();
-        return view('backend.pengguna.pengajar.edit', compact('pengajar', 'kelas'));
+        $mata_pelajaran = MataPelajaran::select('nama')->get();
+
+        return view('backend.pengguna.pengajar.edit', compact('pengajar', 'mata_pelajaran', 'kelas'));
     }
 
     /**
