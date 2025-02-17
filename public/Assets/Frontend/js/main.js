@@ -427,8 +427,61 @@
     /*-------------------------------------
      Jquery Stiky Menu at window Load
      -------------------------------------*/
-    $(window).on('scroll', function() {
+    // $(window).on('scroll', function() {
 
+    //     var s = $('#sticker'),
+    //         w = $('.wrapper'),
+    //         h = s.outerHeight(),
+    //         windowpos = $(window).scrollTop(),
+    //         windowWidth = $(window).width(),
+    //         h1 = s.parent('#header1'),
+    //         h2 = s.parent('#header2'),
+    //         h3 = s.parent('#header3'),
+    //         h3H = h3.find('.header-top-area').outerHeight(),
+    //         topBar = s.prev('.header-top-area');
+
+    //     if (windowWidth > 767) {
+    //         w.css('padding-top', '');
+    //         var topBarH, mBottom = 0;
+    //         if (h1.length) {
+    //             topBarH = mBottom = h1.find('.main-menu-area').outerHeight();
+    //         } else if (h2.length) {
+    //             mBottom = h2.find('.main-menu-area').outerHeight();
+    //             topBarH = topBar.outerHeight();
+    //         } else if (h3.length) {
+    //             topBarH = topBar.outerHeight();
+    //             if (windowpos <= topBarH) {
+    //                 h3.css('top', '-' + windowpos + 'px');
+    //             }
+    //         }
+    //         if (windowpos >= topBarH) {
+    //             if (h2.length) {
+    //                 s.addClass('stick');
+    //                 topBar.css('margin-bottom', mBottom + 'px');
+    //             }
+    //             if (h3.length) {
+    //                 s.addClass('stick');
+    //                 h3.css('top', '-' + topBarH + 'px');
+    //             }
+    //         } else {
+    //             s.removeClass('stick');
+    //             if (h2.length) {
+    //                 topBar.css('margin-bottom', 0);
+    //             }
+    //         }
+    //     }
+    // });
+
+    // /* Rating selection*/
+    // $('#review-form').on('click', '.rate-wrapper .rate .rate-item', function() {
+    //     var self = $(this),
+    //         target = self.parent('.rate');
+    //     target.addClass('selected');
+    //     target.find('.rate-item').removeClass('active');
+    //     self.addClass('active');
+    // });
+
+    $(window).on('scroll', function() {
         var s = $('#sticker'),
             w = $('.wrapper'),
             h = s.outerHeight(),
@@ -463,23 +516,22 @@
                     s.addClass('stick');
                     h3.css('top', '-' + topBarH + 'px');
                 }
+
+                // Tambahkan warna biru saat di-scroll
+                s.addClass('scrolled');
             } else {
                 s.removeClass('stick');
+
                 if (h2.length) {
                     topBar.css('margin-bottom', 0);
                 }
+
+                // Hapus warna biru jika kembali ke atas
+                s.removeClass('scrolled');
             }
         }
     });
 
-    /* Rating selection*/
-    $('#review-form').on('click', '.rate-wrapper .rate .rate-item', function() {
-        var self = $(this),
-            target = self.parent('.rate');
-        target.addClass('selected');
-        target.find('.rate-item').removeClass('active');
-        self.addClass('active');
-    });
 
     /*-------------------------------------
      Accordion for fixing F&Q
